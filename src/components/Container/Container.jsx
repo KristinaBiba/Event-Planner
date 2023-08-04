@@ -1,7 +1,5 @@
-import { Outlet } from "react-router-dom";
 import { Wrap } from "./Container_css";
 
-// import PropTypes from 'prop-types';
 
 export const Container = ({children }) => {
     return (
@@ -9,8 +7,4 @@ export const Container = ({children }) => {
             {children }
         </Wrap>);
 }
-          
-// Section.propTypes = {
-//     title: PropTypes.node,
-//     children: PropTypes.node,
-// }
+  

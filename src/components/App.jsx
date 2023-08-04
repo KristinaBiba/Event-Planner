@@ -1,28 +1,16 @@
-import Main from 'pages/Main';
+import Main from 'pages/Main/Main';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
+import Create from 'pages/Create/Create';
+import Info from 'pages/Info/Info';
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route
-          path="/main"
-          element={<Main />}
-          
-        />
-        {/* <Route
-          path="create"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
-          }
-        ></Route>
-        <Route
-          path="info"
-          element={
-            <PrivateRoute redirectTo="/login" component={<Contacts />} />
-          }
-        ></Route> */}
+        <Route index element={<Main />} />
+        <Route path="create" element={<Create />}></Route>
+        <Route path="info" element={<Info />}></Route>
       </Route>
       <Route path="*" element={<>NotFound</>} />
     </Routes>

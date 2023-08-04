@@ -1,31 +1,29 @@
-
-import { Outlet } from 'react-router-dom';
-import { Suspense } from 'react';
 import { Container } from 'components/Container/Container';
-import { Div, FilterInput, Header, LanguageSwitcher, Title } from './SharedLayout_css';
-
-// import { useAuth } from 'redux/Auth/useAuth';
-// import { Navigation } from 'components/Navigation/Navigation';
-// import { UserMenu } from 'components/UserMenu/UserMenu';
+import {
+  Div,
+  FilterInput,
+  Header,
+  LanguageSwitcher,
+  Title,
+  Wrap,
+} from './SharedLayout_css';
+import { Outlet } from 'react-router-dom';
 
 export function SharedLayout() {
-
-    // const {isLoggedIn} = useAuth();
-
-    return (
-        <Header>
-                <Container>
-                    <Div>
-                    <Title>
-                    Event Planner
-                    </Title>
-                    <LanguageSwitcher>UK</LanguageSwitcher>
-
-                    </Div>
-                    
-                    <FilterInput></FilterInput>                  
-                    
-                </Container>
-
-        </Header>);
+  return (
+    <>
+      <Header>
+        <Container>
+          <Wrap>
+            <Title>Event Planner</Title>
+            <Div>
+              <FilterInput></FilterInput>
+              <LanguageSwitcher>UK</LanguageSwitcher>
+            </Div>
+          </Wrap>
+        </Container>
+      </Header>
+      <Outlet />
+    </>
+  );
 }
