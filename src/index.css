@@ -1,5 +1,13 @@
 @import-normalize; /* bring in normalize.css styles */
 
+html {
+  box-sizing: border-box;
+}
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -26,6 +34,9 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+input, textarea {
+  font-family: inherit;
 }
 
 :root {
