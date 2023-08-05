@@ -37,6 +37,13 @@ img {
 }
 input, textarea {
   font-family: inherit;
+
+}
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border: 2px solid #ff7d87;
+  box-shadow: none;
 }
 
 :root {

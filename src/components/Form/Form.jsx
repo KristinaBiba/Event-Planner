@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   ButtonDiv,
+  ButtonPick,
+  ButtonPickChoose,
   DatePick,
   DatePickerWrapper,
   DescriptionTextField,
@@ -10,7 +12,9 @@ import {
   ErrorDiv,
   FormWrap,
   Label,
+  Select,
   TextField,
+  TimePickerWrapper,
 } from './Form_css';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +25,6 @@ import * as Yup from 'yup';
 // import { addContact } from 'redux/Contacts/operations';
 
 export function Form() {
-
   const navigate = useNavigate();
 
   const SignupSchema = Yup.object().shape({
@@ -46,15 +49,25 @@ export function Form() {
       .matches(/^(?=.*[a-z])(?=.*[A-Z])/),
     category: Yup.string()
       .required('Required')
-      .matches(
-        /(Art|Music|Business|Conference|Workshop|Party|Sport)/,
-        'Choose true category'
-      ),
+      // .matches(
+      //   /(Art|Music|Business|Conference|Workshop|Party|Sport)/,
+      //   'Choose true category'
+      // )
+      ,
     addPicture: Yup.string().url(),
     priority: Yup.string()
       .required('Required')
       .matches(/(High|Medium|Low)/),
   });
+
+  // const formik = useFormik({
+  //   initialValues: {
+  //     selectDate: ''
+  //   }});
+  const [startDate, setStartDate] = useState('');
+  const [startTime, setStartTime] = useState('');
+
+  
 
   return (
     <Formik
@@ -72,7 +85,6 @@ export function Form() {
         priority: '',
       }}
       onSubmit={async (values, actions) => {
-
         // await dispatch(
         //   logIn({
         //     email: values.email,
@@ -94,8 +106,8 @@ export function Form() {
             addPicture: '',
             priority: '',
           },
-
-      })}}
+        });
+      }}
     >
       {({ errors, touched, handleReset }) => (
         <FormWrap>
@@ -131,37 +143,61 @@ export function Form() {
               </DivWrap>
             </Label>
             <DatePickerWrapper>
-            <Label>
-              Select date
-              <DivWrap>
-                <Field
-                  as={DatePick}
-                  id="selectDate"
-                  name="selectDate"
-                  type="date"
-                  // autoComplete="current-password"
-                  placeholder="Choose date"
-                  dateFormat="yyyy-MM-dd"
+              <Label>
+                Select date
+                <DivWrap>
+                  <DatePick
+                    dateFormat="dd.MM.yyyy"
+                    closeOnScroll={true}
+                    selected={startDate}
+                    onChange={date => setStartDate(date)}
+                    // customInput={<ExampleCustomInput />}
+                    minDate={new Date()}
+                  >
+                    <ButtonPick
+                      type="button"
+                      onClick={e => {
+                        e.preventDefault();
+                        setStartDate('');
+                      }}
+                    >
+                      Clear
+                    </ButtonPick>
+                    <ButtonPickChoose
+                      type="button"
+                      onClick={e => {
+                        e.preventDefault();
+                        window.scroll(0, 1);
+                      }}
+                    >
+                      Choose date
+                    </ButtonPickChoose>
+                  </DatePick>
 
-                />
-                <ErrorMessage component={ErrorDiv} name="selectDate" />
-              </DivWrap>
-            </Label>
+                  {/* <ErrorMessage component={ErrorDiv} name="selectDate" /> */}
+                </DivWrap>
+              </Label>
             </DatePickerWrapper>
+            <TimePickerWrapper>
             <Label>
               Select time
               <DivWrap>
-                <Field
-                  as={TextField}
-                  id="selectTime"
-                  name="selectTime"
-                  type="text"
-                  // autoComplete="current-password"
-                  placeholder="Choose time"
+                <DatePick
+                  selected={startTime}
+                  onChange={time => setStartTime(time)}
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={15}
+                      
+                  dateFormat="hh:mm aa"
+                  closeOnScroll={true}
+                  // customInput={<ExampleCustomInput />}
+                  minDate={new Date()}
                 />
-                <ErrorMessage component={ErrorDiv} name="selectTime" />
+                {/* <ErrorMessage component={ErrorDiv} name="selectTime" /> */}
               </DivWrap>
             </Label>
+            </TimePickerWrapper>
             <Label>
               Location
               <DivWrap>
@@ -180,13 +216,24 @@ export function Form() {
               Category
               <DivWrap>
                 <Field
-                  as={TextField}
+                
+                  as={Select}
                   id="category"
                   name="category"
-                  type="text"
+                  component="select"
+                  type="selected"
+                  multiple={true}
                   // autoComplete="current-password"
                   placeholder="Choose category"
-                />
+                >
+                <option value="Art">Art</option>
+                <option value="Music">Music</option>
+                <option value="Business">Business</option>
+                <option value="Conference">Conference</option>
+                <option value="Workshop">Workshop</option>
+                <option selected value="Party">Party</option>
+                <option value="Sport">Sport</option>
+                </Field>
                 <ErrorMessage component={ErrorDiv} name="category" />
               </DivWrap>
             </Label>
