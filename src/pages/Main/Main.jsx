@@ -14,38 +14,9 @@ import {
 } from './Main_css';
 import { CardWrap } from 'components/CardWrap/CardWrap';
 
-// import { useDispatch } from 'react-redux';
-// import { logIn } from 'redux/Auth/authOperations';
+function Main ({data, func}) {
 
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import Button from '@mui/material/Button';
-// import { Container } from '@mui/material';
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-
-function Main() {
-
-  //   const [userEmail, setUserEmail] = useState('');
-  //   const [userPassword, setUserPassword] = useState('');
 const navigate = useNavigate();
-  //   const dispatch = useDispatch();
-
-  //   const handleChange = e => {
-  //     const { name, value } = e.target;
-  //     switch (name) {
-  //       case 'userEmail':
-  //         setUserEmail(value);
-  //         break;
-  //       case 'userPassword':
-  //         setUserPassword(value);
-  //         break;
-  //       default:
-  //         setUserEmail('');
-  //         setUserPassword('');
-  //         break;
-  //     }
-  //   };
 
     const handleAdd = e => {
       e.preventDefault();
@@ -71,7 +42,7 @@ const navigate = useNavigate();
               </CreateButton>
             </ButtonWrap>
           </TitleWrap>
-          <CardWrap/>
+          <CardWrap data={data} onMoreInfoClick={func}/>
         </Section>
       </Container>
 

@@ -9,7 +9,7 @@ import {
 } from './SharedLayout_css';
 import { Outlet } from 'react-router-dom';
 
-export function SharedLayout() {
+export function SharedLayout({value, onChange}) {
   return (
     <>
       <Header>
@@ -17,7 +17,9 @@ export function SharedLayout() {
           <Wrap>
             <Title>Event Planner</Title>
             <Div>
-              <FilterInput></FilterInput>
+              <FilterInput name="filter"
+              value={value}
+              onChange={onChange}></FilterInput>
               <LanguageSwitcher>UK</LanguageSwitcher>
             </Div>
           </Wrap>

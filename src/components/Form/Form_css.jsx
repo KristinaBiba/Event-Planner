@@ -46,7 +46,8 @@ export const TextField = styled.input`
   }
 `;
 export const Select = styled.select`
-  box-sizing: border-box;
+
+box-sizing: border-box;
   border-radius: 8px;
   border: 1px solid #aca7c3;
   color: #3f3f3f;
@@ -61,6 +62,10 @@ export const Select = styled.select`
   @media screen and (min-width: 768px) {
     display: block;
     width: 308px;
+  }
+
+  &:invalid {
+    border: 1px solid #ff2b77;
   }`;
 
 export const DescriptionTextField = styled.textarea`
@@ -349,6 +354,7 @@ export const TimePickerWrapper = styled.div`
     box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
     border: none;
     padding: 0 16px;
+    padding-right: 15px;
     font-family: 'Poppins';
     width: 240px;
     height: 160px;
@@ -404,3 +410,28 @@ export const TimePickerWrapper = styled.div`
     display: none;
   }
 `;
+export const CategoryOptions = styled.option`
+  border-radius: 8px;
+    background-color: #ffffff;
+    border-top: 1px solid #aca7c3;
+    border-bottom: 1px solid #aca7c3;
+    box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+    border: none;
+    padding: 0 16px;
+    font-family: 'Poppins';
+    width: 240px;
+    height: 160px;
+    color: #3f3f3f;
+    text-align: start;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    height: 48px;
+    @media screen and (min-width: 768px) {
+      width: 308px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 372px;
+    }
+`

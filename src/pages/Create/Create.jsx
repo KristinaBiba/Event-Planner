@@ -3,7 +3,7 @@ import React from 'react';
 
 import { H2, MainWrap, Section } from './Create_css';
 import { Navigate } from 'components/Navigate/Navigate';
-import { Form } from 'components/Form/Form';
+import { EventForm } from 'components/Form/Form';
 
 // import { useDispatch } from 'react-redux';
 // import { logIn } from 'redux/Auth/authOperations';
@@ -15,7 +15,7 @@ import { Form } from 'components/Form/Form';
 // import Box from '@mui/material/Box';
 // import TextField from '@mui/material/TextField';
 
-function Create() {
+function Create({onSubmit}) {
 
   return (
     <MainWrap>
@@ -23,7 +23,7 @@ function Create() {
         <Navigate to="/" title="Back" />
         <Section>
           <H2>Create new event</H2>
-          <Form />  
+          <EventForm onSubmitNewEvent={onSubmit}/>  
         </Section>
       </Container>
     </MainWrap>

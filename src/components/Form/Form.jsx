@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
 import {
   Button,
   ButtonDiv,
   ButtonPick,
   ButtonPickChoose,
+  CategoryOptions,
   DatePick,
   DatePickerWrapper,
   DescriptionTextField,
@@ -18,13 +20,13 @@ import {
 } from './Form_css';
 import { useNavigate } from 'react-router-dom';
 
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, Field, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { getContacts } from 'redux/selectors';
 // import { addContact } from 'redux/Contacts/operations';
 
-export function Form() {
+export function EventForm({ onSubmitNewEvent }) {
   const navigate = useNavigate();
 
   const SignupSchema = Yup.object().shape({
@@ -32,8 +34,8 @@ export function Form() {
       .required('Required')
       .min(3, 'Title must be 3 characters or more')
       .max(30, 'Title must be 30 characters or less')
-      .trim()
-      .matches(/^(?=.*[a-z])(?=.*[A-Z])/, 'Title must contain only letter'),
+      .trim(),
+      // .matches(/^(?=.[a-z])(?=.[A-Z])/, 'Title must contain only letter'),
     description: Yup.string()
       .required('Required')
       .min(3, 'Must be 3 characters or more')
@@ -47,27 +49,20 @@ export function Form() {
       .max(30)
       .trim()
       .matches(/^(?=.*[a-z])(?=.*[A-Z])/),
-    category: Yup.string()
-      .required('Required')
-      // .matches(
-      //   /(Art|Music|Business|Conference|Workshop|Party|Sport)/,
-      //   'Choose true category'
-      // )
-      ,
-    addPicture: Yup.string().url(),
+    // category: Yup.string().required('Required'),
+    // .matches(
+    //   /(Art|Music|Business|Conference|Workshop|Party|Sport)/,
+    //   'Choose true category'
+    // )
+    // addPicture: Yup.string().url(),
     priority: Yup.string()
       .required('Required')
-      .matches(/(High|Medium|Low)/),
+      // .matches(/(High|Medium|Low)/)
+      ,
   });
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     selectDate: ''
-  //   }});
   const [startDate, setStartDate] = useState('');
   const [startTime, setStartTime] = useState('');
-
-  
 
   return (
     <Formik
@@ -81,17 +76,22 @@ export function Form() {
         selectTime: '',
         location: '',
         category: '',
-        addPicture: '',
+        // addPicture: '',
         priority: '',
       }}
-      onSubmit={async (values, actions) => {
-        // await dispatch(
-        //   logIn({
-        //     email: values.email,
-        //     password: values.password,
-        //   })
-        // );
-        console.log({ title: values.title });
+      onSubmit={async ( values, actions) => {     
+
+        await onSubmitNewEvent({
+          title: values.title,
+          description: values.description,
+          date: startDate,
+          time: startTime,
+          location: values.location,
+          category: values.category,
+          priority: values.priority,
+          id: nanoid(),
+        });
+
 
         navigate('/', { replace: true });
 
@@ -107,10 +107,11 @@ export function Form() {
             priority: '',
           },
         });
-      }}
+      }
+    }
     >
-      {({ errors, touched, handleReset }) => (
-        <FormWrap>
+      {() => (
+        <Form as={FormWrap}>
           <Div>
             <Label>
               Title
@@ -120,7 +121,6 @@ export function Form() {
                   id="title"
                   name="title"
                   type="text"
-                  // autoComplete="username"
                   placeholder="Enter title"
                   // border={touched.title && errors.title && '1px solid #ff2b77'}
                   // $invalid={touched.title && errors.title && '1px solid #ff2b77'}
@@ -136,7 +136,6 @@ export function Form() {
                   id="description"
                   name="description"
                   type="text"
-                  // autoComplete="current-password"
                   placeholder="Enter description"
                 />
                 <ErrorMessage component={ErrorDiv} name="description" />
@@ -150,10 +149,10 @@ export function Form() {
                     dateFormat="dd.MM.yyyy"
                     closeOnScroll={true}
                     selected={startDate}
+                    locale="en"
                     onChange={date => setStartDate(date)}
-                    // customInput={<ExampleCustomInput />}
                     minDate={new Date()}
-                  >
+                  > 
                     <ButtonPick
                       type="button"
                       onClick={e => {
@@ -174,30 +173,28 @@ export function Form() {
                     </ButtonPickChoose>
                   </DatePick>
 
-                  {/* <ErrorMessage component={ErrorDiv} name="selectDate" /> */}
+                  <ErrorMessage component={ErrorDiv} name="selectDate" /> 
                 </DivWrap>
               </Label>
-            </DatePickerWrapper>
+            </DatePickerWrapper>  
             <TimePickerWrapper>
-            <Label>
-              Select time
-              <DivWrap>
-                <DatePick
-                  selected={startTime}
-                  onChange={time => setStartTime(time)}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                      
-                  dateFormat="hh:mm aa"
-                  closeOnScroll={true}
-                  // customInput={<ExampleCustomInput />}
-                  minDate={new Date()}
-                />
-                {/* <ErrorMessage component={ErrorDiv} name="selectTime" /> */}
-              </DivWrap>
-            </Label>
-            </TimePickerWrapper>
+              <Label>
+                Select time
+                <DivWrap>
+                  <DatePick
+                    selected={startTime}
+                    onChange={time => setStartTime(time)}
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    dateFormat="hh:mm aa"
+                    closeOnScroll={true}
+                    minDate={new Date()}
+                  />
+                   <ErrorMessage component={ErrorDiv} name="selectTime" /> 
+                </DivWrap>
+              </Label>
+            </TimePickerWrapper> 
             <Label>
               Location
               <DivWrap>
@@ -206,73 +203,69 @@ export function Form() {
                   id="location"
                   name="location"
                   type="text"
-                  // autoComplete="current-password"
                   placeholder="Choose location"
                 />
                 <ErrorMessage component={ErrorDiv} name="location" />
               </DivWrap>
-            </Label>
+            </Label> 
             <Label>
               Category
               <DivWrap>
                 <Field
-                
                   as={Select}
                   id="category"
                   name="category"
-                  component="select"
-                  type="selected"
-                  multiple={true}
-                  // autoComplete="current-password"
                   placeholder="Choose category"
                 >
-                <option value="Art">Art</option>
-                <option value="Music">Music</option>
-                <option value="Business">Business</option>
-                <option value="Conference">Conference</option>
-                <option value="Workshop">Workshop</option>
-                <option selected value="Party">Party</option>
-                <option value="Sport">Sport</option>
+                  <CategoryOptions value="select">Select category</CategoryOptions>
+                  <CategoryOptions value="Art">Art</CategoryOptions>
+                  <CategoryOptions value="Music">Music</CategoryOptions>
+                  <CategoryOptions value="Business">Business</CategoryOptions>
+                  <CategoryOptions value="Conference">Conference</CategoryOptions>
+                  <CategoryOptions value="Workshop">Workshop</CategoryOptions>
+                  <CategoryOptions value="Party">Party</CategoryOptions>
+                  <CategoryOptions value="Sport">Sport</CategoryOptions>
                 </Field>
                 <ErrorMessage component={ErrorDiv} name="category" />
               </DivWrap>
             </Label>
-            <Label>
+            <Label disabled>
               Add picture
               <DivWrap>
                 <Field
+                  disabled
                   as={TextField}
                   id="addPicture"
                   name="addPicture"
                   type="text"
-                  // autoComplete="current-password"
                   placeholder="Choose picture"
                 />
                 <ErrorMessage component={ErrorDiv} name="addPicture" />
               </DivWrap>
-            </Label>
+            </Label> 
             <Label>
               Priority
               <DivWrap>
                 <Field
-                  as={TextField}
-                  id="priority"
-                  name="priority"
-                  type="text"
-                  // autoComplete="current-password"
+                as={Select}
+                id="priority"
+                name="priority"
+              
                   placeholder="Choose priority"
-                />
+                > <CategoryOptions value="select">Select priority</CategoryOptions>
+                <CategoryOptions value="High">High</CategoryOptions>
+                <CategoryOptions value="Medium">Medium</CategoryOptions>
+                <CategoryOptions value="Low">Low</CategoryOptions></Field>
                 <ErrorMessage component={ErrorDiv} name="priority" />
               </DivWrap>
-            </Label>
+            </Label> 
           </Div>
           <ButtonDiv>
             <Button type="submit" aria-label="Submit form">
               Add event
             </Button>
           </ButtonDiv>
-        </FormWrap>
-      )}
+        </Form>)}
     </Formik>
   );
 }
