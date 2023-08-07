@@ -11,7 +11,7 @@ export const MainWrap = styled.main`
 `;
 
 export const H2 = styled.h2`
-  color: #3f3f3f;
+  color: var(--secondary-text-color);
   font-size: 24px;
   font-style: normal;
   font-weight: 600;

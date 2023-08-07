@@ -7,7 +7,6 @@ export const MainWrap = styled.main`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
 `;
 
 export const Section = styled.section`
@@ -25,7 +24,7 @@ export const TitleWrap = styled.div`
 `;
 
 export const H2 = styled.h2`
-  color: #3f3f3f;
+  color: var(--secondary-text-color);
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -72,18 +71,18 @@ export const Button = styled.button`
   height: 56px;
   padding: 16px;
   border-radius: 8px;
-  background: #fff;
+  background-color: var(--primary-background-color);
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   border: none;
   outline: none;
-  color: #3f3f3f;
+  color: var(--secondary-text-color);
   font-family: inherit;
 
   &:hover {
-    background: #6243ff;
+    background-color: var(--btn-hover-background);
   }
   &:disabled {
-    background: #aca7c3;
+    background-color: var(--btn-disabled-background);
   }
   @media screen and (max-width: 767px) {
     width: 56px;
@@ -91,8 +90,8 @@ export const Button = styled.button`
 `;
 
 export const CreateButton = styled(Button)`
-  background: #7b61ff;
-  color: #ffffff;
+  background-color: var(--primary-text-color);
+  color: var(--btn-accent-color);
 `;
 
 export const Span = styled.span`
@@ -108,16 +107,16 @@ export const Span = styled.span`
 export const Icon = styled.svg`
   width: 24px;
   height: 24px;
-  stroke: #3f3f3f;
+  stroke: var(--secondary-text-color);
 
   ${Button}:hover {
-    stroke: #7b61ff;
+    stroke: var(--primary-text-color);
   }
 `;
 export const Icon2 = styled(Icon)`
-  stroke: #3f3f3f;
+  stroke: var(--secondary-text-color);
 
   @media screen and (max-width: 767px) {
-    stroke: #7b61ff;
+    stroke: var(--primary-text-color);
   }
 `;

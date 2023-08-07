@@ -9,6 +9,7 @@ import {
   DatePick,
   DatePickerWrapper,
   DescriptionTextField,
+  DisabledLabel,
   Div,
   DivWrap,
   ErrorDiv,
@@ -22,9 +23,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { getContacts } from 'redux/selectors';
-// import { addContact } from 'redux/Contacts/operations';
 
 export function EventForm({ onSubmitNewEvent }) {
   const navigate = useNavigate();
@@ -35,7 +33,6 @@ export function EventForm({ onSubmitNewEvent }) {
       .min(3, 'Title must be 3 characters or more')
       .max(30, 'Title must be 30 characters or less')
       .trim(),
-      // .matches(/^(?=.[a-z])(?=.[A-Z])/, 'Title must contain only letter'),
     description: Yup.string()
       .required('Required')
       .min(3, 'Must be 3 characters or more')
@@ -49,22 +46,18 @@ export function EventForm({ onSubmitNewEvent }) {
       .max(30)
       .trim()
       .matches(/^(?=.*[a-z])(?=.*[A-Z])/),
-    // category: Yup.string().required('Required'),
-    // .matches(
-    //   /(Art|Music|Business|Conference|Workshop|Party|Sport)/,
-    //   'Choose true category'
-    // )
+    category: Yup.string().required('Required'),
     // addPicture: Yup.string().url(),
     priority: Yup.string()
-      .required('Required')
-      // .matches(/(High|Medium|Low)/)
-      ,
+      .required('Required'),
   });
 
   const [startDate, setStartDate] = useState('');
   const [startTime, setStartTime] = useState('');
 
   return (
+    <FormWrap>
+
     <Formik
       validationSchema={SignupSchema}
       validateOnBlur={false}
@@ -110,21 +103,24 @@ export function EventForm({ onSubmitNewEvent }) {
       }
     }
     >
-      {() => (
-        <Form as={FormWrap}>
+      {(touched, errors, values) => (
+        <Form >
           <Div>
             <Label>
               Title
-              <DivWrap>
-                <Field
+              <DivWrap style={{border: touched.title && errors.title && '1px solid #ff2b77', }}> 
+             <Field
                   as={TextField}
                   id="title"
                   name="title"
                   type="text"
                   placeholder="Enter title"
-                  // border={touched.title && errors.title && '1px solid #ff2b77'}
+                  
+                  // style={{border: errors && '1px solid #ff2b77'}}
+                  // style={{border: touched.title && errors.title && '1px solid #ff2b77'}}
                   // $invalid={touched.title && errors.title && '1px solid #ff2b77'}
                 />
+                
                 <ErrorMessage component={ErrorDiv} name="title" />
               </DivWrap>
             </Label>
@@ -229,7 +225,7 @@ export function EventForm({ onSubmitNewEvent }) {
                 <ErrorMessage component={ErrorDiv} name="category" />
               </DivWrap>
             </Label>
-            <Label disabled>
+            <DisabledLabel>
               Add picture
               <DivWrap>
                 <Field
@@ -242,7 +238,7 @@ export function EventForm({ onSubmitNewEvent }) {
                 />
                 <ErrorMessage component={ErrorDiv} name="addPicture" />
               </DivWrap>
-            </Label> 
+            </DisabledLabel> 
             <Label>
               Priority
               <DivWrap>
@@ -267,5 +263,6 @@ export function EventForm({ onSubmitNewEvent }) {
           </ButtonDiv>
         </Form>)}
     </Formik>
+        </FormWrap>
   );
 }

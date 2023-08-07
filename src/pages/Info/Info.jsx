@@ -19,6 +19,7 @@ import {
   DeleteButton,
 } from './Info_css';
 import { Navigate } from 'components/Navigate/Navigate';
+import { Priority } from 'components/Priority/Priority';
 
 export function Info({ eventData, onDeliteEvents }) {
   const { id, title, description, date, time, location, category, priority } =
@@ -37,7 +38,7 @@ export function Info({ eventData, onDeliteEvents }) {
               <P>{description}</P>
               <TimePlaceWrap>
                 <TimeEvent>{category}</TimeEvent>
-                <TimeEvent>{priority}</TimeEvent>
+                <TimeEvent><Priority value={priority}>{priority}</Priority></TimeEvent>
                 <TimeEvent>{location}</TimeEvent>
                 <TimeEvent>
                   {date} at {time}

@@ -23,7 +23,7 @@ export const Section = styled.section`
 `;
 
 export const H2 = styled.h2`
-  color: #3f3f3f;
+  color: var(--secondary-text-color);
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -44,7 +44,7 @@ export const Card = styled.div`
   border-radius: 8px;
   width: 272px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
 
   @media screen and (min-width: 768px) {
     width: 100%;
@@ -76,7 +76,7 @@ export const P = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  color: #49454f;
+  color: var(--description-text-color);
   margin-bottom: 24px;
 `;
 
@@ -89,14 +89,14 @@ export const TimePlaceWrap = styled.div`
 `;
 
 export const TimeEvent = styled.div`
-  color: #7b61ff;
+  color: var(--primary-text-color);
   padding: 8px 12px;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
   border-radius: 8px;
-  background: #fff;
+  background: var(--primary-background-color);
   box-shadow: 4px 5px 9px 0px rgba(166, 141, 174, 0.28);
   @media screen and (min-width: 768px) {
     font-weight: 400;
@@ -121,19 +121,19 @@ export const Button = styled.button`
   height: 32px;
   padding: 8px 16px;
   border-radius: 4px;
-  background: #fff;
-  border: 1px solid #7b61ff;
+  background-color: var(--primary-background-color);
+  border: 1px solid var(--primary-text-color);
   outline: none;
-  color: #7b61ff;
+  color: var(--primary-text-color);
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
   &:hover {
-    background: #6243ff;
+    background-color: var(--btn-hover-background);
   }
   &:disabled {
-    background: #aca7c3;
+    background-color: var(--btn-disabled-background);
   }
   @media screen and (max-width: 767px) {
     width: 108px;
@@ -141,8 +141,8 @@ export const Button = styled.button`
 `;
 
 export const DeleteButton = styled(Button)`
-  background: #7b61ff;
-  color: #ffffff;
+  background: var(--primary-text-color);
+  color: var( --btn-accent-color);
 `;
 
 

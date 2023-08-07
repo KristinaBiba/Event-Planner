@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Header = styled.header`
   position: relative;
   box-sizing: border-box;
-  border-bottom: 1px solid #7b61ff;
-  background: #fefcff;
+  border-bottom: 1px solid var(--primary-text-color);
+  background-color: var(--header-background-color);
 `;
 
 export const Wrap = styled.div`
@@ -16,7 +16,7 @@ export const Wrap = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: #7b61ff;
+  color: var(--primary-text-color);
   font-family: 'Alata';
   font-size: 24px;
   font-style: normal;
@@ -55,7 +55,7 @@ export const LanguageSwitcher = styled.button`
   border-radius: 8px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   border: none;
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
   font-family: inherit;
   cursor: pointer;
 
@@ -76,14 +76,14 @@ export const FilterInput = styled.input`
   font-style: normal;
   font-weight: 300;
   line-height: 100%;
-  color: #7b61ff;
+  color: var(--primary-text-color);
 
   &::placeholder {
-    color: #888888;
+    color: var(--input-placeholder-color);
   }
 
   &:focus-visible {
-    /* color: #7b61ff; */
+    /* color: var(--primary-text-color); */
     outline: none;
     font-weight: 400;
   }

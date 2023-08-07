@@ -14,13 +14,17 @@ import {
   Wrap,
 } from './CardWrap_css';
 import img from '../../images/event-images/Rectangle 347.jpg';
+import { Priority } from 'components/Priority/Priority';
 
 export function CardWrap({ data, onMoreInfoClick, children }) {
+
   const navigate = useNavigate();
+
   const handleCardInfo = (id) => {
     onMoreInfoClick(id);
     navigate('/info', { replace: true });
   };
+  
   return (
     <Wrap>
       {children}
@@ -40,7 +44,7 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
             <Image src={img} alt="event" />
             <CategoryWrap>
               <TypeEvent>{category}</TypeEvent>
-              <TypeEvent>{priority}</TypeEvent>
+              <TypeEvent><Priority value={priority}>{priority}</Priority></TypeEvent>
             </CategoryWrap>
             <TimePlaceWrap>
               <TimeEvent>

@@ -21,7 +21,7 @@ export const Card = styled.div`
   width: 272px;
   height: 480px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
 
   @media screen and (min-width: 768px) {
     width: 332px;
@@ -55,12 +55,12 @@ export const CategoryWrap = styled.div`
 export const TypeEvent = styled.div`
   padding: 6px 12px;
   border-radius: 8px;
-  color: #7b61ff;
+  color: var(--primary-text-color);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
 `;
 export const Difficulty = styled.div``;
 export const TimePlaceWrap = styled.div`
@@ -72,20 +72,19 @@ export const TimePlaceWrap = styled.div`
   padding: 8px 16px;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--secondary-background-color);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   ${Card}:hover & {
-    /* top: 256px;  */
     transform: translateY(-40px);
   }
 
   @media screen and (min-width: 768px) {
     top: 296px;
   }
-  /* width: 271px; */
 `;
 export const TimeEvent = styled.div`
-  color: #7b61ff;
+
+  color: var(--primary-text-color);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -93,7 +92,7 @@ export const TimeEvent = styled.div`
 `;
 export const EventWrap = styled.div`
   padding: 16px;
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   ${Card}:hover & {
@@ -105,7 +104,7 @@ export const H3 = styled.h3`
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
-  color: #1c1b1f;
+  color: var(--title-text-color);
   margin-bottom: 16px;
 `;
 export const P = styled.p`
@@ -113,7 +112,7 @@ export const P = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  color: #49454f;
+  color: var(--description-text-color);
 `;
 export const Div = styled.div`
   transform: translateY(100%);
@@ -130,12 +129,12 @@ export const Button = styled.button`
   height: 40px;
   padding: 10px 24px;
   border-radius: 8px;
-  background: #7b61ff;
+  background: var(--primary-text-color);
   margin-top: 16px;
   margin-right: 0;
   margin-left: auto;
   border: none;
-  color: #ffffff;
+  color: var(--btn-accent-color);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

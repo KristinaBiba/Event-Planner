@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   padding: 24px;
-  width: 100%-48px;
   box-sizing: border-box;
 
   @media screen and (min-width: 768px) {

@@ -5,6 +5,7 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import {Create} from 'pages/Create/Create';
 import {Info} from 'pages/Info/Info';
 import { useEffect, useRef, useState } from 'react';
+import { Example } from './Example';
 
 export function App () {
 
@@ -74,6 +75,7 @@ export function App () {
       <Route path="/" element={<SharedLayout value={filter} onChange={handleFilter} onInputClean={onInputClean}/>}>
         <Route index element={<Main data={filtredEvents} func={onMoreInfoClick}/>} />
         <Route path="create" element={<Create onSubmit={handleFormSubmit}/>}></Route>
+        {/* <Route path="create" element={<Example onSubmit={handleFormSubmit}/>}></Route> */}
         <Route path="info" element={<Info eventData={infoCard} onDeliteEvents={handleDelite}/>}></Route>
       </Route>
       <Route path="*" element={<>NotFound</>} />
