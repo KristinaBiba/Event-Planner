@@ -10,11 +10,6 @@ export const MainWrap = styled.main`
   height: 100vh;
 `;
 
-export const Section = styled.section`
-  /* position: relative; */
-`;
-
-
 export const H2 = styled.h2`
   color: #3f3f3f;
   font-size: 24px;

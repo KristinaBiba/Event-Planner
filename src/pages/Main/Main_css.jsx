@@ -4,7 +4,6 @@ import backgroundImage from '../../images/background/background.jpg';
 
 export const MainWrap = styled.main`
   background-image: url(${backgroundImage});
-
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -41,7 +40,6 @@ export const H2 = styled.h2`
   @media screen and (min-width: 1440px) {
     margin-top: 0;
     margin-bottom: 0;
-   
   }
 `;
 
@@ -68,6 +66,9 @@ export const ButtonWrap = styled.div`
   }
 `;
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 16px;
   height: 56px;
   padding: 16px;
   border-radius: 8px;
@@ -75,6 +76,8 @@ export const Button = styled.button`
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   border: none;
   outline: none;
+  color: #3f3f3f;
+  font-family: inherit;
 
   &:hover {
     background: #6243ff;
@@ -85,18 +88,14 @@ export const Button = styled.button`
   @media screen and (max-width: 767px) {
     width: 56px;
   }
-
-  @media screen and (min-width: 1440px) {
-  }
 `;
 
 export const CreateButton = styled(Button)`
   background: #7b61ff;
+  color: #ffffff;
 `;
 
 export const Span = styled.span`
-  color: #3f3f3f;
-  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -104,5 +103,21 @@ export const Span = styled.span`
 
   @media screen and (max-width: 767px) {
     display: none;
+  }
+`;
+export const Icon = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: #3f3f3f;
+
+  ${Button}:hover {
+    stroke: #7b61ff;
+  }
+`;
+export const Icon2 = styled(Icon)`
+  stroke: #3f3f3f;
+
+  @media screen and (max-width: 767px) {
+    stroke: #7b61ff;
   }
 `;

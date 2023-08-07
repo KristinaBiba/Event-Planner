@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Main from 'pages/Main/Main';
+import {Main} from 'pages/Main/Main';
 import { SharedLayout } from './SharedLayout/SharedLayout';
-import Create from 'pages/Create/Create';
-import Info from 'pages/Info/Info';
+import {Create} from 'pages/Create/Create';
+import {Info} from 'pages/Info/Info';
 import { useEffect, useRef, useState } from 'react';
 
 export function App () {
@@ -56,7 +56,6 @@ export function App () {
     
   }
 
-
   const onMoreInfoClick = (id) => {
 
     setInfoCard(events.filter(event => event.id === id)[0])
@@ -64,11 +63,15 @@ export function App () {
       
   }
   
+  const onInputClean = () => {
+    setFilter('');
+  }
+
   const filtredEvents = toFiltredEvents();
 
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout value={filter} onChange={handleFilter}/>}>
+      <Route path="/" element={<SharedLayout value={filter} onChange={handleFilter} onInputClean={onInputClean}/>}>
         <Route index element={<Main data={filtredEvents} func={onMoreInfoClick}/>} />
         <Route path="create" element={<Create onSubmit={handleFormSubmit}/>}></Route>
         <Route path="info" element={<Info eventData={infoCard} onDeliteEvents={handleDelite}/>}></Route>

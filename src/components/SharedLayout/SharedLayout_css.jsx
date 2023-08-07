@@ -15,15 +15,6 @@ export const Wrap = styled.div`
   }
 `;
 
-export const Div = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    gap: 24px;
-    justify-content: space-between;
-    align-items: center;
-  }
-`;
-
 export const Title = styled.h1`
   color: #7b61ff;
   font-family: 'Alata';
@@ -36,28 +27,47 @@ export const Title = styled.h1`
     margin: 0;
   }
 `;
+
+export const Div = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+export const InputDiv = styled.div`
+  position: relative;
+`;
+
 export const LanguageSwitcher = styled.button`
   position: absolute;
   top: 24px;
   right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   width: 69px;
   height: 48px;
-  padding: 12px 4px 12px 12px;
+  padding: 12px;
   align-items: center;
   border-radius: 8px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   border: none;
   background-color: #ffffff;
   font-family: inherit;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     position: static;
   }
 `;
+
 export const FilterInput = styled.input`
   box-sizing: border-box;
   width: 100%;
-  padding: 12px;
+  padding: 12px 12px 12px 48px;
   height: 48px;
   border-radius: 8px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
@@ -66,9 +76,14 @@ export const FilterInput = styled.input`
   font-style: normal;
   font-weight: 300;
   line-height: 100%;
+  color: #7b61ff;
+
+  &::placeholder {
+    color: #888888;
+  }
 
   &:focus-visible {
-    color: #7b61ff;
+    /* color: #7b61ff; */
     outline: none;
     font-weight: 400;
   }
@@ -80,4 +95,19 @@ export const FilterInput = styled.input`
   @media screen and (min-width: 1440px) {
     width: 410px;
   }
+`;
+
+export const SvgDivSearch = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 12px;
+`;
+
+export const SvgButtonCrossSmall = styled.button`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
 `;

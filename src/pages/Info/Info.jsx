@@ -20,7 +20,7 @@ import {
 } from './Info_css';
 import { Navigate } from 'components/Navigate/Navigate';
 
-function Info({eventData, onDeliteEvents}) {
+export function Info({eventData, onDeliteEvents}) {
  
   const {
     id,
@@ -69,5 +69,3 @@ function Info({eventData, onDeliteEvents}) {
     </MainWrap>
   );
 }
-
-export default Info;

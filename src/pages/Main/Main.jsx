@@ -10,22 +10,24 @@ import {
   Span,
   TitleWrap,
   MainWrap,
-
+  Icon,
+  Icon2,
 } from './Main_css';
 import { CardWrap } from 'components/CardWrap/CardWrap';
+import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
+import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
+import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 
-function Main ({data, func}) {
+export function Main({ data, func }) {
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
-
-    const handleAdd = e => {
-      e.preventDefault();
-      navigate('/create', { replace: true })
-    };
+  const handleAdd = e => {
+    e.preventDefault();
+    navigate('/create', { replace: true });
+  };
 
   return (
     <MainWrap>
-        
       <Container>
         <Section>
           <TitleWrap>
@@ -33,21 +35,25 @@ const navigate = useNavigate();
             <ButtonWrap>
               <Button>
                 <Span>Category</Span>
+                <Icon2>
+                  <Filters3 />
+                </Icon2>
               </Button>
               <Button>
                 <Span>Sort by</Span>
+                <Icon>
+                  <Filters2 />
+                </Icon>
               </Button>
-              <CreateButton type='button' onClick={handleAdd}>
+              <CreateButton type="button" onClick={handleAdd}>
+                <Plus />
                 <Span>Add new event</Span>
               </CreateButton>
             </ButtonWrap>
           </TitleWrap>
-          <CardWrap data={data} onMoreInfoClick={func}/>
+          <CardWrap data={data} onMoreInfoClick={func} />
         </Section>
       </Container>
-
     </MainWrap>
   );
 }
-
-export default Main;
