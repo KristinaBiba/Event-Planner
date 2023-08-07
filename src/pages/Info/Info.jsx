@@ -20,50 +20,44 @@ import {
 } from './Info_css';
 import { Navigate } from 'components/Navigate/Navigate';
 
-export function Info({eventData, onDeliteEvents}) {
- 
-  const {
-    id,
-    title,
-    description,
-    date,
-    time,
-    location,
-    category,
-    priority,
-  } = eventData;
+export function Info({ eventData, onDeliteEvents }) {
+  const { id, title, description, date, time, location, category, priority } =
+    eventData;
 
   const navigate = useNavigate();
   return (
-    <MainWrap> 
+    <MainWrap>
       <Container>
-      <Navigate to="/" title="Back"/>
+        <Navigate to="/" title="Back" />
         <Section>
-            <H2>{title}</H2>
-            <Card>
-        <Image src={img} alt="event" />
-          <Wrap>
-          <P>
-            {description}
-          </P>
-        <TimePlaceWrap>
-          <TimeEvent>{category}</TimeEvent>
-          <TimeEvent>{priority}</TimeEvent>
-          <TimeEvent>{location}</TimeEvent>
-          <TimeEvent>{date} at {time}</TimeEvent>
-        </TimePlaceWrap>
-        
-          <ButtonWrap>
-            <Button type="button" >
-            Edit
-            </Button>
-            <DeleteButton type="button" onClick={() => {onDeliteEvents(id); navigate('/', { replace: true })}}>
-            Delete event
-            </DeleteButton>
-          </ButtonWrap>
-          </Wrap>
-      </Card>
-          
+          <H2>{title}</H2>
+          <Card>
+            <Image src={img} alt="event" />
+            <Wrap>
+              <P>{description}</P>
+              <TimePlaceWrap>
+                <TimeEvent>{category}</TimeEvent>
+                <TimeEvent>{priority}</TimeEvent>
+                <TimeEvent>{location}</TimeEvent>
+                <TimeEvent>
+                  {date} at {time}
+                </TimeEvent>
+              </TimePlaceWrap>
+
+              <ButtonWrap>
+                <Button type="button">Edit</Button>
+                <DeleteButton
+                  type="button"
+                  onClick={() => {
+                    onDeliteEvents(id);
+                    navigate('/', { replace: true });
+                  }}
+                >
+                  Delete event
+                </DeleteButton>
+              </ButtonWrap>
+            </Wrap>
+          </Card>
         </Section>
       </Container>
     </MainWrap>
