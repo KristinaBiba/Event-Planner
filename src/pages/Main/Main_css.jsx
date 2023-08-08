@@ -31,11 +31,9 @@ export const H2 = styled.h2`
   line-height: normal;
   margin-top: 94px;
   margin-bottom: 24px;
-
   @media screen and (max-width: 767px) {
     display: none;
   }
-
   @media screen and (min-width: 1440px) {
     margin-top: 0;
     margin-bottom: 0;
@@ -49,14 +47,12 @@ export const ButtonWrap = styled.div`
   gap: 24px;
   padding-top: 20px;
   padding-bottom: 40px;
-
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     position: absolute;
     top: -94px;
     right: 0;
     padding-top: 14px;
   }
-
   @media screen and (min-width: 1440px) {
     justify-content: space-between;
     margin: 0;
@@ -64,7 +60,9 @@ export const ButtonWrap = styled.div`
     padding-bottom: 0;
   }
 `;
+
 export const Button = styled.button`
+cursor: pointer;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -77,7 +75,6 @@ export const Button = styled.button`
   outline: none;
   color: var(--secondary-text-color);
   font-family: inherit;
-
   &:hover {
     background-color: var(--btn-hover-background);
   }
@@ -99,23 +96,22 @@ export const Span = styled.span`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-
   @media screen and (max-width: 767px) {
     display: none;
   }
 `;
+
 export const Icon = styled.svg`
   width: 24px;
   height: 24px;
   stroke: var(--secondary-text-color);
-
   ${Button}:hover {
     stroke: var(--primary-text-color);
   }
 `;
+
 export const Icon2 = styled(Icon)`
   stroke: var(--secondary-text-color);
-
   @media screen and (max-width: 767px) {
     stroke: var(--primary-text-color);
   }

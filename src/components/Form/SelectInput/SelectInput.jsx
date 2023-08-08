@@ -1,8 +1,13 @@
 import React from 'react';
 import { ErrorMessage, Field, useField } from 'formik';
-import { CategoryOptions, DivWrap, ErrorDiv, Label } from '../Form_css';
-// import { SvgButtonCrossSmall } from 'components/SharedLayout/SharedLayout_css';
-// import { ReactComponent as CrossSmall } from '../../../images/svg/cross-small.svg';
+import {
+  CategoryOptions,
+  DivWrap,
+  ErrorDiv,
+  Label,
+  SvgDivArrow,
+} from '../Form_css';
+import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
 
 export const SelectInput = ({ label, array, ...props }) => {
   const [field, meta] = useField(props);
@@ -10,6 +15,9 @@ export const SelectInput = ({ label, array, ...props }) => {
   return (
     <Label>
       {label}
+      <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
+        <ChevronDownSmall />
+      </SvgDivArrow>
       <DivWrap>
         <Field
           {...field}
@@ -19,29 +27,17 @@ export const SelectInput = ({ label, array, ...props }) => {
               meta.touched &&
               meta.error &&
               '1px solid var(--error-validation-color)',
+            color: meta.touched
+              ? 'var(--secondary-text-color)'
+              : 'var(--border-color)',
           }}
         >
-        {array.map(name => (
-          <CategoryOptions key={name} value={name}>
-            {name}
-          </CategoryOptions>
-        ))}
+          {array.map(name => (
+            <CategoryOptions key={name} value={name}>
+              {name}
+            </CategoryOptions>
+          ))}
         </Field>
-        {/* <SvgButtonCrossSmall
-          type="button"
-          onClick={() => {
-            setValue('');
-          }}
-          style={{
-            top: '16px',
-            stroke:
-              (meta.touched && meta.error && 'var(--error-validation-color)') ||
-              (meta.value && '#7B61FF') ||
-              'var(--border-color)',
-          }}
-        >
-          <CrossSmall />
-        </SvgButtonCrossSmall> */}
         <ErrorMessage component={ErrorDiv} name={field.name} />
       </DivWrap>
     </Label>

@@ -4,7 +4,6 @@ import backgroundImage from '../../images/background/background.jpg';
 
 export const MainWrap = styled.main`
   background-image: url(${backgroundImage});
-
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,7 +29,6 @@ export const H2 = styled.h2`
   line-height: normal;
   margin-top: 26px;
   margin-bottom: 24px;
-
   @media screen and (min-width: 768px) {
     font-size: 32px;
   }
@@ -45,7 +43,6 @@ export const Card = styled.div`
   width: 272px;
   box-shadow: var(--primary-shadow);
   background-color: var(--primary-background-color);
-
   @media screen and (min-width: 768px) {
     width: 100%;
   }
@@ -57,7 +54,6 @@ export const Image = styled.img`
   border-radius: 8px;
   margin-bottom: 24px;
   object-fit: cover;
-
   @media screen and (min-width: 768px) {
     width: 688px;
     height: 272px;
@@ -68,7 +64,7 @@ export const Image = styled.img`
 `;
 
 export const Wrap = styled.div`
- padding: 0 16px 16px 16px;
+  padding: 0 16px 16px 16px;
 `;
 
 export const P = styled.p`
@@ -97,7 +93,7 @@ export const TimeEvent = styled.div`
   line-height: 20px;
   border-radius: 8px;
   background: var(--primary-background-color);
-  box-shadow:var(--property-shadow);
+  box-shadow: var(--property-shadow);
   @media screen and (min-width: 768px) {
     font-weight: 400;
   }
@@ -108,15 +104,14 @@ export const ButtonWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
-
   @media screen and (min-width: 768px) {
     gap: 16px;
     justify-content: flex-end;
   }
-
   @media screen and (min-width: 1440px) {
   }
 `;
+
 export const Button = styled.button`
   height: 32px;
   padding: 8px 16px;
@@ -142,8 +137,5 @@ export const Button = styled.button`
 
 export const DeleteButton = styled(Button)`
   background: var(--primary-text-color);
-  color: var( --btn-accent-color);
+  color: var(--btn-accent-color);
 `;
-
-
-

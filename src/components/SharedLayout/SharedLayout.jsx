@@ -24,7 +24,7 @@ export function SharedLayout({ value, onChange, onInputClean }) {
             <Title>Event Planner</Title>
             <Div>
               <InputDiv>
-                <SvgDivSearch>
+                <SvgDivSearch >
                   <Search />
                 </SvgDivSearch>
 
@@ -36,13 +36,13 @@ export function SharedLayout({ value, onChange, onInputClean }) {
                 />
 
                 {value && (
-                  <SvgButtonCrossSmall type="button" onClick={onInputClean} style={{stroke: "#7B61FF"}}>
+                  <SvgButtonCrossSmall type="button" onClick={onInputClean} style={{stroke: "var(--primary-text-color)"}}>
                     <CrossSmall />
                   </SvgButtonCrossSmall>
                 )}
               </InputDiv>
 
-              <LanguageSwitcher>
+              <LanguageSwitcher style={{stroke: 'var(--secondary-text-color)'}}>
                 UK
                 <ChevronDownSmall />
               </LanguageSwitcher>

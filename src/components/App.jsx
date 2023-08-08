@@ -12,7 +12,6 @@ export function App () {
   const [filter, setFilter] = useState('');
   const [infoCard, setInfoCard] = useState({});
   
-
   const isFirstRender = useRef(true);
 
   useEffect(() => {
@@ -30,7 +29,6 @@ export function App () {
     }
     localStorage.setItem('UserEvents', JSON.stringify(events));
     }, [events])
-
 
   const handleFilter = (e) => {
     const { value } = e.target;
@@ -57,10 +55,7 @@ export function App () {
   }
 
   const onMoreInfoClick = (id) => {
-
     setInfoCard(events.filter(event => event.id === id)[0])
-    console.log('infoCard', infoCard);
-      
   }
   
   const onInputClean = () => {
@@ -80,10 +75,3 @@ export function App () {
     </Routes>
   );
 };
-
-// import { lazy, useEffect } from "react";
-
-// const Login = lazy(() => import("pages/Login"));
-// const Register = lazy(() => import("pages/Register"));
-// const Contacts = lazy(() => import("pages/Contacts"));
-

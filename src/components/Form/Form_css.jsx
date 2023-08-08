@@ -14,6 +14,7 @@ export const FormWrap = styled.div`
     padding: 40px 40px;
   }
 `;
+
 export const Div = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
@@ -51,7 +52,6 @@ export const TextField = styled.input`
     margin-bottom: -22px;
     width: 372px;
   }
-
   &:invalid {
     border: 1px solid var(--error-validation-color);
   }
@@ -60,6 +60,15 @@ export const TextField = styled.input`
     outline: none;
   }
 `;
+
+export const DatePickButton = styled.div`
+  position: 'absolute';
+  stroke: '#7B61FF';
+  top: '40px';
+  right: '16px';
+  z-index: '100';
+`;
+
 export const Select = styled.select`
   box-sizing: border-box;
   border-radius: 8px;
@@ -73,16 +82,20 @@ export const Select = styled.select`
   margin-top: 8px;
   margin-bottom: 20px;
   width: 240px;
+  appearance: none;
+  &::-ms-expand {
+    display: block;
+  }
   @media screen and (min-width: 768px) {
     display: block;
     width: 308px;
     margin-bottom: -4px;
+    height: 57.45px;
   }
   @media screen and (min-width: 1440px) {
     margin-bottom: -22px;
     width: 372px;
   }
-
   &:invalid {
     border: 1px solid var(--error-validation-color);
   }
@@ -101,7 +114,7 @@ export const Select = styled.select`
 `;
 
 export const DescriptionTextField = styled.textarea`
-resize: none;
+  resize: none;
   box-sizing: border-box;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -129,7 +142,9 @@ resize: none;
     outline: none;
   }
 `;
+
 export const Label = styled.label`
+  position: relative;
   color: var(--primary-text-color);
   font-size: 16px;
   font-style: normal;
@@ -143,12 +158,11 @@ export const Label = styled.label`
     color: var(--border-color);
   }
 `;
-export const DisabledLabel = styled.label`
-  color: var(--border-color);
-`;
+
 export const DivWrap = styled.div`
   position: relative;
 `;
+
 export const ErrorDiv = styled.div`
   position: absolute;
   bottom: 0px;
@@ -163,12 +177,14 @@ export const ErrorDiv = styled.div`
     bottom: -20px;
   }
 `;
+
 export const ButtonDiv = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: flex-end;
   }
 `;
+
 export const Button = styled.button`
   height: 56px;
   padding: 16px;
@@ -184,7 +200,6 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-
   &:hover {
     background: var(--btn-hover-background);
   }
@@ -193,9 +208,6 @@ export const Button = styled.button`
   }
   @media screen and (max-width: 767px) {
     width: 240px;
-  }
-
-  @media screen and (min-width: 1440px) {
   }
 `;
 export const DatePick = styled(DatePicker)`
@@ -210,7 +222,6 @@ export const DatePick = styled(DatePicker)`
   margin-top: 8px;
   margin-bottom: 20px;
   width: 240px;
-
   @media screen and (min-width: 768px) {
     display: block;
     width: 308px;
@@ -220,7 +231,6 @@ export const DatePick = styled(DatePicker)`
     margin-bottom: -22px;
     width: 372px;
   }
-
   &:invalid {
     border: 1px solid var(--error-validation-color);
   }
@@ -229,6 +239,7 @@ export const DatePick = styled(DatePicker)`
     outline: none;
   }
 `;
+
 export const DatePickerWrapper = styled.div`
   & .react-datepicker {
     border-radius: 11px;
@@ -261,6 +272,7 @@ export const DatePickerWrapper = styled.div`
   & .react-datepicker__navigation {
     top: 16px;
   }
+
   & .react-datepicker__navigation-icon::before,
   react-datepicker__navigation-icon::after {
     border-color: var(--secondary-text-color);
@@ -270,11 +282,11 @@ export const DatePickerWrapper = styled.div`
     color: var(--secondary-text-color);
     padding-bottom: 16px;
   }
+
   & .react-datepicker__month {
     margin: 0;
-
-    /* margin-left: -2px; */
   }
+
   & .react-datepicker__day {
     color: var(--divider, var(--border-color));
     text-align: center;
@@ -286,8 +298,6 @@ export const DatePickerWrapper = styled.div`
     padding: 6px;
     margin: 0;
     margin-top: 2px;
-    /* height: 32px; */
-    /* width: 30px; */
     @media screen and (min-width: 768px) {
       margin: 6px;
     }
@@ -300,6 +310,7 @@ export const DatePickerWrapper = styled.div`
       background-color: var(--primary-text-color);
     }
   }
+
   & .react-datepicker__day--keyboard-selected:hover {
     color: var(--btn-accent-color);
     background-color: var(--primary-text-color);
@@ -321,6 +332,7 @@ export const DatePickerWrapper = styled.div`
       margin: 10px;
     }
   }
+
   & .react-datepicker__day-name:first-child,
   .react-datepicker__day-name:last-child {
     color: var(--priority-high-text-color);
@@ -335,6 +347,7 @@ export const DatePickerWrapper = styled.div`
     font-weight: 600;
     line-height: 16px;
   }
+
   & .react-datepicker__day--selected {
     background-color: var(--primary-text-color);
     color: var(--btn-accent-color);
@@ -344,6 +357,7 @@ export const DatePickerWrapper = styled.div`
   & .react-datepicker__day--outside-month {
     color: var(--btn-accent-color);
   }
+
   & .react-datepicker__children-container {
     width: 240px;
     @media screen and (min-width: 768px) {
@@ -353,6 +367,7 @@ export const DatePickerWrapper = styled.div`
       width: 372px;
     }
   }
+
   & .react-datepicker-popper[data-placement^='top'] .react-datepicker__triangle,
   .react-datepicker-popper[data-placement^='bottom']
     .react-datepicker__triangle::after,
@@ -361,18 +376,15 @@ export const DatePickerWrapper = styled.div`
     display: none;
   }
 `;
+
 export const ButtonPick = styled.button`
   padding: 8px 16px;
   justify-content: center;
   align-items: center;
   border: 1px solid var(--primary-text-color);
-
-  /* height: 56px; */
-
   border-radius: 4px;
   background-color: var(--primary-background-color);
   outline: none;
-  /* width: 193px; */
   margin-top: 16px;
   margin-bottom: 20px;
   color: var(--primary-text-color);
@@ -380,7 +392,6 @@ export const ButtonPick = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-
   &:hover {
     background-color: var(--btn-hover-background);
   }
@@ -390,11 +401,11 @@ export const ButtonPick = styled.button`
   @media screen and (min-width: 768px) {
     margin-left: 87px;
   }
-
   @media screen and (min-width: 1440px) {
     margin-left: 152px;
   }
 `;
+
 export const ButtonPickChoose = styled(ButtonPick)`
   background-color: var(--primary-text-color);
   color: var(--btn-accent-color);
@@ -404,7 +415,6 @@ export const ButtonPickChoose = styled(ButtonPick)`
 export const TimePickerWrapper = styled.div`
   & .react-datepicker__time-box {
     border-radius: 8px;
-
     background-color: var(--primary-background-color);
     box-shadow: var(--primary-shadow);
     border: none;
@@ -432,7 +442,6 @@ export const TimePickerWrapper = styled.div`
     .react-datepicker__time
     .react-datepicker__time-box {
     width: 240px;
-
     @media screen and (min-width: 768px) {
       width: 308px;
     }
@@ -444,6 +453,7 @@ export const TimePickerWrapper = styled.div`
   & .react-datepicker .react-datepicker__header {
     display: none;
   }
+
   &
     .react-datepicker__time-container
     .react-datepicker__time
@@ -453,12 +463,14 @@ export const TimePickerWrapper = styled.div`
     height: 48px;
     overflow-y: hidden;
   }
+
   &
     .react-datepicker__time-container
     .react-datepicker__time
     .react-datepicker__time-box {
     overflow-y: hidden;
   }
+
   & li.react-datepicker__time-list-item {
     box-sizing: border-box;
     margin-right: 8px;
@@ -489,6 +501,7 @@ export const TimePickerWrapper = styled.div`
     font-weight: 600;
     box-sizing: border-box;
   }
+
   & .react-datepicker-popper[data-placement^='top'] .react-datepicker__triangle,
   .react-datepicker-popper[data-placement^='bottom']
     .react-datepicker__triangle::after,
@@ -497,6 +510,7 @@ export const TimePickerWrapper = styled.div`
     display: none;
   }
 `;
+
 export const CategoryOptions = styled.option`
   border-radius: 8px;
   background-color: var(--primary-background-color);
@@ -521,5 +535,28 @@ export const CategoryOptions = styled.option`
   }
   @media screen and (min-width: 1440px) {
     width: 372px;
+  }
+`;
+
+export const SvgButtonCrossSmall = styled.button`
+  position: absolute;
+  top: 24px;
+  right: 12px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    top: 16px;
+  }
+`;
+
+export const SvgDivArrow = styled.div`
+  position: absolute;
+  top: 46px;
+  right: 12px;
+  background-color: inherit;
+  z-index: 1;
+  @media screen and (min-width: 768px) {
+    top: 40px;
   }
 `;

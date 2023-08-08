@@ -30,6 +30,7 @@ export const Card = styled.div`
     width: 302px;
   }
 `;
+
 export const Image = styled.img`
   height: 336px;
   width: 272px;
@@ -45,6 +46,7 @@ export const Image = styled.img`
     width: 302px;
   }
 `;
+
 export const CategoryWrap = styled.div`
   position: absolute;
   top: 12px;
@@ -52,6 +54,7 @@ export const CategoryWrap = styled.div`
   display: flex;
   gap: 12px;
 `;
+
 export const TypeEvent = styled.div`
   padding: 6px 12px;
   border-radius: 8px;
@@ -62,7 +65,7 @@ export const TypeEvent = styled.div`
   line-height: 20px;
   background-color: var(--primary-background-color);
 `;
-export const Difficulty = styled.div``;
+
 export const TimePlaceWrap = styled.div`
   position: absolute;
   top: 296px;
@@ -82,14 +85,15 @@ export const TimePlaceWrap = styled.div`
     top: 296px;
   }
 `;
-export const TimeEvent = styled.div`
 
+export const TimeEvent = styled.div`
   color: var(--primary-text-color);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
 `;
+
 export const EventWrap = styled.div`
   padding: 16px;
   background-color: var(--primary-background-color);
@@ -99,6 +103,7 @@ export const EventWrap = styled.div`
     transform: translateY(-40px);
   }
 `;
+
 export const H3 = styled.h3`
   font-size: 16px;
   font-style: normal;
@@ -107,6 +112,7 @@ export const H3 = styled.h3`
   color: var(--title-text-color);
   margin-bottom: 16px;
 `;
+
 export const P = styled.p`
   font-size: 14px;
   font-style: normal;
@@ -114,6 +120,7 @@ export const P = styled.p`
   line-height: 20px;
   color: var(--description-text-color);
 `;
+
 export const Div = styled.div`
   transform: translateY(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -125,7 +132,9 @@ export const Div = styled.div`
     transform: translateY(0);
   }
 `;
+
 export const Button = styled.button`
+  cursor: pointer;
   height: 40px;
   padding: 10px 24px;
   border-radius: 8px;

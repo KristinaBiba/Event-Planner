@@ -58,7 +58,6 @@ export const LanguageSwitcher = styled.button`
   background-color: var(--primary-background-color);
   font-family: inherit;
   cursor: pointer;
-
   @media screen and (min-width: 768px) {
     position: static;
   }
@@ -77,21 +76,16 @@ export const FilterInput = styled.input`
   font-weight: 300;
   line-height: 100%;
   color: var(--primary-text-color);
-
   &::placeholder {
     color: var(--input-placeholder-color);
   }
-
   &:focus-visible {
-    /* color: var(--primary-text-color); */
     outline: none;
     font-weight: 400;
   }
-
   @media screen and (min-width: 768px) {
     width: 368px;
   }
-
   @media screen and (min-width: 1440px) {
     width: 410px;
   }
@@ -110,5 +104,4 @@ export const SvgButtonCrossSmall = styled.button`
   background-color: inherit;
   border: none;
   cursor: pointer;
-
 `;

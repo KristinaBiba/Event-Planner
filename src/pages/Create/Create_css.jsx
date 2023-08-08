@@ -18,7 +18,6 @@ export const H2 = styled.h2`
   line-height: normal;
   margin-top: 26px;
   margin-bottom: 24px;
-
   @media screen and (min-width: 1440px) {
     margin-top: 18px;
   }

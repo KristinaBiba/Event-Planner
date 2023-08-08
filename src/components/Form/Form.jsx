@@ -8,7 +8,6 @@ import {
   DatePick,
   DatePickerWrapper,
   DescriptionTextField,
-  DisabledLabel,
   Div,
   DivWrap,
   ErrorDiv,
@@ -17,14 +16,13 @@ import {
   Select,
   TextField,
   TimePickerWrapper,
+  SvgDivArrow,
 } from './Form_css';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
-// import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
+import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
 
-import { Formik, Field, ErrorMessage, Form } from 'formik';
+import { Formik, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
-import { SvgButtonCrossSmall } from 'components/SharedLayout/SharedLayout_css';
 import { TextInput } from './TextInput/TextInput';
 import { SelectInput } from './SelectInput/SelectInput';
 import { category, priority } from 'helpers/variables';
@@ -72,7 +70,7 @@ export function EventForm({ onSubmitNewEvent }) {
           selectTime: '',
           location: '',
           category: '',
-          // addPicture: '',
+          addPicture: '',
           priority: '',
         }}
         onSubmit={async (values, actions) => {
@@ -103,7 +101,7 @@ export function EventForm({ onSubmitNewEvent }) {
           });
         }}
       >
-        {({ touched, errors, values, setFieldValue }) => (
+        {() => (
           <Form>
             <Div>
               <TextInput
@@ -112,6 +110,7 @@ export function EventForm({ onSubmitNewEvent }) {
                 as={TextField}
                 placeholder="Enter title"
               />
+
               <TextInput
                 name="description"
                 label="Description"
@@ -122,6 +121,9 @@ export function EventForm({ onSubmitNewEvent }) {
               <DatePickerWrapper>
                 <Label>
                   Select date
+                  <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
+                    <ChevronDownSmall />
+                  </SvgDivArrow>
                   <DivWrap>
                     <DatePick
                       dateFormat="dd.MM.yyyy"
@@ -130,6 +132,7 @@ export function EventForm({ onSubmitNewEvent }) {
                       locale="en"
                       onChange={date => setStartDate(date)}
                       minDate={new Date()}
+                      placeholderText="Select date"
                     >
                       <ButtonPick
                         type="button"
@@ -155,9 +158,13 @@ export function EventForm({ onSubmitNewEvent }) {
                   </DivWrap>
                 </Label>
               </DatePickerWrapper>
+
               <TimePickerWrapper>
                 <Label>
                   Select time
+                  <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
+                    <ChevronDownSmall />
+                  </SvgDivArrow>
                   <DivWrap>
                     <DatePick
                       selected={startTime}
@@ -168,20 +175,21 @@ export function EventForm({ onSubmitNewEvent }) {
                       dateFormat="hh : mm  aa"
                       closeOnScroll={true}
                       minDate={new Date()}
+                      placeholderText="Select time"
                     />
-                    {/* <SvgButtonCrossSmall type='button' disabled>
-                    <ChevronDownSmall />
-                  </SvgButtonCrossSmall> */}
+
                     <ErrorMessage component={ErrorDiv} name="selectTime" />
                   </DivWrap>
                 </Label>
               </TimePickerWrapper>
+
               <TextInput
                 name="location"
                 label="Location"
                 as={TextField}
                 placeholder="Choose location"
               />
+
               <SelectInput
                 name="category"
                 label="Category"
@@ -190,29 +198,14 @@ export function EventForm({ onSubmitNewEvent }) {
                 array={category}
               />
 
-              <DisabledLabel>
-                Add picture
-                <DivWrap>
-                  <Field
-                    disabled
-                    as={TextField}
-                    id="addPicture"
-                    name="addPicture"
-                    type="text"
-                    placeholder="Choose picture"
-                  />
-                  <SvgButtonCrossSmall
-                    type="button"
-                    onClick={() => {
-                      setFieldValue('title', '');
-                    }}
-                    style={{ top: '16px', stroke: 'var(--border-color)' }}
-                  >
-                    <CrossSmall />
-                  </SvgButtonCrossSmall>
-                  <ErrorMessage component={ErrorDiv} name="addPicture" />
-                </DivWrap>
-              </DisabledLabel>
+              <TextInput
+                name="addPicture"
+                label="Add picture"
+                as={TextField}
+                placeholder="Choose picture"
+                disabled
+              />
+
               <SelectInput
                 name="priority"
                 label="Priority"
@@ -221,11 +214,13 @@ export function EventForm({ onSubmitNewEvent }) {
                 array={priority}
               />
             </Div>
+
             <ButtonDiv>
               <Button type="submit" aria-label="Submit form">
                 Add event
               </Button>
             </ButtonDiv>
+            
           </Form>
         )}
       </Formik>

@@ -1,9 +1,10 @@
+import React from 'react';
+
 import { Container } from 'components/Container/Container';
 import { useNavigate } from 'react-router-dom';
-
+import { Navigate } from 'components/Navigate/Navigate';
+import { Priority } from 'components/Priority/Priority';
 import img from '../../images/event-images/Rectangle 347.jpg';
-
-import React from 'react';
 import {
   Button,
   Card,
@@ -18,8 +19,6 @@ import {
   Wrap,
   DeleteButton,
 } from './Info_css';
-import { Navigate } from 'components/Navigate/Navigate';
-import { Priority } from 'components/Priority/Priority';
 
 export function Info({ eventData, onDeliteEvents }) {
   const { id, title, description, date, time, location, category, priority } =
@@ -57,6 +56,7 @@ export function Info({ eventData, onDeliteEvents }) {
                   Delete event
                 </DeleteButton>
               </ButtonWrap>
+              
             </Wrap>
           </Card>
         </Section>
