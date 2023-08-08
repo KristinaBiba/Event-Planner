@@ -5,7 +5,6 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import {Create} from 'pages/Create/Create';
 import {Info} from 'pages/Info/Info';
 import { useEffect, useRef, useState } from 'react';
-import { Example } from './Example';
 
 export function App () {
 

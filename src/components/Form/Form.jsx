@@ -5,7 +5,6 @@ import {
   ButtonDiv,
   ButtonPick,
   ButtonPickChoose,
-  CategoryOptions,
   DatePick,
   DatePickerWrapper,
   DescriptionTextField,
@@ -21,24 +20,16 @@ import {
 } from './Form_css';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
-import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
+// import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
 
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
 import { SvgButtonCrossSmall } from 'components/SharedLayout/SharedLayout_css';
 import { TextInput } from './TextInput/TextInput';
+import { SelectInput } from './SelectInput/SelectInput';
+import { category, priority } from 'helpers/variables';
 
 export function EventForm({ onSubmitNewEvent }) {
-  //   const formikProps = useFormik({
-  //     initialValues,
-  //     validationSchema,
-  //     onSubmit: yourSubmitFunction,
-  //     ...etc
-  // });
-
-  // const  onInputClean = (fieldName) => {
-  //   setFieldValue(fieldName, '')
-  // };
   const navigate = useNavigate();
 
   const SignupSchema = Yup.object().shape({
@@ -115,72 +106,19 @@ export function EventForm({ onSubmitNewEvent }) {
         {({ touched, errors, values, setFieldValue }) => (
           <Form>
             <Div>
-              {/* <Label>
-                Title
-                <DivWrap>
-                  <Field
-                    as={TextField}
-                    id="title"
-                    name="title"
-                    type="text"
-                    placeholder="Enter title"
-                  />
+              <TextInput
+                name="title"
+                label="Title"
+                as={TextField}
+                placeholder="Enter title"
+              />
+              <TextInput
+                name="description"
+                label="Description"
+                as={DescriptionTextField}
+                placeholder="Enter description"
+              />
 
-                  <SvgButtonCrossSmall
-                    type="button"
-                    onClick={() => {
-                      setFieldValue('title', '');
-                    }}
-                    style={{
-                      top: '16px',
-                      stroke: values.title ? '#7B61FF' : 'var(--border-color)',
-                    }}
-                  >
-                    <CrossSmall />
-                  </SvgButtonCrossSmall>
-
-                  <ErrorMessage component={ErrorDiv} name="title" />
-                </DivWrap>
-              </Label> */}
-              <TextInput name="title" label="Title" as={TextField} placeholder="Enter title"/>
-              <TextInput name="description" label="Description" as={DescriptionTextField} placeholder="Enter description"/>
-              {/* <Label>
-                Description
-                <DivWrap>
-                  <Field
-                    as={DescriptionTextField}
-                    id="description"
-                    name="description"
-                    type="text"
-                    placeholder="Enter description"
-                    style={{
-                      border:
-                        errors.description &&
-                        touched.description &&
-                        '1px solid var(--error-validation-color)',
-                    }}
-                  />
-                  <SvgButtonCrossSmall
-                    type="button"
-                    onClick={() => {
-                      setFieldValue('description', '');
-                    }}
-                    style={{
-                      top: '16px',
-                      stroke:
-                        (errors.description &&
-                          touched.description &&
-                          'var(--error-validation-color)') ||
-                        (values.description && '#7B61FF') ||
-                        'var(--border-color)',
-                    }}
-                  >
-
-                    <CrossSmall />
-                  </SvgButtonCrossSmall>
-                  <ErrorMessage component={ErrorDiv} name="description" />
-                </DivWrap>
-              </Label> */}
               <DatePickerWrapper>
                 <Label>
                   Select date
@@ -238,61 +176,20 @@ export function EventForm({ onSubmitNewEvent }) {
                   </DivWrap>
                 </Label>
               </TimePickerWrapper>
-              <TextInput name="location" label="Location" as={TextField} placeholder="Choose location"/>
+              <TextInput
+                name="location"
+                label="Location"
+                as={TextField}
+                placeholder="Choose location"
+              />
+              <SelectInput
+                name="category"
+                label="Category"
+                as={Select}
+                placeholder="Choose category"
+                array={category}
+              />
 
-              {/* <Label>
-                Location
-                <DivWrap>
-                  <Field
-                    as={TextField}
-                    id="location"
-                    name="location"
-                    type="text"
-                    placeholder="Choose location"
-                  />
-                  <SvgButtonCrossSmall
-                    type="button"
-                    onClick={() => {
-                      setFieldValue('location', '');
-                    }}
-                    style={{
-                      top: '16px',
-                      stroke: values.location
-                        ? '#7B61FF'
-                        : 'var(--border-color)',
-                    }}
-                  >
-                    {' '}
-                    <CrossSmall />
-                  </SvgButtonCrossSmall>
-                  <ErrorMessage component={ErrorDiv} name="location" />
-                </DivWrap>
-              </Label> */}
-              <Label>
-                Category
-                <DivWrap>
-                  <Field
-                    as={Select}
-                    id="category"
-                    name="category"
-                    placeholder="Choose category"
-                  >
-                    <CategoryOptions value="select">
-                      Select category
-                    </CategoryOptions>
-                    <CategoryOptions value="Art">Art</CategoryOptions>
-                    <CategoryOptions value="Music">Music</CategoryOptions>
-                    <CategoryOptions value="Business">Business</CategoryOptions>
-                    <CategoryOptions value="Conference">
-                      Conference
-                    </CategoryOptions>
-                    <CategoryOptions value="Workshop">Workshop</CategoryOptions>
-                    <CategoryOptions value="Party">Party</CategoryOptions>
-                    <CategoryOptions value="Sport">Sport</CategoryOptions>
-                  </Field>
-                  <ErrorMessage component={ErrorDiv} name="category" />
-                </DivWrap>
-              </Label>
               <DisabledLabel>
                 Add picture
                 <DivWrap>
@@ -316,25 +213,13 @@ export function EventForm({ onSubmitNewEvent }) {
                   <ErrorMessage component={ErrorDiv} name="addPicture" />
                 </DivWrap>
               </DisabledLabel>
-              <Label>
-                Priority
-                <DivWrap>
-                  <Field
-                    as={Select}
-                    id="priority"
-                    name="priority"
-                    placeholder="Choose priority"
-                  >
-                    <CategoryOptions value="select">
-                      Select priority
-                    </CategoryOptions>
-                    <CategoryOptions value="High">High</CategoryOptions>
-                    <CategoryOptions value="Medium">Medium</CategoryOptions>
-                    <CategoryOptions value="Low">Low</CategoryOptions>
-                  </Field>
-                  <ErrorMessage component={ErrorDiv} name="priority" />
-                </DivWrap>
-              </Label>
+              <SelectInput
+                name="priority"
+                label="Priority"
+                as={Select}
+                placeholder="Choose priority"
+                array={priority}
+              />
             </Div>
             <ButtonDiv>
               <Button type="submit" aria-label="Submit form">
