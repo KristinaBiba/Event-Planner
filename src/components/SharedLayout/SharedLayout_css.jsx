@@ -53,7 +53,7 @@ export const LanguageSwitcher = styled.button`
   padding: 12px;
   align-items: center;
   border-radius: 8px;
-  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  box-shadow: var(--primary-shadow);
   border: none;
   background-color: var(--primary-background-color);
   font-family: inherit;
@@ -70,7 +70,7 @@ export const FilterInput = styled.input`
   padding: 12px 12px 12px 48px;
   height: 48px;
   border-radius: 8px;
-  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  box-shadow: var(--primary-shadow);
   border: none;
   font-size: 14px;
   font-style: normal;
@@ -110,4 +110,5 @@ export const SvgButtonCrossSmall = styled.button`
   background-color: inherit;
   border: none;
   cursor: pointer;
+
 `;

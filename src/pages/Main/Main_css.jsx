@@ -72,7 +72,7 @@ export const Button = styled.button`
   padding: 16px;
   border-radius: 8px;
   background-color: var(--primary-background-color);
-  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  box-shadow: var(--primary-shadow);
   border: none;
   outline: none;
   color: var(--secondary-text-color);

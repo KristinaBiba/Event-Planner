@@ -6,7 +6,7 @@ export const FormWrap = styled.div`
   background-color: var(--primary-background-color);
   padding: 40px 16px;
   border-radius: 8px;
-  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  box-shadow: var(--primary-shadow);
   @media screen and (min-width: 768px) {
     padding: 40px 24px;
   }
@@ -18,6 +18,7 @@ export const Div = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     gap: 24px;
     height: 508px;
@@ -54,9 +55,12 @@ export const TextField = styled.input`
   &:invalid {
     border: 1px solid var(--error-validation-color);
   }
+  &:focus-visible {
+    border: 1px solid var(--primary-text-color);
+    outline: none;
+  }
 `;
 export const Select = styled.select`
-
   box-sizing: border-box;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -81,9 +85,23 @@ export const Select = styled.select`
 
   &:invalid {
     border: 1px solid var(--error-validation-color);
-  }`;
+  }
+  &:focus-visible {
+    border: 1px solid var(--primary-text-color);
+    outline: none;
+  }
+  & > option:first-child {
+    font-size: 0;
+  }
+  & > option {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+  }
+`;
 
 export const DescriptionTextField = styled.textarea`
+resize: none;
   box-sizing: border-box;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -106,6 +124,10 @@ export const DescriptionTextField = styled.textarea`
     margin-bottom: -22px;
     width: 372px;
   }
+  &:focus-visible {
+    border: 1px solid var(--primary-text-color);
+    outline: none;
+  }
 `;
 export const Label = styled.label`
   color: var(--primary-text-color);
@@ -118,15 +140,11 @@ export const Label = styled.label`
     display: block;
   }
   ${TextField}:disabled & {
-   
     color: var(--border-color);
   }
 `;
 export const DisabledLabel = styled.label`
-  
-   
-    color: var(--border-color);
-  
+  color: var(--border-color);
 `;
 export const DivWrap = styled.div`
   position: relative;
@@ -142,12 +160,7 @@ export const ErrorDiv = styled.div`
   color: var(--error-validation-color);
 
   @media screen and (min-width: 768px) {
-    right: 130px;
     bottom: -20px;
-  }
-
-  @media screen and (min-width: 768px) {
-    right: 110px;
   }
 `;
 export const ButtonDiv = styled.div`
@@ -161,7 +174,7 @@ export const Button = styled.button`
   padding: 16px;
   border-radius: 8px;
   background: var(--primary-text-color);
-  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  box-shadow: var(--primary-shadow);
   border: none;
   outline: none;
   width: 193px;
@@ -211,12 +224,16 @@ export const DatePick = styled(DatePicker)`
   &:invalid {
     border: 1px solid var(--error-validation-color);
   }
+  &:focus-visible {
+    border: 1px solid var(--primary-text-color);
+    outline: none;
+  }
 `;
 export const DatePickerWrapper = styled.div`
   & .react-datepicker {
     border-radius: 11px;
     background-color: var(--primary-background-color);
-    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.07);
+    box-shadow: var(--calendar-shadow);
     border: none;
     padding: 20px;
     font-family: 'Poppins';
@@ -306,7 +323,7 @@ export const DatePickerWrapper = styled.div`
   }
   & .react-datepicker__day-name:first-child,
   .react-datepicker__day-name:last-child {
-    color: var( --priority-high-text-color);
+    color: var(--priority-high-text-color);
   }
 
   & .react-datepicker__day--today {
@@ -336,7 +353,11 @@ export const DatePickerWrapper = styled.div`
       width: 372px;
     }
   }
-  & .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before {
+  & .react-datepicker-popper[data-placement^='top'] .react-datepicker__triangle,
+  .react-datepicker-popper[data-placement^='bottom']
+    .react-datepicker__triangle::after,
+  .react-datepicker-popper[data-placement^='bottom']
+    .react-datepicker__triangle::before {
     display: none;
   }
 `;
@@ -383,8 +404,9 @@ export const ButtonPickChoose = styled(ButtonPick)`
 export const TimePickerWrapper = styled.div`
   & .react-datepicker__time-box {
     border-radius: 8px;
+
     background-color: var(--primary-background-color);
-    box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+    box-shadow: var(--primary-shadow);
     border: none;
     padding: 0 16px;
     padding-right: 15px;
@@ -404,9 +426,13 @@ export const TimePickerWrapper = styled.div`
       width: 372px;
     }
   }
-  & .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+
+  &
+    .react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box {
     width: 240px;
-   
+
     @media screen and (min-width: 768px) {
       width: 308px;
     }
@@ -425,46 +451,75 @@ export const TimePickerWrapper = styled.div`
     ul.react-datepicker__time-list
     li.react-datepicker__time-list-item {
     height: 48px;
+    overflow-y: hidden;
   }
-
+  &
+    .react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box {
+    overflow-y: hidden;
+  }
   & li.react-datepicker__time-list-item {
+    box-sizing: border-box;
+    margin-right: 8px;
     display: flex;
     align-items: center;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+    word-spacing: 36px;
   }
 
-  & .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {
+  &
+    .react-datepicker__time-container::-webkit-scrollbar
+    .react-datepicker__time
+    .react-datepicker__time-box::-webkit-scrollbar
+    ul.react-datepicker__time-list::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  &
+    .react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box
+    ul.react-datepicker__time-list
+    li.react-datepicker__time-list-item--selected {
     color: var(--secondary-text-color);
     background-color: var(--primary-background-color);
     font-weight: 600;
+    box-sizing: border-box;
   }
-  & .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before {
+  & .react-datepicker-popper[data-placement^='top'] .react-datepicker__triangle,
+  .react-datepicker-popper[data-placement^='bottom']
+    .react-datepicker__triangle::after,
+  .react-datepicker-popper[data-placement^='bottom']
+    .react-datepicker__triangle::before {
     display: none;
   }
 `;
 export const CategoryOptions = styled.option`
   border-radius: 8px;
-    background-color: var(--primary-background-color);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
-    border: none;
-    padding: 0 16px;
-    font-family: 'Poppins';
-    width: 240px;
-    height: 160px;
-    color: var(--secondary-text-color);
-    text-align: start;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    height: 48px;
-    @media screen and (min-width: 768px) {
-      width: 308px;
-    }
-    @media screen and (min-width: 1440px) {
-      width: 372px;
-    }
-`
+  background-color: var(--primary-background-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--primary-shadow);
+  border: none;
+  padding: 0 16px;
+  font-family: 'Poppins';
+  width: 240px;
+  height: 160px;
+  color: var(--secondary-text-color);
+  text-align: start;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 48px;
+  min-height: 48px;
+  height: 48px;
+  @media screen and (min-width: 768px) {
+    width: 308px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 372px;
+  }
+`;

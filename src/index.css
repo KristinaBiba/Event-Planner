@@ -1,9 +1,9 @@
 @import-normalize; /* bring in normalize.css styles */
 
 html {
-  height: fill-available;
+  /* height: fill-available; */
   box-sizing: border-box;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
 }
 *,
 *:after,
@@ -12,8 +12,8 @@ html {
 }
 body {
   min-height: 100vh;
-  min-height: fill-available;
-  min-height: -webkit-fill-available;
+  /* min-height: fill-available;
+  min-height: -webkit-fill-available; */
   margin: 0;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -82,7 +82,12 @@ textarea:invalid {
   
   /* Shadow colors */
 
-  /* --btn-shadow-color: rgba(136, 165, 191, 0.48); */
+  --primary-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  --property-shadow: 4px 5px 9px 0px rgba(166, 141, 174, 0.28);
+  --calendar-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.07);
+  
+ 
+  
 
   /* Borders */
 

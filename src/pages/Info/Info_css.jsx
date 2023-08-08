@@ -43,7 +43,7 @@ export const H2 = styled.h2`
 export const Card = styled.div`
   border-radius: 8px;
   width: 272px;
-  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  box-shadow: var(--primary-shadow);
   background-color: var(--primary-background-color);
 
   @media screen and (min-width: 768px) {
@@ -97,7 +97,7 @@ export const TimeEvent = styled.div`
   line-height: 20px;
   border-radius: 8px;
   background: var(--primary-background-color);
-  box-shadow: 4px 5px 9px 0px rgba(166, 141, 174, 0.28);
+  box-shadow:var(--property-shadow);
   @media screen and (min-width: 768px) {
     font-weight: 400;
   }

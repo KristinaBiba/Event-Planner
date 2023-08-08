@@ -36,7 +36,7 @@ export function SharedLayout({ value, onChange, onInputClean }) {
                 />
 
                 {value && (
-                  <SvgButtonCrossSmall type="button" onClick={onInputClean}>
+                  <SvgButtonCrossSmall type="button" onClick={onInputClean} style={{stroke: "#7B61FF"}}>
                     <CrossSmall />
                   </SvgButtonCrossSmall>
                 )}

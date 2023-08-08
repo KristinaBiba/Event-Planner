@@ -74,8 +74,7 @@ export function App () {
     <Routes>
       <Route path="/" element={<SharedLayout value={filter} onChange={handleFilter} onInputClean={onInputClean}/>}>
         <Route index element={<Main data={filtredEvents} func={onMoreInfoClick}/>} />
-        <Route path="create" element={<Create onSubmit={handleFormSubmit}/>}></Route>
-        {/* <Route path="create" element={<Example onSubmit={handleFormSubmit}/>}></Route> */}
+        <Route path="create" element={<Create onSubmit={handleFormSubmit} />}></Route>
         <Route path="info" element={<Info eventData={infoCard} onDeliteEvents={handleDelite}/>}></Route>
       </Route>
       <Route path="*" element={<>NotFound</>} />
