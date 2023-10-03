@@ -113,6 +113,7 @@ export const ButtonWrap = styled.div`
 `;
 
 export const Button = styled.button`
+  cursor: pointer;
   height: 32px;
   padding: 8px 16px;
   border-radius: 4px;

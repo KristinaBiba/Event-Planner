@@ -186,6 +186,7 @@ export const ButtonDiv = styled.div`
 `;
 
 export const Button = styled.button`
+  cursor: pointer;
   height: 56px;
   padding: 16px;
   border-radius: 8px;
@@ -551,6 +552,7 @@ export const SvgButtonCrossSmall = styled.button`
 `;
 
 export const SvgDivArrow = styled.div`
+  cursor: pointer;
   position: absolute;
   top: 46px;
   right: 12px;
