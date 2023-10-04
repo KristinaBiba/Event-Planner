@@ -41,7 +41,7 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
           priority,
         }) => (
           <Card key={id}>
-            <Image src={img} alt="event" />
+            <Image src={img} alt="event" loading="lazy"/>
             <CategoryWrap>
               <TypeEvent>{category}</TypeEvent>
               <TypeEvent><Priority value={priority}>{priority}</Priority></TypeEvent>
