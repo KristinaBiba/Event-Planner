@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/Event-Planner/static/css/main.655ac873.css",
-    "main.js": "/Event-Planner/static/js/main.53454eb0.js",
+    "main.js": "/Event-Planner/static/js/main.ba3c57b5.js",
     "static/media/background.jpg": "/Event-Planner/static/media/background.9ec48850da0410ca04b0.jpg",
     "static/media/Rectangle 347.jpg": "/Event-Planner/static/media/Rectangle 347.4e9dd10857c4e9d29926.jpg",
     "index.html": "/Event-Planner/index.html",
     "static/media/search.svg": "/Event-Planner/static/media/search.fb729a85e20490185d628e72e5552ee9.svg",
     "static/media/filters-2.svg": "/Event-Planner/static/media/filters-2.e5f9f0ea4ae112d9397b8e6c808feeb4.svg",
-    "static/media/arrow-left.svg": "/Event-Planner/static/media/arrow-left.e672924416715e21b7917806d6f057d5.svg",
     "static/media/plus.svg": "/Event-Planner/static/media/plus.156db320c32434c1ced4efa49d2ea40a.svg",
+    "static/media/arrow-left.svg": "/Event-Planner/static/media/arrow-left.0d844c741405ef12736975b32d9080f4.svg",
     "static/media/filters-3.svg": "/Event-Planner/static/media/filters-3.d393e0654f9ec4fd5ecd4524b2f37491.svg",
     "static/media/cross-small.svg": "/Event-Planner/static/media/cross-small.6541f904d43bcaf5cf77548a3074e6dd.svg",
     "static/media/chevron-down-small.svg": "/Event-Planner/static/media/chevron-down-small.4ba2bcfcffaa3d8a7e43a15d938c7288.svg",
     "main.655ac873.css.map": "/Event-Planner/static/css/main.655ac873.css.map",
-    "main.53454eb0.js.map": "/Event-Planner/static/js/main.53454eb0.js.map"
+    "main.ba3c57b5.js.map": "/Event-Planner/static/js/main.ba3c57b5.js.map"
   },
   "entrypoints": [
     "static/css/main.655ac873.css",
-    "static/js/main.53454eb0.js"
+    "static/js/main.ba3c57b5.js"
   ]
 }
