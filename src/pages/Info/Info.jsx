@@ -32,7 +32,7 @@ export function Info({ eventData, onDeliteEvents }) {
         <Section>
           <H2>{title}</H2>
           <Card>
-            <Image src={img} alt="event" loading="lazy"/>
+            <Image src={img} alt="A picture of the meeting" loading="lazy"/>
             <Wrap>
               <P>{description}</P>
               <TimePlaceWrap>
