@@ -122,7 +122,7 @@ export function EventForm({ onSubmitNewEvent }) {
                 <Label>
                   Select date
                   <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
-                    <ChevronDownSmall />
+                    <ChevronDownSmall aria-label="Make choice date of event"/>
                   </SvgDivArrow>
                   <DivWrap>
                     <DatePick
@@ -163,7 +163,7 @@ export function EventForm({ onSubmitNewEvent }) {
                 <Label>
                   Select time
                   <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
-                    <ChevronDownSmall />
+                    <ChevronDownSmall aria-label="Make choice time of event"/>
                   </SvgDivArrow>
                   <DivWrap>
                     <DatePick

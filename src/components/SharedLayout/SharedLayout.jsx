@@ -25,7 +25,7 @@ export function SharedLayout({ value, onChange, onInputClean }) {
             <Div>
               <InputDiv>
                 <SvgDivSearch >
-                  <Search />
+                  <Search aria-label="Enter characters to search for"/>
                 </SvgDivSearch>
 
                 <FilterInput
@@ -37,14 +37,14 @@ export function SharedLayout({ value, onChange, onInputClean }) {
 
                 {value && (
                   <SvgButtonCrossSmall type="button" onClick={onInputClean} style={{stroke: "var(--primary-text-color)"}}>
-                    <CrossSmall />
+                    <CrossSmall aria-label="Clear recent searches"/>
                   </SvgButtonCrossSmall>
                 )}
               </InputDiv>
 
               <LanguageSwitcher type="button" style={{stroke: 'var(--secondary-text-color)'}}>
                 UK
-                <ChevronDownSmall />
+                <ChevronDownSmall aria-label="Сhoose a language of the site"/>
               </LanguageSwitcher>
             </Div>
           </Wrap>

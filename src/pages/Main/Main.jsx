@@ -36,17 +36,17 @@ export function Main({ data, func }) {
               <Button type="button">
                 <Span>Category</Span>
                 <Icon2>
-                  <Filters3 />
+                  <Filters3 aria-label="Filter events by category"/>
                 </Icon2>
               </Button>
               <Button type="button">
                 <Span>Sort by</Span>
                 <Icon>
-                  <Filters2 />
+                  <Filters2 aria-label="Choose the type of sorting"/>
                 </Icon>
               </Button>
               <CreateButton type="button" onClick={handleAdd}>
-                <Plus />
+                <Plus aria-label="Add new event"/>
                 <Span>Add new event</Span>
               </CreateButton>
             </ButtonWrap>

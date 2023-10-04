@@ -56,7 +56,7 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
               <H3>{title}</H3>
               <P>{description}</P>
               <Div>
-                <Button type="button" onClick={()=> handleCardInfo(id)}>
+                <Button type="button" aria-label="Get more information about the event" onClick={()=> handleCardInfo(id)}>
                   More info
                 </Button>
               </Div>

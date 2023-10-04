@@ -16,7 +16,7 @@ export const SelectInput = ({ label, array, ...props }) => {
     <Label>
       {label}
       <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
-        <ChevronDownSmall />
+        <ChevronDownSmall aria-label="Make choice"/>
       </SvgDivArrow>
       <DivWrap>
         <Field

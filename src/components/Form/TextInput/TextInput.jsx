@@ -27,6 +27,7 @@ export const TextInput = ({ label, ...props }) => {
         />
         <SvgButtonCrossSmall
           type="button"
+          
           onClick={() => {
             setValue('');
           }}
@@ -37,7 +38,7 @@ export const TextInput = ({ label, ...props }) => {
               'var(--border-color)',
           }}
         >
-          <CrossSmall />
+          <CrossSmall aria-label="Clear the line"/>
         </SvgButtonCrossSmall>
         <ErrorMessage component={ErrorDiv} name={field.name} />
       </DivWrap>
