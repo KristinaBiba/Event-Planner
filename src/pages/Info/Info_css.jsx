@@ -127,6 +127,7 @@ export const Button = styled.button`
   line-height: 16px;
   &:hover {
     background-color: var(--btn-hover-background);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   &:disabled {
     background-color: var(--btn-disabled-background);

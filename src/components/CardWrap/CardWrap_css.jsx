@@ -79,6 +79,7 @@ export const TimePlaceWrap = styled.div`
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   ${Card}:hover &, ${Card}:focus & {
     transform: translateY(-40px);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @media screen and (min-width: 768px) {
@@ -101,6 +102,7 @@ export const EventWrap = styled.div`
 
   ${Card}:hover &, ${Card}:focus & {
     transform: translateY(-40px);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
@@ -130,6 +132,7 @@ export const Div = styled.div`
   ${Card}:hover &, ${Card}:focus & {
     display: flex;
     transform: translateY(0);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
@@ -152,5 +155,6 @@ export const Button = styled.button`
 
   &:hover, &:focus {
     background: var(--btn-hover-background);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;

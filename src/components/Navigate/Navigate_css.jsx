@@ -15,6 +15,7 @@ stroke: var(--primary-text-color);
 &:hover,:focus {
     color: var(--btn-hover-background); 
     stroke: var(--btn-hover-background); 
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 

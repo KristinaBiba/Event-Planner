@@ -203,6 +203,7 @@ export const Button = styled.button`
   line-height: normal;
   &:hover, &:focus {
     background: var(--btn-hover-background);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   &:disabled {
     background: var(--border-color);
@@ -309,6 +310,7 @@ export const DatePickerWrapper = styled.div`
     :focus {
       color: var(--btn-accent-color);
       background-color: var(--primary-text-color);
+      transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 
@@ -316,6 +318,7 @@ export const DatePickerWrapper = styled.div`
     color: var(--btn-accent-color);
     background-color: var(--primary-text-color);
     border-radius: 0;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   & .react-datepicker__day-name {
@@ -395,6 +398,7 @@ export const ButtonPick = styled.button`
   line-height: 16px;
   &:hover, &:focus {
     background-color: var(--btn-hover-background);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   &:disabled {
     background-color: var(--border-color);
@@ -556,7 +560,7 @@ export const SvgButtonCrossSmall = styled.button`
     outline: none;
     border: 1px solid var(--primary-text-color);
     border-radius: 8px;
-    
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 

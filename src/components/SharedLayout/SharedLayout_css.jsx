@@ -65,6 +65,7 @@ export const LanguageSwitcher = styled.button`
   &:hover, &:focus {
     border: 1px solid var(--primary-text-color);
     outline: none;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
@@ -96,6 +97,7 @@ export const FilterInput = styled.input`
   }
   &:hover, &:focus {
     border: 1px solid var(--primary-text-color);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
@@ -120,5 +122,6 @@ export const SvgButtonCrossSmall = styled.button`
   &:hover, &:focus {
     border: 1px solid var(--primary-text-color);
     border-radius: 8px;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
