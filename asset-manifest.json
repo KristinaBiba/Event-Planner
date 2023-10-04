@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Event-Planner/static/css/main.655ac873.css",
-    "main.js": "/Event-Planner/static/js/main.bdb53599.js",
+    "main.js": "/Event-Planner/static/js/main.095c8069.js",
     "static/media/background.jpg": "/Event-Planner/static/media/background.9ec48850da0410ca04b0.jpg",
     "static/media/Rectangle 347.jpg": "/Event-Planner/static/media/Rectangle 347.4e9dd10857c4e9d29926.jpg",
     "index.html": "/Event-Planner/index.html",
@@ -13,10 +13,10 @@
     "static/media/cross-small.svg": "/Event-Planner/static/media/cross-small.6541f904d43bcaf5cf77548a3074e6dd.svg",
     "static/media/chevron-down-small.svg": "/Event-Planner/static/media/chevron-down-small.4ba2bcfcffaa3d8a7e43a15d938c7288.svg",
     "main.655ac873.css.map": "/Event-Planner/static/css/main.655ac873.css.map",
-    "main.bdb53599.js.map": "/Event-Planner/static/js/main.bdb53599.js.map"
+    "main.095c8069.js.map": "/Event-Planner/static/js/main.095c8069.js.map"
   },
   "entrypoints": [
     "static/css/main.655ac873.css",
-    "static/js/main.bdb53599.js"
+    "static/js/main.095c8069.js"
   ]
 }
