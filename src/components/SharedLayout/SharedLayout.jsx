@@ -7,7 +7,7 @@ import {
   LanguageSwitcher,
   SvgButtonCrossSmall,
   SvgDivSearch,
-  Title,
+  Link,
   Wrap,
 } from './SharedLayout_css';
 import { Outlet } from 'react-router-dom';
@@ -21,7 +21,7 @@ export function SharedLayout({ value, onChange, onInputClean }) {
       <Header>
         <Container>
           <Wrap>
-            <Title>Event Planner</Title>
+            <Link to="/" aria-label="Go to the main page">Event Planner</Link>
             <Div>
               <InputDiv>
                 <SvgDivSearch >

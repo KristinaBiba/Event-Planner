@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
   position: relative;
@@ -15,7 +16,7 @@ export const Wrap = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Link = styled(NavLink)`
   color: var(--primary-text-color);
   font-family: 'Alata';
   font-size: 24px;
@@ -23,6 +24,8 @@ export const Title = styled.h1`
   font-weight: 400;
   line-height: normal;
   margin: 8px 0 30px 0;
+  cursor: pointer;
+  text-decoration: none;
   @media screen and (min-width: 768px) {
     margin: 0;
   }
