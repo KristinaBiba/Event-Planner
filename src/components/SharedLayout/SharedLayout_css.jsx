@@ -54,12 +54,17 @@ export const LanguageSwitcher = styled.button`
   align-items: center;
   border-radius: 8px;
   box-shadow: var(--primary-shadow);
-  border: none;
+  border: 1px solid transparent;
   background-color: var(--primary-background-color);
   font-family: inherit;
   cursor: pointer;
   @media screen and (min-width: 768px) {
     position: static;
+  }
+
+  &:hover, &:focus {
+    border: 1px solid var(--primary-text-color);
+    outline: none;
   }
 `;
 
@@ -70,7 +75,7 @@ export const FilterInput = styled.input`
   height: 48px;
   border-radius: 8px;
   box-shadow: var(--primary-shadow);
-  border: none;
+  border: 1px solid transparent;
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -89,12 +94,16 @@ export const FilterInput = styled.input`
   @media screen and (min-width: 1440px) {
     width: 410px;
   }
+  &:hover, &:focus {
+    border: 1px solid var(--primary-text-color);
+  }
 `;
 
 export const SvgDivSearch = styled.div`
   position: absolute;
   top: 12px;
   left: 12px;
+  
 `;
 
 export const SvgButtonCrossSmall = styled.button`
@@ -104,4 +113,12 @@ export const SvgButtonCrossSmall = styled.button`
   background-color: inherit;
   border: none;
   cursor: pointer;
+  outline: none;
+  padding: 0;
+  height: 26px;
+  width: 26px;
+  &:hover, &:focus {
+    border: 1px solid var(--primary-text-color);
+    border-radius: 8px;
+  }
 `;

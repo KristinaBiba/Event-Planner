@@ -201,7 +201,7 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  &:hover {
+  &:hover, &:focus {
     background: var(--btn-hover-background);
   }
   &:disabled {
@@ -312,7 +312,7 @@ export const DatePickerWrapper = styled.div`
     }
   }
 
-  & .react-datepicker__day--keyboard-selected:hover {
+  & .react-datepicker__day--keyboard-selected:hover, .react-datepicker__day--keyboard-selected:focus {
     color: var(--btn-accent-color);
     background-color: var(--primary-text-color);
     border-radius: 0;
@@ -393,7 +393,7 @@ export const ButtonPick = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  &:hover {
+  &:hover, &:focus {
     background-color: var(--btn-hover-background);
   }
   &:disabled {
@@ -541,13 +541,22 @@ export const CategoryOptions = styled.option`
 
 export const SvgButtonCrossSmall = styled.button`
   position: absolute;
+  height: 26px;
+  width: 26px;
   top: 24px;
+  padding: 0;
   right: 12px;
   background-color: inherit;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   @media screen and (min-width: 768px) {
     top: 16px;
+  }
+  &:hover, &:focus {
+    outline: none;
+    border: 1px solid var(--primary-text-color);
+    border-radius: 8px;
+    
   }
 `;
 

@@ -77,7 +77,7 @@ export const TimePlaceWrap = styled.div`
   align-items: center;
   background: var(--secondary-background-color);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  ${Card}:hover & {
+  ${Card}:hover &, ${Card}:focus & {
     transform: translateY(-40px);
   }
 
@@ -99,7 +99,7 @@ export const EventWrap = styled.div`
   background-color: var(--primary-background-color);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  ${Card}:hover & {
+  ${Card}:hover &, ${Card}:focus & {
     transform: translateY(-40px);
   }
 `;
@@ -127,7 +127,7 @@ export const Div = styled.div`
   justify-content: end;
   display: none;
 
-  ${Card}:hover & {
+  ${Card}:hover &, ${Card}:focus & {
     display: flex;
     transform: translateY(0);
   }
@@ -149,4 +149,8 @@ export const Button = styled.button`
   font-weight: 500;
   line-height: 20px;
   font-family: inherit;
+
+  &:hover, &:focus {
+    background: var(--btn-hover-background);
+  }
 `;

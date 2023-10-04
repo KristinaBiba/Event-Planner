@@ -33,7 +33,7 @@ export const TextInput = ({ label, ...props }) => {
           style={{
             stroke:
               (meta.touched && meta.error && 'var(--error-validation-color)') ||
-              (meta.value && '#7B61FF') ||
+              (meta.value && 'var(--primary-text-color)') ||
               'var(--border-color)',
           }}
         >

@@ -11,4 +11,10 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 text-decoration-line: none;
+stroke: var(--primary-text-color);
+&:hover,:focus {
+    color: var(--btn-hover-background); 
+    stroke: var(--btn-hover-background); 
+  }
 `;
+
