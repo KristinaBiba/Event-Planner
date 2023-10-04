@@ -33,13 +33,13 @@ export function Main({ data, func }) {
           <TitleWrap>
             <H2>My events</H2>
             <ButtonWrap>
-              <Button>
+              <Button type="button">
                 <Span>Category</Span>
                 <Icon2>
                   <Filters3 />
                 </Icon2>
               </Button>
-              <Button>
+              <Button type="button">
                 <Span>Sort by</Span>
                 <Icon>
                   <Filters2 />

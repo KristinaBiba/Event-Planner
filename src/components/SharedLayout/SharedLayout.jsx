@@ -42,7 +42,7 @@ export function SharedLayout({ value, onChange, onInputClean }) {
                 )}
               </InputDiv>
 
-              <LanguageSwitcher style={{stroke: 'var(--secondary-text-color)'}}>
+              <LanguageSwitcher type="button" style={{stroke: 'var(--secondary-text-color)'}}>
                 UK
                 <ChevronDownSmall />
               </LanguageSwitcher>

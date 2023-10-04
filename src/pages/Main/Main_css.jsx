@@ -62,7 +62,7 @@ export const ButtonWrap = styled.div`
 `;
 
 export const Button = styled.button`
-cursor: pointer;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 16px;
