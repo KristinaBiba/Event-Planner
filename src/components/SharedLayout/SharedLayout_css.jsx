@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
-  position: relative;
+  
   box-sizing: border-box;
   border-bottom: 1px solid var(--primary-text-color);
   background-color: var(--header-background-color);
 `;
 
 export const Wrap = styled.div`
+  position: relative;
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -17,6 +18,7 @@ export const Wrap = styled.div`
 `;
 
 export const Link = styled(NavLink)`
+  display: block;
   color: var(--primary-text-color);
   font-family: 'Alata';
   font-size: 24px;
@@ -46,8 +48,8 @@ export const InputDiv = styled.div`
 
 export const LanguageSwitcher = styled.button`
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: -8px;
+  right: 0;
   display: flex;
   align-items: center;
   gap: 4px;

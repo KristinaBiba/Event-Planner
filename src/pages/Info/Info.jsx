@@ -10,15 +10,15 @@ import {
   Card,
   H2,
   Image,
-  MainWrap,
   P,
-  Section,
   TimeEvent,
   TimePlaceWrap,
   ButtonWrap,
   Wrap,
   DeleteButton,
+  SectionWrap,
 } from './Info_css';
+import { Section } from 'components/Section/Section';
 
 export function Info({ eventData, onDeliteEvents }) {
   const { id, title, description, date, time, location, category, priority } =
@@ -26,18 +26,21 @@ export function Info({ eventData, onDeliteEvents }) {
 
   const navigate = useNavigate();
   return (
-    <MainWrap>
-      <Container>
-        <Navigate to="/" title="Back" />
-        <Section>
+    <main>
+      <Section>
+        <Container>
+          <Navigate to="/" title="Back" />
+          <SectionWrap>
           <H2>{title}</H2>
           <Card>
-            <Image src={img} alt="A picture of the meeting" loading="lazy"/>
+            <Image src={img} alt="A picture of the meeting" loading="lazy" />
             <Wrap>
               <P>{description}</P>
               <TimePlaceWrap>
                 <TimeEvent>{category}</TimeEvent>
-                <TimeEvent><Priority value={priority}>{priority}</Priority></TimeEvent>
+                <TimeEvent>
+                  <Priority value={priority}>{priority}</Priority>
+                </TimeEvent>
                 <TimeEvent>{location}</TimeEvent>
                 <TimeEvent>
                   {date} at {time}
@@ -56,11 +59,11 @@ export function Info({ eventData, onDeliteEvents }) {
                   Delete event
                 </DeleteButton>
               </ButtonWrap>
-              
             </Wrap>
           </Card>
-        </Section>
-      </Container>
-    </MainWrap>
+          </SectionWrap>
+        </Container>
+      </Section>
+    </main>
   );
 }

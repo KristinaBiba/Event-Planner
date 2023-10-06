@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.section`
+export const Wrap = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 24px;
   justify-items: center;
+  list-style-type: none;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -15,7 +16,8 @@ export const Wrap = styled.section`
   }
 `;
 
-export const Card = styled.div`
+export const Card = styled.li`
+
   position: relative;
   border-radius: 12px;
   width: 272px;

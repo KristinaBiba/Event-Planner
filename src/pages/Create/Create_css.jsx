@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-import backgroundImage from '../../images/background/background.jpg';
-
-export const MainWrap = styled.main`
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-`;
-
 export const H2 = styled.h2`
   color: var(--secondary-text-color);
   font-size: 24px;

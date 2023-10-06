@@ -1,19 +1,7 @@
 import styled from 'styled-components';
 
-import backgroundImage from '../../images/background/background.jpg';
-
-export const MainWrap = styled.main`
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-`;
-
-export const Section = styled.section`
-  position: relative;
-`;
-
 export const TitleWrap = styled.div`
+  position: relative;
   @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: space-between;

@@ -6,10 +6,8 @@ import {
   ButtonWrap,
   CreateButton,
   H2,
-  Section,
   Span,
   TitleWrap,
-  MainWrap,
   Icon,
   Icon2,
 } from './Main_css';
@@ -17,6 +15,7 @@ import { CardWrap } from 'components/CardWrap/CardWrap';
 import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
 import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
+import { Section } from 'components/Section/Section';
 
 export function Main({ data, func }) {
   const navigate = useNavigate();
@@ -27,33 +26,33 @@ export function Main({ data, func }) {
   };
 
   return (
-    <MainWrap>
-      <Container>
-        <Section>
+    <main>
+      <Section>
+        <Container>
           <TitleWrap>
             <H2>My events</H2>
             <ButtonWrap>
               <Button type="button">
                 <Span>Category</Span>
                 <Icon2>
-                  <Filters3 aria-label="Filter events by category"/>
+                  <Filters3 aria-label="Filter events by category" />
                 </Icon2>
               </Button>
               <Button type="button">
                 <Span>Sort by</Span>
                 <Icon>
-                  <Filters2 aria-label="Choose the type of sorting"/>
+                  <Filters2 aria-label="Choose the type of sorting" />
                 </Icon>
               </Button>
               <CreateButton type="button" onClick={handleAdd}>
-                <Plus aria-label="Add new event"/>
+                <Plus aria-label="Add new event" />
                 <Span>Add new event</Span>
               </CreateButton>
             </ButtonWrap>
           </TitleWrap>
           <CardWrap data={data} onMoreInfoClick={func} />
-        </Section>
-      </Container>
-    </MainWrap>
+        </Container>
+      </Section>
+    </main>
   );
 }

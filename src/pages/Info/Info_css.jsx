@@ -1,23 +1,10 @@
 import styled from 'styled-components';
 
-import backgroundImage from '../../images/background/background.jpg';
-
-export const MainWrap = styled.main`
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-`;
-
-export const Section = styled.section`
-  @media screen and (min-width: 768px) {
-    margin-left: auto;
-    margin-right: auto;
-    width: 688px;
-  }
+export const SectionWrap = styled.div`
   @media screen and (min-width: 1440px) {
     width: 628px;
+    margin-right: auto;
+    margin-left: auto;
   }
 `;
 
