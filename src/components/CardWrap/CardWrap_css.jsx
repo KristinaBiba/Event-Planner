@@ -17,7 +17,6 @@ export const Wrap = styled.ul`
 `;
 
 export const Card = styled.li`
-
   position: relative;
   border-radius: 12px;
   width: 272px;
@@ -79,10 +78,10 @@ export const TimePlaceWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   background: var(--secondary-background-color);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   ${Card}:hover &, ${Card}:focus & {
     transform: translateY(-40px);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @media screen and (min-width: 768px) {
@@ -101,11 +100,13 @@ export const TimeEvent = styled.div`
 export const EventWrap = styled.div`
   padding: 16px;
   background-color: var(--primary-background-color);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 
   ${Card}:hover &, ${Card}:focus & {
     transform: translateY(-40px);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
@@ -119,23 +120,29 @@ export const H3 = styled.h3`
 `;
 
 export const P = styled.p`
+  height: 60px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--description-text-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `;
 
 export const Div = styled.div`
   transform: translateY(100%);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   justify-content: end;
   display: none;
-
+  background-color: transparent;
   ${Card}:hover &, ${Card}:focus & {
     display: flex;
     transform: translateY(0);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
@@ -156,8 +163,9 @@ export const Button = styled.button`
   line-height: 20px;
   font-family: inherit;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: var(--btn-hover-background);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;

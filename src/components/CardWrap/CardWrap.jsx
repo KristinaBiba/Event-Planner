@@ -8,6 +8,7 @@ import {
   H3,
   Image,
   P,
+  Span,
   TimeEvent,
   TimePlaceWrap,
   TypeEvent,
@@ -17,14 +18,13 @@ import img from '../../images/event-images/Rectangle 347.jpg';
 import { Priority } from 'components/Priority/Priority';
 
 export function CardWrap({ data, onMoreInfoClick, children }) {
-
   const navigate = useNavigate();
 
-  const handleCardInfo = (id) => {
+  const handleCardInfo = id => {
     onMoreInfoClick(id);
     navigate('/info', { replace: true });
   };
-  
+
   return (
     <Wrap>
       {children}
@@ -39,30 +39,38 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
           category,
           addPicture,
           priority,
-        }) => (
-          <Card key={id}>
-            <Image src={img} alt="A picture of the meeting" loading="lazy"/>
-            <CategoryWrap>
-              <TypeEvent>{category}</TypeEvent>
-              <TypeEvent><Priority value={priority}>{priority}</Priority></TypeEvent>
-            </CategoryWrap>
-            <TimePlaceWrap>
-              <TimeEvent>
-                {date} at {time}
-              </TimeEvent>
-              <TimeEvent>{location}</TimeEvent>
-            </TimePlaceWrap>
-            <EventWrap>
-              <H3>{title}</H3>
-              <P>{description}</P>
-              <Div>
-                <Button type="button" aria-label="Get more information about the event" onClick={()=> handleCardInfo(id)}>
-                  More info
-                </Button>
-              </Div>
-            </EventWrap>
-          </Card>
-        )
+        }) => {
+          return (
+            <Card key={id}>
+              <Image src={img} alt="A picture of the meeting" loading="lazy" />
+              <CategoryWrap>
+                <TypeEvent>{category}</TypeEvent>
+                <TypeEvent>
+                  <Priority value={priority}>{priority}</Priority>
+                </TypeEvent>
+              </CategoryWrap>
+              <TimePlaceWrap>
+                <TimeEvent>
+                  {date} at {time}
+                </TimeEvent>
+                <TimeEvent>{location}</TimeEvent>
+              </TimePlaceWrap>
+              <EventWrap>
+                <H3>{title}</H3>
+                <P>{description}</P>
+                <Div>
+                  <Button
+                    type="button"
+                    aria-label="Get more information about the event"
+                    onClick={() => handleCardInfo(id)}
+                  >
+                    More info
+                  </Button>
+                </Div>
+              </EventWrap>
+            </Card>
+          );
+        }
       )}
     </Wrap>
   );
