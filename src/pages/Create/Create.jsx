@@ -19,3 +19,5 @@ export function Create({ onSubmit }) {
     </main>
   );
 }
+
+export default Create;

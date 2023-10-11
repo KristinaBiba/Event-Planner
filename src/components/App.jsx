@@ -1,10 +1,10 @@
+import {useEffect, useRef, useState, lazy} from 'react';
 import { Route, Routes } from 'react-router-dom';
-
-import {Main} from 'pages/Main/Main';
 import { SharedLayout } from './SharedLayout/SharedLayout';
-import {Create} from 'pages/Create/Create';
-import {Info} from 'pages/Info/Info';
-import { useEffect, useRef, useState } from 'react';
+
+const Main = lazy(() => import('../pages/Main/Main'));
+const Create = lazy(() => import('pages/Create/Create'));
+const Info = lazy(() => import('pages/Info/Info'));
 
 export function App () {
 

@@ -17,7 +17,7 @@ import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 import { Section } from 'components/Section/Section';
 
-export function Main({ data, func }) {
+function Main({ data, func }) {
   const navigate = useNavigate();
 
   const handleAdd = e => {
@@ -56,3 +56,5 @@ export function Main({ data, func }) {
     </main>
   );
 }
+
+export default Main;

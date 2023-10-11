@@ -1,3 +1,6 @@
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+
 import { Container } from 'components/Container/Container';
 import {
   Div,
@@ -10,7 +13,6 @@ import {
   Link,
   Wrap,
 } from './SharedLayout_css';
-import { Outlet } from 'react-router-dom';
 import { ReactComponent as Search } from '../../images/svg/search.svg';
 import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
 import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
@@ -50,7 +52,9 @@ export function SharedLayout({ value, onChange, onInputClean }) {
           </Wrap>
         </Container>
       </Header>
+      <Suspense fallback={<div>Loading page...</div>}>
       <Outlet />
+      </Suspense>
     </>
   );
 }

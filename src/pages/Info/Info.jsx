@@ -67,3 +67,4 @@ export function Info({ eventData, onDeliteEvents }) {
     </main>
   );
 }
+export default Info;
