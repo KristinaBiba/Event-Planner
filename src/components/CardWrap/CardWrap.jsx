@@ -8,7 +8,6 @@ import {
   H3,
   Image,
   P,
-  Span,
   TimeEvent,
   TimePlaceWrap,
   TypeEvent,
