@@ -1,4 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+
+import { Priority } from 'components/UI/Priority/Priority';
+
+import img from '../../images/event-images/Rectangle 347.jpg';
+
 import {
   Button,
   Card,
@@ -13,8 +18,6 @@ import {
   TypeEvent,
   Wrap,
 } from './CardWrap_css';
-import img from '../../images/event-images/Rectangle 347.jpg';
-import { Priority } from 'components/Priority/Priority';
 
 export function CardWrap({ data, onMoreInfoClick, children }) {
   const navigate = useNavigate();

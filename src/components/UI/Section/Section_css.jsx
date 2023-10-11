@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import backgroundImage from '../../images/background/background.jpg';
+import backgroundImage from '../../../images/background/background.jpg';
 
 export const PageSection = styled.section`
   width: 100%;

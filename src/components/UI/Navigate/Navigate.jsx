@@ -1,5 +1,6 @@
+import {ReactComponent as ArrowLeft} from '../../../images/svg/arrow-left.svg';
+
 import { LinkComponent } from './Navigate_css';
-import {ReactComponent as ArrowLeft} from '../../images/svg/arrow-left.svg';
 
 
 export const Navigate = ({ to, title }) => {

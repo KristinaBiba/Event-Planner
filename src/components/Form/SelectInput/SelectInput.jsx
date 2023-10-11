@@ -1,5 +1,8 @@
 import React from 'react';
 import { ErrorMessage, Field, useField } from 'formik';
+
+import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
+
 import {
   CategoryOptions,
   DivWrap,
@@ -7,7 +10,6 @@ import {
   Label,
   SvgDivArrow,
 } from '../Form_css';
-import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
 
 export const SelectInput = ({ label, array, ...props }) => {
   const [field, meta] = useField(props);

@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { Formik, ErrorMessage, Form } from 'formik';
+import * as Yup from 'yup';
+
+import { TextInput } from './TextInput/TextInput';
+import { SelectInput } from './SelectInput/SelectInput';
+import { category, priority } from 'helpers/variables';
+
+import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
+
 import {
   Button,
   ButtonDiv,
@@ -18,14 +28,6 @@ import {
   TimePickerWrapper,
   SvgDivArrow,
 } from './Form_css';
-import { useNavigate } from 'react-router-dom';
-import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
-
-import { Formik, ErrorMessage, Form } from 'formik';
-import * as Yup from 'yup';
-import { TextInput } from './TextInput/TextInput';
-import { SelectInput } from './SelectInput/SelectInput';
-import { category, priority } from 'helpers/variables';
 
 export function EventForm({ onSubmitNewEvent }) {
   const navigate = useNavigate();

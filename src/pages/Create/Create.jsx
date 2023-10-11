@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Container } from 'components/Container/Container';
-import { H2 } from './Create_css';
-import { Navigate } from 'components/Navigate/Navigate';
 import { EventForm } from 'components/Form/Form';
-import { Section } from 'components/Section/Section';
+import { Container } from 'components/UI/Container/Container';
+import { Navigate } from 'components/UI/Navigate/Navigate';
+import { Section } from 'components/UI/Section/Section';
+
+import { H2 } from './Create_css';
 
 export function Create({ onSubmit }) {
   return (

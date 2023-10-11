@@ -1,6 +1,14 @@
 import React from 'react';
-import { Container } from 'components/Container/Container';
 import { useNavigate } from 'react-router-dom';
+
+import { CardWrap } from 'components/CardWrap/CardWrap';
+import { Container } from 'components/UI/Container/Container';
+import { Section } from 'components/UI/Section/Section';
+
+import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
+import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
+import { ReactComponent as Plus } from '../../images/svg/plus.svg';
+
 import {
   Button,
   ButtonWrap,
@@ -11,11 +19,6 @@ import {
   Icon,
   Icon2,
 } from './Main_css';
-import { CardWrap } from 'components/CardWrap/CardWrap';
-import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
-import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
-import { ReactComponent as Plus } from '../../images/svg/plus.svg';
-import { Section } from 'components/Section/Section';
 
 function Main({ data, func }) {
   const navigate = useNavigate();

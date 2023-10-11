@@ -1,7 +1,10 @@
 import React from 'react';
+
 import { ErrorMessage, Field, useField } from 'formik';
-import { DivWrap, ErrorDiv, Label, SvgButtonCrossSmall } from '../Form_css';
+
 import { ReactComponent as CrossSmall } from '../../../images/svg/cross-small.svg';
+
+import { DivWrap, ErrorDiv, Label, SvgButtonCrossSmall } from '../Form_css';
 
 export const TextInput = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
