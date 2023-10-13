@@ -20,6 +20,7 @@ import {
   Link,
   Wrap,
 } from './SharedLayout_css';
+import { Slide, ToastContainer } from 'react-toastify';
 
 export function SharedLayout({ value, onChange, onInputClean }) {
   return (
@@ -27,11 +28,13 @@ export function SharedLayout({ value, onChange, onInputClean }) {
       <Header>
         <Container>
           <Wrap>
-            <Link to="/" aria-label="Go to the main page">Event Planner</Link>
+            <Link to="/" aria-label="Go to the main page">
+              Event Planner
+            </Link>
             <Div>
               <InputDiv>
-                <SvgDivSearch >
-                  <Search aria-label="Enter characters to search for"/>
+                <SvgDivSearch>
+                  <Search aria-label="Enter characters to search for" />
                 </SvgDivSearch>
 
                 <FilterInput
@@ -42,29 +45,43 @@ export function SharedLayout({ value, onChange, onInputClean }) {
                 />
 
                 {value && (
-                  <SvgButtonCrossSmall type="button" onClick={onInputClean} style={{stroke: "var(--primary-text-color)"}}>
-                    <CrossSmall aria-label="Clear recent searches"/>
+                  <SvgButtonCrossSmall
+                    type="button"
+                    onClick={onInputClean}
+                    style={{ stroke: 'var(--primary-text-color)' }}
+                  >
+                    <CrossSmall aria-label="Clear recent searches" />
                   </SvgButtonCrossSmall>
                 )}
               </InputDiv>
 
-              <LanguageSwitcher type="button" style={{stroke: 'var(--secondary-text-color)'}}>
+              <LanguageSwitcher
+                type="button"
+                style={{ stroke: 'var(--secondary-text-color)' }}
+              >
                 UK
-                <ChevronDownSmall aria-label="Сhoose a language of the site"/>
+                <ChevronDownSmall aria-label="Сhoose a language of the site" />
               </LanguageSwitcher>
             </Div>
           </Wrap>
         </Container>
       </Header>
+
       <Suspense fallback={<div>Loading page...</div>}>
-      <Outlet />
+        <Outlet />
       </Suspense>
+
+      <ToastContainer
+        transition={Slide}
+        hideProgressBar={true}
+        autoClose={3000}
+      />
     </>
   );
 }
 
 SharedLayout.propTypes = {
-  value: PropTypes.string, 
-  onChange: PropTypes.func.isRequired, 
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
   onInputClean: PropTypes.func.isRequired,
 };
