@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Priority } from 'components/UI/Priority/Priority';
 
@@ -77,3 +78,21 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
     </Wrap>
   );
 }
+
+CardWrap.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      location: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      addPicture: PropTypes.string,
+      priority: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onMoreInfoClick: PropTypes.func.isRequired,
+  children: PropTypes.element,
+};

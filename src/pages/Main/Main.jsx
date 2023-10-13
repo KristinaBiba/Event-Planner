@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
 import { CardWrap } from 'components/CardWrap/CardWrap';
 import { Container } from 'components/UI/Container/Container';
 import { Section } from 'components/UI/Section/Section';
@@ -59,5 +61,22 @@ function Main({ data, func }) {
     </main>
   );
 }
+
+Main.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      location: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      addPicture: PropTypes.string,
+      priority: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  func: PropTypes.func.isRequired,
+};
 
 export default Main;

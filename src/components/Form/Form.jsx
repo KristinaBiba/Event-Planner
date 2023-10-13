@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { Formik, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
 import { TextInput } from './TextInput/TextInput';
 import { SelectInput } from './SelectInput/SelectInput';
@@ -124,7 +125,7 @@ export function EventForm({ onSubmitNewEvent }) {
                 <Label>
                   Select date
                   <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
-                    <ChevronDownSmall aria-label="Make choice date of event"/>
+                    <ChevronDownSmall aria-label="Make choice date of event" />
                   </SvgDivArrow>
                   <DivWrap>
                     <DatePick
@@ -165,7 +166,7 @@ export function EventForm({ onSubmitNewEvent }) {
                 <Label>
                   Select time
                   <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
-                    <ChevronDownSmall aria-label="Make choice time of event"/>
+                    <ChevronDownSmall aria-label="Make choice time of event" />
                   </SvgDivArrow>
                   <DivWrap>
                     <DatePick
@@ -222,10 +223,13 @@ export function EventForm({ onSubmitNewEvent }) {
                 Add event
               </Button>
             </ButtonDiv>
-            
           </Form>
         )}
       </Formik>
     </FormWrap>
   );
 }
+
+EventForm.propTypes = {
+  onSubmitNewEvent: PropTypes.func.isRequired,
+};

@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
 import { Container } from 'components/UI/Container/Container';
 
 import { ReactComponent as Search } from '../../images/svg/search.svg';
@@ -60,3 +62,9 @@ export function SharedLayout({ value, onChange, onInputClean }) {
     </>
   );
 }
+
+SharedLayout.propTypes = {
+  value: PropTypes.string, 
+  onChange: PropTypes.func.isRequired, 
+  onInputClean: PropTypes.func.isRequired,
+};

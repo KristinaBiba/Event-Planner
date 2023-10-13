@@ -1,5 +1,6 @@
 import React from 'react';
 import { ErrorMessage, Field, useField } from 'formik';
+import PropTypes from 'prop-types';
 
 import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
 
@@ -18,7 +19,7 @@ export const SelectInput = ({ label, array, ...props }) => {
     <Label>
       {label}
       <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
-        <ChevronDownSmall aria-label="Make choice"/>
+        <ChevronDownSmall aria-label="Make choice" />
       </SvgDivArrow>
       <DivWrap>
         <Field
@@ -44,4 +45,27 @@ export const SelectInput = ({ label, array, ...props }) => {
       </DivWrap>
     </Label>
   );
+};
+
+SelectInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  array: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
+  }),
+  meta: PropTypes.shape({
+    touched: PropTypes.bool.isRequired,
+    error: PropTypes.string.isRequired,
+    initialError: PropTypes.string,
+    initialTouched: PropTypes.bool,
+    initialValue: PropTypes.string,
+    value: PropTypes.string,
+  }),
+  as: PropTypes.shape({$$typeof: PropTypes.symbol.isRequired,
+  }).isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };

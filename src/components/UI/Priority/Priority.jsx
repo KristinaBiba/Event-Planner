@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export function Priority({ value }) {
  
     let color = '';
@@ -18,4 +20,8 @@ export function Priority({ value }) {
     }
 
   return (<span style={{color: color}}>{value}</span>);
+}
+
+Priority.propTypes = {
+  value: PropTypes.string.isRequired,
 }

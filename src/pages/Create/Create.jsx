@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { EventForm } from 'components/Form/Form';
 import { Container } from 'components/UI/Container/Container';
 import { Navigate } from 'components/UI/Navigate/Navigate';
@@ -19,6 +21,10 @@ export function Create({ onSubmit }) {
       </Section>
     </main>
   );
+}
+
+Create.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default Create;
