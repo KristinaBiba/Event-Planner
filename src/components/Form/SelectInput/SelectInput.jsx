@@ -18,7 +18,13 @@ export const SelectInput = ({ label, array, ...props }) => {
   return (
     <Label>
       {label}
-      <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
+      <SvgDivArrow
+        style={{
+          stroke:
+            (meta.touched && meta.error && 'var(--error-validation-color)') ||
+            'var(--primary-text-color)',
+        }}
+      >
         <ChevronDownSmall aria-label="Make choice" />
       </SvgDivArrow>
       <DivWrap>
@@ -64,8 +70,7 @@ SelectInput.propTypes = {
     initialValue: PropTypes.string,
     value: PropTypes.string,
   }),
-  as: PropTypes.shape({$$typeof: PropTypes.symbol.isRequired,
-  }).isRequired,
+  as: PropTypes.shape({ $$typeof: PropTypes.symbol.isRequired }).isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
 };

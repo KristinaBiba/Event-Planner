@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { Formik, ErrorMessage, Form } from 'formik';
+import { Formik, ErrorMessage, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
 import { TextInput } from './TextInput/TextInput';
 import { SelectInput } from './SelectInput/SelectInput';
+import { DatePicker } from './DatePicker/DatePicker';
 import { category, priority } from 'helpers/variables';
 
 import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
@@ -14,10 +15,10 @@ import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-dow
 import {
   Button,
   ButtonDiv,
-  ButtonPick,
-  ButtonPickChoose,
+  // ButtonPick,
+  // ButtonPickChoose,
   DatePick,
-  DatePickerWrapper,
+  // DatePickerWrapper,
   DescriptionTextField,
   Div,
   DivWrap,
@@ -42,10 +43,10 @@ export function EventForm({ onSubmitNewEvent }) {
     description: Yup.string()
       .required('Required')
       .min(3, 'Must be 3 characters or more')
-      .max(300, 'Must be 30 characters or less')
+      .max(300, 'Must be 300 characters or less')
       .trim(),
-    selectDate: Yup.string(),
-    selectTime: Yup.string(),
+    selectDate: Yup.object().required('Required'),
+    selectTime: Yup.string().required('Required'),
     location: Yup.string()
       .required('Required')
       .min(3)
@@ -57,7 +58,7 @@ export function EventForm({ onSubmitNewEvent }) {
     priority: Yup.string().required('Required'),
   });
 
-  const [startDate, setStartDate] = useState('');
+  // const [startDate, setStartDate] = useState('');
   const [startTime, setStartTime] = useState('');
 
   return (
@@ -70,17 +71,19 @@ export function EventForm({ onSubmitNewEvent }) {
           title: '',
           description: '',
           selectDate: '',
-          selectTime: '',
+          selectTime: startTime,
           location: '',
           category: '',
           addPicture: '',
           priority: '',
         }}
-        onSubmit={async (values, actions) => {
+        onSubmit={async (e, values, actions) => {
+          e.preventDefault();
+          console.log('values.selectDate onSubmit', values.selectDate);
           await onSubmitNewEvent({
             title: values.title,
             description: values.description,
-            date: startDate,
+            date: values.selectDate,
             time: startTime,
             location: values.location,
             category: values.category,
@@ -104,7 +107,7 @@ export function EventForm({ onSubmitNewEvent }) {
           });
         }}
       >
-        {() => (
+        {({ errors, touched }) => (
           <Form>
             <Div>
               <TextInput
@@ -121,14 +124,19 @@ export function EventForm({ onSubmitNewEvent }) {
                 placeholder="Enter description"
               />
 
-              <DatePickerWrapper>
+              <Field
+                name="selectDate"
+                component={DatePicker}
+                placeholder="Select date"
+                // onSave={(()=> set)}
+              />
+
+              {/* <DatePickerWrapper>
                 <Label>
                   Select date
-                  <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
-                    <ChevronDownSmall aria-label="Make choice date of event" />
-                  </SvgDivArrow>
                   <DivWrap>
                     <DatePick
+                      name="selectDate"
                       dateFormat="dd.MM.yyyy"
                       closeOnScroll={true}
                       selected={startDate}
@@ -136,7 +144,8 @@ export function EventForm({ onSubmitNewEvent }) {
                       onChange={date => setStartDate(date)}
                       minDate={new Date()}
                       placeholderText="Select date"
-                    >
+                      $error={errors.selectDate}
+                      >
                       <ButtonPick
                         type="button"
                         onClick={e => {
@@ -159,13 +168,32 @@ export function EventForm({ onSubmitNewEvent }) {
 
                     <ErrorMessage component={ErrorDiv} name="selectDate" />
                   </DivWrap>
+                  <SvgDivArrow
+                    style={{
+                      stroke:
+                        (touched.selectDate &&
+                          errors.selectDate &&
+                          'var(--error-validation-color)') ||
+                        'var(--primary-text-color)',
+                    }}
+                  >
+                    <ChevronDownSmall aria-label="Make choice date of event" />
+                  </SvgDivArrow>
                 </Label>
-              </DatePickerWrapper>
+              </DatePickerWrapper> */}
 
-              <TimePickerWrapper>
+              {/* <TimePickerWrapper>
                 <Label>
                   Select time
-                  <SvgDivArrow style={{ stroke: 'var(--primary-text-color)' }}>
+                  <SvgDivArrow
+                    style={{
+                      stroke:
+                        (touched.selectTime &&
+                          errors.selectTime &&
+                          'var(--error-validation-color)') ||
+                        'var(--primary-text-color)',
+                    }}
+                  >
                     <ChevronDownSmall aria-label="Make choice time of event" />
                   </SvgDivArrow>
                   <DivWrap>
@@ -179,12 +207,13 @@ export function EventForm({ onSubmitNewEvent }) {
                       closeOnScroll={true}
                       minDate={new Date()}
                       placeholderText="Select time"
+                      $error={errors.selectTime && touched.selectTime}
                     />
 
                     <ErrorMessage component={ErrorDiv} name="selectTime" />
                   </DivWrap>
                 </Label>
-              </TimePickerWrapper>
+              </TimePickerWrapper> */}
 
               <TextInput
                 name="location"
@@ -219,7 +248,7 @@ export function EventForm({ onSubmitNewEvent }) {
             </Div>
 
             <ButtonDiv>
-              <Button type="submit" aria-label="Submit form">
+              <Button type="submit" aria-label="Add event">
                 Add event
               </Button>
             </ButtonDiv>

@@ -11,7 +11,7 @@ export const FormWrap = styled.div`
     padding: 40px 24px;
   }
   @media screen and (min-width: 1440px) {
-    padding: 40px 40px;
+    padding: 40px 40px 54px 40px ;
   }
 `;
 
@@ -21,11 +21,12 @@ export const Div = styled.div`
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    gap: 24px;
+    column-gap: 24px;
+    row-gap: 20px;
     height: 508px;
   }
   @media screen and (min-width: 1440px) {
-    gap: 42px;
+    column-gap: 42px;
     height: 305px;
   }
 `;
@@ -45,11 +46,10 @@ export const TextField = styled.input`
   width: 240px;
   @media screen and (min-width: 768px) {
     display: block;
-    margin-bottom: -4px;
+    margin-bottom: 0;
     width: 308px;
   }
   @media screen and (min-width: 1440px) {
-    margin-bottom: -22px;
     width: 372px;
   }
   &:invalid {
@@ -89,11 +89,10 @@ export const Select = styled.select`
   @media screen and (min-width: 768px) {
     display: block;
     width: 308px;
-    margin-bottom: -4px;
+    margin-bottom: 0;
     height: 57.45px;
   }
   @media screen and (min-width: 1440px) {
-    margin-bottom: -22px;
     width: 372px;
   }
   &:invalid {
@@ -131,10 +130,9 @@ export const DescriptionTextField = styled.textarea`
   @media screen and (min-width: 768px) {
     display: block;
     width: 308px;
-    margin-bottom: -4px;
+    margin-bottom: 0;
   }
   @media screen and (min-width: 1440px) {
-    margin-bottom: -22px;
     width: 372px;
   }
   &:focus-visible {
@@ -214,8 +212,8 @@ export const Button = styled.button`
 `;
 export const DatePick = styled(DatePicker)`
   border-radius: 8px;
-  border: 1px solid var(--border-color);
-  color: var(--secondary-text-color);
+  border: ${props => props.$error ? '1px solid var(--error-validation-color)' : "1px solid var(--border-color)"};
+  color: ${props => props.$open ? 'var(--primary-text-color)' : "var(--secondary-text-color)"};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -227,14 +225,10 @@ export const DatePick = styled(DatePicker)`
   @media screen and (min-width: 768px) {
     display: block;
     width: 308px;
-    margin-bottom: -4px;
+    margin-bottom: 0;
   }
   @media screen and (min-width: 1440px) {
-    margin-bottom: -22px;
     width: 372px;
-  }
-  &:invalid {
-    border: 1px solid var(--error-validation-color);
   }
   &:focus-visible {
     border: 1px solid var(--primary-text-color);
@@ -252,6 +246,7 @@ export const DatePickerWrapper = styled.div`
     font-family: 'Poppins';
     width: 240px;
     height: 348px;
+    z-index: 100;
     @media screen and (min-width: 768px) {
       width: 308px;
     }
@@ -289,6 +284,17 @@ export const DatePickerWrapper = styled.div`
     margin: 0;
   }
 
+  & .react-datepicker__month:last-child {
+    margin: 0;
+  }
+
+  & .react-datepicker__week {
+    margin-bottom: 10px;
+    @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+  }
+
   & .react-datepicker__day {
     color: var(--divider, var(--border-color));
     text-align: center;
@@ -304,7 +310,7 @@ export const DatePickerWrapper = styled.div`
       margin: 6px;
     }
     @media screen and (min-width: 1440px) {
-      margin: 10px;
+      margin: 5px 10px;
     }
     :hover,
     :focus {
@@ -389,8 +395,8 @@ export const ButtonPick = styled.button`
   border-radius: 4px;
   background-color: var(--primary-background-color);
   outline: none;
-  margin-top: 16px;
-  margin-bottom: 20px;
+  margin-top: 6px;
+  /* margin-bottom: 20px; */
   color: var(--primary-text-color);
   font-size: 12px;
   font-style: normal;
@@ -404,10 +410,10 @@ export const ButtonPick = styled.button`
     background-color: var(--border-color);
   }
   @media screen and (min-width: 768px) {
-    margin-left: 87px;
+    margin-left: 70px;
   }
   @media screen and (min-width: 1440px) {
-    margin-left: 152px;
+    margin-left: 120px;
   }
 `;
 
@@ -573,5 +579,9 @@ export const SvgDivArrow = styled.div`
   z-index: 1;
   @media screen and (min-width: 768px) {
     top: 40px;
+  }
+  &:hover, &:focus {
+    stroke: var(--primary-text-color);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
