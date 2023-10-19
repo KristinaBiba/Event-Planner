@@ -43,6 +43,7 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
           addPicture,
           priority,
         }) => {
+          const dateOfEvent = date.split('').slice(0, 5).join('');
           return (
             <Card key={id}>
               <Image src={img} alt="A picture of the meeting" loading="lazy" />
@@ -54,7 +55,7 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
               </CategoryWrap>
               <TimePlaceWrap>
                 <TimeEvent>
-                  {date} at {time}
+                  {dateOfEvent} at {time}
                 </TimeEvent>
                 <TimeEvent>{location}</TimeEvent>
               </TimePlaceWrap>

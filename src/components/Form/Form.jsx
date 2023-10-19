@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { Formik, ErrorMessage, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
@@ -10,25 +10,16 @@ import { SelectInput } from './SelectInput/SelectInput';
 import { DatePicker } from './DatePicker/DatePicker';
 import { category, priority } from 'helpers/variables';
 
-import { ReactComponent as ChevronDownSmall } from '../../images/svg/chevron-down-small.svg';
-
 import {
   Button,
   ButtonDiv,
-  // ButtonPick,
-  // ButtonPickChoose,
-  DatePick,
-  // DatePickerWrapper,
   DescriptionTextField,
   Div,
-  DivWrap,
-  ErrorDiv,
   FormWrap,
-  Label,
   Select,
   TextField,
   TimePickerWrapper,
-  SvgDivArrow,
+  DatePickerWrapper,
 } from './Form_css';
 
 export function EventForm({ onSubmitNewEvent }) {
@@ -45,7 +36,7 @@ export function EventForm({ onSubmitNewEvent }) {
       .min(3, 'Must be 3 characters or more')
       .max(300, 'Must be 300 characters or less')
       .trim(),
-    selectDate: Yup.object().required('Required'),
+    selectDate: Yup.string().required('Required'),
     selectTime: Yup.string().required('Required'),
     location: Yup.string()
       .required('Required')
@@ -58,9 +49,6 @@ export function EventForm({ onSubmitNewEvent }) {
     priority: Yup.string().required('Required'),
   });
 
-  // const [startDate, setStartDate] = useState('');
-  const [startTime, setStartTime] = useState('');
-
   return (
     <FormWrap>
       <Formik
@@ -71,20 +59,21 @@ export function EventForm({ onSubmitNewEvent }) {
           title: '',
           description: '',
           selectDate: '',
-          selectTime: startTime,
+          selectTime: '',
           location: '',
           category: '',
           addPicture: '',
           priority: '',
         }}
-        onSubmit={async (e, values, actions) => {
-          e.preventDefault();
-          console.log('values.selectDate onSubmit', values.selectDate);
+        onChange={values => {
+          console.log(values);
+        }}
+        onSubmit={async (values, actions) => {
           await onSubmitNewEvent({
             title: values.title,
             description: values.description,
             date: values.selectDate,
-            time: startTime,
+            time: values.selectTime,
             location: values.location,
             category: values.category,
             priority: values.priority,
@@ -107,7 +96,7 @@ export function EventForm({ onSubmitNewEvent }) {
           });
         }}
       >
-        {({ errors, touched }) => (
+        {() => (
           <Form>
             <Div>
               <TextInput
@@ -124,96 +113,30 @@ export function EventForm({ onSubmitNewEvent }) {
                 placeholder="Enter description"
               />
 
-              <Field
-                name="selectDate"
-                component={DatePicker}
-                placeholder="Select date"
-                // onSave={(()=> set)}
-              />
+              <DatePickerWrapper>
+                <DatePicker
+                  name="selectDate"
+                  placeholder="Select date"
+                  label="Select date"
+                  ariaLabel="Make choice date of event"
+                  dateFormat="dd.MM.yyyy"
+                  shouldCloseOnSelect={false}
+                />
+              </DatePickerWrapper>
 
-              {/* <DatePickerWrapper>
-                <Label>
-                  Select date
-                  <DivWrap>
-                    <DatePick
-                      name="selectDate"
-                      dateFormat="dd.MM.yyyy"
-                      closeOnScroll={true}
-                      selected={startDate}
-                      locale="en"
-                      onChange={date => setStartDate(date)}
-                      minDate={new Date()}
-                      placeholderText="Select date"
-                      $error={errors.selectDate}
-                      >
-                      <ButtonPick
-                        type="button"
-                        onClick={e => {
-                          e.preventDefault();
-                          setStartDate('');
-                        }}
-                      >
-                        Clear
-                      </ButtonPick>
-                      <ButtonPickChoose
-                        type="button"
-                        onClick={e => {
-                          e.preventDefault();
-                          window.scroll(0, 1);
-                        }}
-                      >
-                        Choose date
-                      </ButtonPickChoose>
-                    </DatePick>
-
-                    <ErrorMessage component={ErrorDiv} name="selectDate" />
-                  </DivWrap>
-                  <SvgDivArrow
-                    style={{
-                      stroke:
-                        (touched.selectDate &&
-                          errors.selectDate &&
-                          'var(--error-validation-color)') ||
-                        'var(--primary-text-color)',
-                    }}
-                  >
-                    <ChevronDownSmall aria-label="Make choice date of event" />
-                  </SvgDivArrow>
-                </Label>
-              </DatePickerWrapper> */}
-
-              {/* <TimePickerWrapper>
-                <Label>
-                  Select time
-                  <SvgDivArrow
-                    style={{
-                      stroke:
-                        (touched.selectTime &&
-                          errors.selectTime &&
-                          'var(--error-validation-color)') ||
-                        'var(--primary-text-color)',
-                    }}
-                  >
-                    <ChevronDownSmall aria-label="Make choice time of event" />
-                  </SvgDivArrow>
-                  <DivWrap>
-                    <DatePick
-                      selected={startTime}
-                      onChange={time => setStartTime(time)}
-                      showTimeSelect
-                      showTimeSelectOnly
-                      timeIntervals={1}
-                      dateFormat="hh : mm  aa"
-                      closeOnScroll={true}
-                      minDate={new Date()}
-                      placeholderText="Select time"
-                      $error={errors.selectTime && touched.selectTime}
-                    />
-
-                    <ErrorMessage component={ErrorDiv} name="selectTime" />
-                  </DivWrap>
-                </Label>
-              </TimePickerWrapper> */}
+              <TimePickerWrapper>
+                <DatePicker
+                  name="selectTime"
+                  placeholder="Select time"
+                  label="Select time"
+                  ariaLabel="Make choice time of event"
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={1}
+                  dateFormat="hh : mm  aa"
+                  shouldCloseOnSelect
+                />
+              </TimePickerWrapper>
 
               <TextInput
                 name="location"

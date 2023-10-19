@@ -39,19 +39,20 @@ export function App() {
   };
 
   const handleFormSubmit = newEvent => {
-    const dateFormat = newEvent.date
-      .toISOString()
-      .split('T')[0]
-      .split('-')
-      .splice(1, 2)
-      .reverse()
-      .join('.');
-    const timeFormat = newEvent.time
+    const date = newEvent.date.toISOString().split('T')[0].split('-').reverse();
+    date[0] = Number(date[0]) + 1;
+    const dateFormat = date.join('.');
+    const time = newEvent.time
       .toISOString()
       .split('T')[1]
       .split(':')
-      .splice(0, 2)
-      .join(':');
+      .splice(0, 2);
+    if (Number(time[0]) > 20) {
+      time[0] = Number(time[0]) - 21;
+    } else {
+      time[0] = Number(time[0]) + 3;
+    }
+    const timeFormat = time.join(':');
     const event = { ...newEvent, date: dateFormat, time: timeFormat };
 
     try {
@@ -81,13 +82,10 @@ export function App() {
     try {
       setEvents(prevState => prevState.filter(event => event.id !== id));
 
-      toast.success(
-        'Event has been successfully delite from the calendar'
-      );
+      toast.success('Event has been successfully delite from the calendar');
     } catch (error) {
       toast.error('Sorry, try deliting the event again');
     }
-    
   };
 
   const onMoreInfoClick = id => {
