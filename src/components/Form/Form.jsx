@@ -2,13 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
 import { TextInput } from './TextInput/TextInput';
 import { SelectInput } from './SelectInput/SelectInput';
 import { DatePicker } from './DatePicker/DatePicker';
 import { category, priority } from 'helpers/variables';
+import { SignupSchema } from 'helpers/signupSchema';
 
 import {
   Button,
@@ -16,7 +16,6 @@ import {
   DescriptionTextField,
   Div,
   FormWrap,
-  Select,
   TextField,
   TimePickerWrapper,
   DatePickerWrapper,
@@ -24,30 +23,6 @@ import {
 
 export function EventForm({ onSubmitNewEvent }) {
   const navigate = useNavigate();
-
-  const SignupSchema = Yup.object().shape({
-    title: Yup.string()
-      .required('Required')
-      .min(3, 'Title must be 3 characters or more')
-      .max(30, 'Title must be 30 characters or less')
-      .trim(),
-    description: Yup.string()
-      .required('Required')
-      .min(3, 'Must be 3 characters or more')
-      .max(300, 'Must be 300 characters or less')
-      .trim(),
-    selectDate: Yup.string().required('Required'),
-    selectTime: Yup.string().required('Required'),
-    location: Yup.string()
-      .required('Required')
-      .min(3)
-      .max(30)
-      .trim()
-      .matches(/^(?=.*[a-z])(?=.*[A-Z])/),
-    category: Yup.string().required('Required'),
-    // addPicture: Yup.string().url(),
-    priority: Yup.string().required('Required'),
-  });
 
   return (
     <FormWrap>
@@ -148,7 +123,6 @@ export function EventForm({ onSubmitNewEvent }) {
               <SelectInput
                 name="category"
                 label="Category"
-                as={Select}
                 placeholder="Choose category"
                 array={category}
               />
@@ -164,7 +138,6 @@ export function EventForm({ onSubmitNewEvent }) {
               <SelectInput
                 name="priority"
                 label="Priority"
-                as={Select}
                 placeholder="Choose priority"
                 array={priority}
               />

@@ -1,54 +1,86 @@
-import React from 'react';
-import { ErrorMessage, Field, useField } from 'formik';
+import React, { useState } from 'react';
+import { ErrorMessage, useField } from 'formik';
 import PropTypes from 'prop-types';
 
 import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
 
 import {
-  CategoryOptions,
-  DivWrap,
   ErrorDiv,
   Label,
+  SelectDiv,
+  SelectItem,
+  SelectList,
+  SelectListDiv,
   SvgDivArrow,
 } from '../Form_css';
 
-export const SelectInput = ({ label, array, ...props }) => {
-  const [field, meta] = useField(props);
+export const SelectInput = ({
+  label,
+  name,
+  array,
+  placeholder,
+  ...props
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [field, meta, helpers] = useField(name);
+
+  const { value } = meta;
+  const { setValue } = helpers;
 
   return (
-    <Label>
+    <Label
+      style={{
+        color: props.disabled && 'var(--border-color)',
+      }}
+    >
       {label}
+
+      <SelectDiv
+        {...field}
+        {...props}
+        type="text"
+        style={{
+          border:
+          isOpen ? '1px solid var(--primary-text-color)' : 
+            meta.touched &&
+            meta.error &&
+            '1px solid var(--error-validation-color)',
+            color: isOpen ?'var(--primary-text-color)' : (value ? 'var(--secondary-text-color)':'var(--border-color)'),
+        }}
+        onClick={() => {
+          setIsOpen(true);
+        }}
+      >
+        {isOpen ? placeholder : value || placeholder}
+      </SelectDiv>
+
       <SvgDivArrow
         style={{
           stroke:
-            (meta.touched && meta.error && 'var(--error-validation-color)') ||
-            'var(--primary-text-color)',
+            meta.touched && meta.error
+              ? 'var(--error-validation-color)'
+              : 'var(--primary-text-color)',
+          rotate: isOpen && '180deg',
         }}
       >
         <ChevronDownSmall aria-label="Make choice" />
       </SvgDivArrow>
-      <DivWrap>
-        <Field
-          {...field}
-          {...props}
-          style={{
-            border:
-              meta.touched &&
-              meta.error &&
-              '1px solid var(--error-validation-color)',
-            color: meta.touched
-              ? 'var(--secondary-text-color)'
-              : 'var(--border-color)',
-          }}
-        >
-          {array.map(name => (
-            <CategoryOptions key={name} value={name}>
-              {name}
-            </CategoryOptions>
+
+      {isOpen && (
+        <SelectList>
+          <SelectListDiv>
+          {array.map(item => (
+          <SelectItem key={item} onClick={() => {setValue(item); setIsOpen(false)}}>
+            {item}
+          </SelectItem>
           ))}
-        </Field>
+          </SelectListDiv>
+        </SelectList>
+      )}
+
+      {meta.touched && meta.error && (
         <ErrorMessage component={ErrorDiv} name={field.name} />
-      </DivWrap>
+      )}
     </Label>
   );
 };
@@ -70,7 +102,6 @@ SelectInput.propTypes = {
     initialValue: PropTypes.string,
     value: PropTypes.string,
   }),
-  as: PropTypes.shape({ $$typeof: PropTypes.symbol.isRequired }).isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
 };

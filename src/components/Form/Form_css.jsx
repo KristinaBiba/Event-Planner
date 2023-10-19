@@ -11,7 +11,7 @@ export const FormWrap = styled.div`
     padding: 40px 24px;
   }
   @media screen and (min-width: 1440px) {
-    padding: 40px 40px 54px 40px ;
+    padding: 40px 40px 54px 40px;
   }
 `;
 
@@ -69,11 +69,10 @@ export const DatePickButton = styled.div`
   z-index: '100';
 `;
 
-export const Select = styled.select`
+export const SelectDiv = styled.div`
   box-sizing: border-box;
   border-radius: 8px;
   border: 1px solid var(--border-color);
-  color: var(--secondary-text-color);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -95,20 +94,54 @@ export const Select = styled.select`
   @media screen and (min-width: 1440px) {
     width: 372px;
   }
-  &:invalid {
-    border: 1px solid var(--error-validation-color);
+`;
+
+export const SelectList = styled.ul`
+  position: absolute;
+  top: 72px;
+  left: 0;
+  margin-top: 26px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background-color: var(--primary-background-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--primary-shadow);
+  border: none;
+  font-family: 'Poppins';
+  width: 240px;
+  color: var(--secondary-text-color);
+  text-align: start;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  z-index: 100;
+  list-style: none;
+
+  @media screen and (min-width: 768px) {
+    width: 308px;
   }
-  &:focus-visible {
-    border: 1px solid var(--primary-text-color);
-    outline: none;
+  @media screen and (min-width: 1440px) {
+    width: 372px;
   }
-  & > option:first-child {
-    font-size: 0;
-  }
-  & > option {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 20px;
+`;
+
+export const SelectListDiv = styled.div`
+  background: repeating-linear-gradient(
+    0deg,
+    var(--primary-background-color),
+    var(--primary-background-color) 56px,
+    var(--border-color) 56px,
+    var(--border-color) 57px
+  );
+`;
+
+export const SelectItem = styled.li`
+  height: 56px;
+  padding: 16px 0;
+
+  &:hover {
+    color: var(--primary-text-color)
   }
 `;
 
@@ -199,7 +232,8 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: var(--btn-hover-background);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -212,8 +246,12 @@ export const Button = styled.button`
 `;
 export const DatePick = styled(DatePicker)`
   border-radius: 8px;
-  border: ${props => props.$error ? '1px solid var(--error-validation-color)' : "1px solid var(--border-color)"};
-  color: ${props => props.$open ? 'var(--primary-text-color)' : "var(--secondary-text-color)"};
+  border: ${props =>
+    props.$error
+      ? '1px solid var(--error-validation-color)'
+      : '1px solid var(--border-color)'};
+  color: ${props =>
+    props.$open ? 'var(--primary-text-color)' : 'var(--secondary-text-color)'};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -291,8 +329,8 @@ export const DatePickerWrapper = styled.div`
   & .react-datepicker__week {
     margin-bottom: 10px;
     @media screen and (min-width: 768px) {
-    margin-bottom: 0;
-  }
+      margin-bottom: 0;
+    }
   }
 
   & .react-datepicker__day {
@@ -320,7 +358,8 @@ export const DatePickerWrapper = styled.div`
     }
   }
 
-  & .react-datepicker__day--keyboard-selected:hover, .react-datepicker__day--keyboard-selected:focus {
+  & .react-datepicker__day--keyboard-selected:hover,
+  .react-datepicker__day--keyboard-selected:focus {
     color: var(--btn-accent-color);
     background-color: var(--primary-text-color);
     border-radius: 0;
@@ -402,7 +441,8 @@ export const ButtonPick = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: var(--btn-hover-background);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -522,33 +562,6 @@ export const TimePickerWrapper = styled.div`
   }
 `;
 
-export const CategoryOptions = styled.option`
-  border-radius: 8px;
-  background-color: var(--primary-background-color);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: var(--primary-shadow);
-  border: none;
-  padding: 0 16px;
-  font-family: 'Poppins';
-  width: 240px;
-  height: 160px;
-  color: var(--secondary-text-color);
-  text-align: start;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 48px;
-  min-height: 48px;
-  height: 48px;
-  @media screen and (min-width: 768px) {
-    width: 308px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 372px;
-  }
-`;
-
 export const SvgButtonCrossSmall = styled.button`
   position: absolute;
   height: 26px;
@@ -562,7 +575,8 @@ export const SvgButtonCrossSmall = styled.button`
   @media screen and (min-width: 768px) {
     top: 16px;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     outline: none;
     border: 1px solid var(--primary-text-color);
     border-radius: 8px;
@@ -580,7 +594,8 @@ export const SvgDivArrow = styled.div`
   @media screen and (min-width: 768px) {
     top: 40px;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     stroke: var(--primary-text-color);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }

@@ -51,7 +51,7 @@ export function Info({ eventData, onDeliteEvents }) {
                 </TimePlaceWrap>
 
                 <ButtonWrap>
-                  <Button type="button">Edit</Button>
+                  <Button type="button" disabled>Edit</Button>
                   <DeleteButton
                     type="button"
                     onClick={() => {

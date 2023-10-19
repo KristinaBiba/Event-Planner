@@ -37,13 +37,13 @@ function Main({ data, func }) {
           <TitleWrap>
             <H2>My events</H2>
             <ButtonWrap>
-              <Button type="button">
+              <Button type="button" disabled>
                 <Span>Category</Span>
                 <Icon2>
                   <Filters3 aria-label="Filter events by category" />
                 </Icon2>
               </Button>
-              <Button type="button">
+              <Button type="button" disabled>
                 <Span>Sort by</Span>
                 <Icon>
                   <Filters2 aria-label="Choose the type of sorting" />
