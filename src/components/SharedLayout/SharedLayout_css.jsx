@@ -130,3 +130,10 @@ export const SvgButtonCrossSmall = styled.button`
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
+
+export const LoaderWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+`;

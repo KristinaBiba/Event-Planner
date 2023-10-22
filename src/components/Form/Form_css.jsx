@@ -82,6 +82,7 @@ export const SelectDiv = styled.div`
   margin-bottom: 20px;
   width: 240px;
   appearance: none;
+  cursor: pointer;
   &::-ms-expand {
     display: block;
   }
@@ -260,6 +261,7 @@ export const DatePick = styled(DatePicker)`
   margin-top: 8px;
   margin-bottom: 20px;
   width: 240px;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     display: block;
     width: 308px;

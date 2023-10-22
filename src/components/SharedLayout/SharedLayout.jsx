@@ -2,6 +2,8 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
+import { Slide, ToastContainer } from 'react-toastify';
+import { Watch } from 'react-loader-spinner';
 
 import { Container } from 'components/UI/Container/Container';
 
@@ -19,8 +21,8 @@ import {
   SvgDivSearch,
   Link,
   Wrap,
+  LoaderWrap,
 } from './SharedLayout_css';
-import { Slide, ToastContainer } from 'react-toastify';
 
 export function SharedLayout({ value, onChange, onInputClean }) {
   return (
@@ -67,7 +69,20 @@ export function SharedLayout({ value, onChange, onInputClean }) {
         </Container>
       </Header>
 
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense
+        fallback={
+          <LoaderWrap>
+            <Watch
+              height="80"
+              width="80"
+              radius="48"
+              color="var(--primary-text-color)"
+              ariaLabel="Loading"
+              visible={true}
+            />
+          </LoaderWrap>
+        }
+      >
         <Outlet />
       </Suspense>
 
