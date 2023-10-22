@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import { CardWrap } from 'components/CardWrap/CardWrap';
 import { Container } from 'components/UI/Container/Container';
 import { Section } from 'components/UI/Section/Section';
 
@@ -21,6 +20,7 @@ import {
   Icon,
   Icon2,
 } from './Main_css';
+import { Paginate } from 'components/Paginate/Paginate';
 
 function Main({ data, func }) {
   const navigate = useNavigate();
@@ -29,7 +29,6 @@ function Main({ data, func }) {
     e.preventDefault();
     navigate('/create', { replace: true });
   };
-
   return (
     <main>
       <Section>
@@ -55,7 +54,7 @@ function Main({ data, func }) {
               </CreateButton>
             </ButtonWrap>
           </TitleWrap>
-          <CardWrap data={data} onMoreInfoClick={func} />
+          <Paginate itemsPerPage={1} data={data} func={func}/>
         </Container>
       </Section>
     </main>
