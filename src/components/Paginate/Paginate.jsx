@@ -19,6 +19,8 @@ export function Paginate({ itemsPerPage, data, func }) {
     setItemOffset(newOffset);
   };
 
+  const screenWidth = window.screen.width;
+
   return (
     <>
       <CardWrap data={currentItems} onMoreInfoClick={func} />
@@ -26,7 +28,7 @@ export function Paginate({ itemsPerPage, data, func }) {
         breakLabel="..."
         nextLabel={<ChevronRight/>}
         onPageChange={handlePageClick}
-        pageRangeDisplayed={2}
+        pageRangeDisplayed={screenWidth > 767 ? 3 : 1}
         marginPagesDisplayed={1}
         pageCount={pageCount}
         previousLabel={<ChevronLeft/>}

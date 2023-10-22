@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import { Container } from 'components/UI/Container/Container';
 import { Section } from 'components/UI/Section/Section';
+import { Paginate } from 'components/Paginate/Paginate';
 
 import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
 import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
@@ -20,10 +21,11 @@ import {
   Icon,
   Icon2,
 } from './Main_css';
-import { Paginate } from 'components/Paginate/Paginate';
 
 function Main({ data, func }) {
   const navigate = useNavigate();
+
+  const screenWidth = window.screen.width;
 
   const handleAdd = e => {
     e.preventDefault();
@@ -54,7 +56,7 @@ function Main({ data, func }) {
               </CreateButton>
             </ButtonWrap>
           </TitleWrap>
-          <Paginate itemsPerPage={1} data={data} func={func}/>
+          <Paginate itemsPerPage={screenWidth > 768 ? 8 : 6} data={data} func={func}/>
         </Container>
       </Section>
     </main>

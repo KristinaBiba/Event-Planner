@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ReactPaginate from 'react-paginate';
 
 export const PaginateContainer = styled(ReactPaginate).attrs({
-  activeClassName: 'active', // default to "selected"
+  activeClassName: 'active', 
 })`
   width: 100%;
   height: 60px;
@@ -31,10 +31,10 @@ export const PaginateContainer = styled(ReactPaginate).attrs({
     cursor: pointer;
 
     @media screen and (min-width: 768px) {
-    height: 64px;
-    max-width: 64px;
-    padding: 18px;
-  }
+      height: 64px;
+      max-width: 64px;
+      padding: 18px;
+    }
   }
   li.previous a,
   li.next a,
@@ -59,9 +59,11 @@ export const PaginateContainer = styled(ReactPaginate).attrs({
   li svg {
     fill: var(--primary-text-color);
   }
- @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     height: 84px;
   }
   @media screen and (min-width: 1440px) {
-
+    width: 588px;
+    margin-left: auto;
+  }
 `;
