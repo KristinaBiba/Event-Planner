@@ -57,27 +57,37 @@ export const Button = styled.button`
   height: 56px;
   padding: 16px;
   border-radius: 8px;
+  border: 1px solid transparent;
   background-color: var(--primary-background-color);
   box-shadow: var(--primary-shadow);
-  border: none;
   outline: none;
   color: var(--secondary-text-color);
   font-family: inherit;
+  bottom: -28px;
+  left: 47px;
+  justify-content: space-between;
   &:hover {
-    background-color: var(--btn-hover-background);
+    border: 1px solid var(--primary-text-color);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   &:disabled {
     background-color: var(--btn-disabled-background);
   }
   @media screen and (max-width: 767px) {
+    gap: 0;
     width: 56px;
+  }
+  @media screen and (min-width: 768px) {
+    left: 0;
   }
 `;
 
 export const CreateButton = styled(Button)`
   background-color: var(--primary-text-color);
   color: var(--btn-accent-color);
+  &:hover {
+    background-color: var(--btn-hover-background);
+    }
 `;
 
 export const Span = styled.span`
@@ -97,12 +107,5 @@ export const Icon = styled.svg`
   ${Button}:hover {
     stroke: var(--primary-text-color);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-`;
-
-export const Icon2 = styled(Icon)`
-  stroke: var(--secondary-text-color);
-  @media screen and (max-width: 767px) {
-    stroke: var(--primary-text-color);
   }
 `;
