@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import { Button, Icon, Span } from 'pages/Main/Main_css';
 
-import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
-
 import {
   MenuList,
   MenuListDiv,
@@ -12,12 +10,14 @@ import {
   MenuWrap,
 } from './DropDownMenu_css';
 
-export const DropDownMenu = ({ title, dropDownList, filtredFunc }) => {
+export const DropDownMenu = ({ title, dropDownList, filtredFunc, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(title);
 
   useEffect(() => {
-    filtredFunc(value);
+    if (filtredFunc) {
+      filtredFunc(value);
+    }
   }, [value, filtredFunc]);
 
   return (
@@ -44,7 +44,7 @@ export const DropDownMenu = ({ title, dropDownList, filtredFunc }) => {
             display: isOpen && 'block',
           }}
         >
-          {value}
+          {title === 'Sort by' && value !== title ? 'Sort '+ value : value}
         </Span>
         <Icon
           style={{
@@ -54,7 +54,7 @@ export const DropDownMenu = ({ title, dropDownList, filtredFunc }) => {
                 : 'var(--secondary-text-color)',
           }}
         >
-          <Filters3 aria-label="Filter events by category" />
+          {icon}
         </Icon>
       </Button>
 
@@ -93,5 +93,6 @@ export const DropDownMenu = ({ title, dropDownList, filtredFunc }) => {
 DropDownMenu.propTypes = {
   title: PropTypes.string.isRequired,
   dropDownList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  filtredFunc: PropTypes.func.isRequired,
+  filtredFunc: PropTypes.func,
+  icon: PropTypes.element,
 };

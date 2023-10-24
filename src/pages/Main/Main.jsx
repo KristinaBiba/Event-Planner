@@ -7,19 +7,18 @@ import { Container } from 'components/UI/Container/Container';
 import { Section } from 'components/UI/Section/Section';
 import { Paginate } from 'components/Paginate/Paginate';
 import { DropDownMenu } from 'components/DropDownMenu/DropDownMenu';
-import { category } from 'helpers/variables';
+import { category, sortList } from 'helpers/variables';
 
 import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
+import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 
 import {
-  Button,
   ButtonWrap,
   CreateButton,
   H2,
   Span,
   TitleWrap,
-  Icon,
 } from './Main_css';
 
 function Main({ data, func }) {
@@ -59,14 +58,17 @@ function Main({ data, func }) {
                 title="Category"
                 dropDownList={category}
                 filtredFunc={handleCategoryFiltred}
+                icon=<Filters3/>
+                aria-label="Filter events by category"
               />
 
-              <Button type="button" disabled>
-                <Span>Sort by</Span>
-                <Icon>
-                  <Filters2 aria-label="Choose the type of sorting" />
-                </Icon>
-              </Button>
+              <DropDownMenu
+                title="Sort by"
+                dropDownList={sortList}
+                icon=<Filters2/>
+                aria-label="Choose the type of sorting"
+              />
+
               <CreateButton type="button" onClick={handleAdd}>
                 <Plus aria-label="Add new event" />
                 <Span>Add new event</Span>
