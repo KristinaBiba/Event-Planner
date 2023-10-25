@@ -38,6 +38,7 @@ export function Paginate({ itemsPerPage, data, onMoreInfoClick }) {
     </>
   );
 }
+
 Paginate.propTypes = {
   itemsPerPage: PropTypes.number.isRequired, 
   data: PropTypes.arrayOf(

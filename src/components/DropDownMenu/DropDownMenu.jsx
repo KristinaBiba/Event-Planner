@@ -16,6 +16,7 @@ export const DropDownMenu = ({
   title,
   dropDownList,
   onCategoryFilter,
+  onSort,
   icon,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,14 @@ export const DropDownMenu = ({
     if (onCategoryFilter) {
       onCategoryFilter(value.name);
     }
-  }, [value, onCategoryFilter]);
+  }, [value.name, onCategoryFilter]);
+
+  useEffect(() => {
+    if (onSort) {
+       onSort(value);
+       console.log('onSort',value );
+    }
+  }, [value, value.name, value.up, onSort]);
 
   return (
     <MenuWrap className={isOpen && 'isOpen'}>
@@ -126,4 +134,5 @@ DropDownMenu.propTypes = {
   ).isRequired,
   onCategoryFilter: PropTypes.func,
   icon: PropTypes.element.isRequired,
+  onSort: PropTypes.func,
 };

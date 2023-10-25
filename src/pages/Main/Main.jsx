@@ -13,16 +13,11 @@ import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
 import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 
-import {
-  ButtonWrap,
-  CreateButton,
-  H2,
-  Span,
-  TitleWrap,
-} from './Main_css';
+import { ButtonWrap, CreateButton, H2, Span, TitleWrap } from './Main_css';
 
 function Main({ data, onMoreInfoClick }) {
   const [categoryFiltredData, setCategoryFiltredData] = useState(data);
+  const [sortedData, setSortedData] = useState(categoryFiltredData);
 
   const navigate = useNavigate();
 
@@ -47,6 +42,55 @@ function Main({ data, onMoreInfoClick }) {
     [data]
   );
 
+  const handleSort = useCallback(
+    ({ name, up }) => {
+      console.log(name + up);
+      switch (name + up) {
+        case 'by nametrue':
+          console.log('by nametrue');
+          setSortedData(
+            categoryFiltredData.sort((a, b) => a.title.localeCompare(b.title))
+          );
+          break;
+        case 'by namefalse':
+          console.log('by namefalse');
+
+          setSortedData(
+            categoryFiltredData.sort((a, b) => b.title.localeCompare(a.title))
+          );
+          break;
+        case 'by datatrue':
+          setSortedData(categoryFiltredData.sort((a, b) => a.data - b.data));
+          break;
+        case 'by datafalse':
+          setSortedData(categoryFiltredData.sort((a, b) => b.data - a.data));
+          break;
+        case 'by prioritytrue':
+          setSortedData([...categoryFiltredData.filter(
+            item => item.priority === 'Low'
+          ), ...categoryFiltredData.filter(
+            item => item.priority === 'Medium'
+          ), ...categoryFiltredData.filter(
+            item => item.priority === 'High'
+          )]);
+          break;
+        case 'by priorityfalse':
+          setSortedData([...categoryFiltredData.filter(
+            item => item.priority === 'High'
+          ), ...categoryFiltredData.filter(
+            item => item.priority === 'Medium'
+          ), ...categoryFiltredData.filter(
+            item => item.priority === 'Low'
+          )]);;
+          break;
+        default:
+          setSortedData(categoryFiltredData);
+          return;
+      }
+    },
+    [categoryFiltredData]
+  );
+
   return (
     <main>
       <Section>
@@ -58,14 +102,15 @@ function Main({ data, onMoreInfoClick }) {
                 title="Category"
                 dropDownList={category}
                 onCategoryFilter={handleCategoryFilter}
-                icon=<Filters3/>
+                icon=<Filters3 />
                 aria-label="Filter events by category"
               />
 
               <DropDownMenu
                 title="Sort by"
                 dropDownList={sortList}
-                icon=<Filters2/>
+                onSort={handleSort}
+                icon=<Filters2 />
                 aria-label="Choose the type of sorting"
               />
 
@@ -77,7 +122,7 @@ function Main({ data, onMoreInfoClick }) {
           </TitleWrap>
           <Paginate
             itemsPerPage={screenWidth > 768 ? 8 : 6}
-            data={categoryFiltredData}
+            data={sortedData}
             onMoreInfoClick={onMoreInfoClick}
           />
         </Container>
