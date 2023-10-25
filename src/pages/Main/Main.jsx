@@ -21,7 +21,7 @@ import {
   TitleWrap,
 } from './Main_css';
 
-function Main({ data, func }) {
+function Main({ data, onMoreInfoClick }) {
   const [categoryFiltredData, setCategoryFiltredData] = useState(data);
 
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ function Main({ data, func }) {
     navigate('/create', { replace: true });
   };
 
-  const handleCategoryFiltred = useCallback(
+  const handleCategoryFilter = useCallback(
     category => {
       if (category === 'Category') {
         setCategoryFiltredData(data);
@@ -57,7 +57,7 @@ function Main({ data, func }) {
               <DropDownMenu
                 title="Category"
                 dropDownList={category}
-                filtredFunc={handleCategoryFiltred}
+                onCategoryFilter={handleCategoryFilter}
                 icon=<Filters3/>
                 aria-label="Filter events by category"
               />
@@ -78,7 +78,7 @@ function Main({ data, func }) {
           <Paginate
             itemsPerPage={screenWidth > 768 ? 8 : 6}
             data={categoryFiltredData}
-            func={func}
+            onMoreInfoClick={onMoreInfoClick}
           />
         </Container>
       </Section>
@@ -100,7 +100,7 @@ Main.propTypes = {
       priority: PropTypes.string.isRequired,
     })
   ).isRequired,
-  func: PropTypes.func.isRequired,
+  onMoreInfoClick: PropTypes.func.isRequired,
 };
 
 export default Main;

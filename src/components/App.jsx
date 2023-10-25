@@ -68,7 +68,7 @@ export function App() {
     }
   };
 
-  const toFiltredEvents = () => {
+  const handleFiltredEvents = () => {
     const normalizeFilter = filter.toLowerCase();
 
     return events.filter(
@@ -88,15 +88,15 @@ export function App() {
     }
   };
 
-  const onMoreInfoClick = id => {
+  const handleMoreInfoClick = id => {
     setInfoCard(events.filter(event => event.id === id)[0]);
   };
 
-  const onInputClean = () => {
+  const handleInputClean = () => {
     setFilter('');
   };
 
-  const filtredEvents = toFiltredEvents();
+  const filtredEvents = handleFiltredEvents();
 
   return (
     <Routes>
@@ -106,13 +106,13 @@ export function App() {
           <SharedLayout
             value={filter}
             onChange={handleFilter}
-            onInputClean={onInputClean}
+            onInputClean={handleInputClean}
           />
         }
       >
         <Route
           index
-          element={<Main data={filtredEvents} func={onMoreInfoClick} />}
+          element={<Main data={filtredEvents} onMoreInfoClick={handleMoreInfoClick} />}
         />
         <Route
           path="create"
@@ -120,7 +120,7 @@ export function App() {
         ></Route>
         <Route
           path="info"
-          element={<Info eventData={infoCard} onDeliteEvents={handleDelite} />}
+          element={<Info eventData={infoCard} onDelite={handleDelite} />}
         ></Route>
       </Route>
       <Route path="*" element={<>NotFound</>} />

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const MenuWrap = styled.div`
   &.isOpen {
     position: relative;
-    width: 158px;
+    min-width: 158px;
     border-radius: 8px;
     background-color: var(--primary-background-color);
     box-shadow: var(--primary-shadow);
@@ -42,7 +42,10 @@ export const MenuListDiv = styled.div`
 `;
 
 export const MenuListItem = styled.li`
-  /* height: 30px; */
+display: flex;
+align-items: center;
+justify-content: space-between;
+  height: 30px;
   padding: 8px 24px;
   color: var(--border-color);
   font-family: Poppins;
@@ -52,5 +55,8 @@ export const MenuListItem = styled.li`
   &:hover {
     color: var(--primary-text-color);
     border-bottom: 1.2px solid var(--primary-text-color);
+  }
+  &:hover svg{
+    stroke: var(--primary-text-color);
   }
 `;

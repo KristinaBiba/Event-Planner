@@ -21,7 +21,7 @@ import {
   DatePickerWrapper,
 } from './Form_css';
 
-export function EventForm({ onSubmitNewEvent }) {
+export function EventForm({ onSubmit }) {
   const navigate = useNavigate();
 
   return (
@@ -44,7 +44,7 @@ export function EventForm({ onSubmitNewEvent }) {
           console.log(values);
         }}
         onSubmit={async (values, actions) => {
-          await onSubmitNewEvent({
+          await onSubmit({
             title: values.title,
             description: values.description,
             date: values.selectDate,
@@ -156,5 +156,5 @@ export function EventForm({ onSubmitNewEvent }) {
 }
 
 EventForm.propTypes = {
-  onSubmitNewEvent: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };

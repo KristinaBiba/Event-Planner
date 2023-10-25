@@ -108,4 +108,5 @@ export const Icon = styled.svg`
     stroke: var(--primary-text-color);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+  
 `;

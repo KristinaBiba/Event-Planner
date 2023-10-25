@@ -24,7 +24,7 @@ import {
   SectionWrap,
 } from './Info_css';
 
-export function Info({ eventData, onDeliteEvents }) {
+export function Info({ eventData, onDelite }) {
   const { id, title, description, date, time, location, category, priority } =
     eventData;
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ export function Info({ eventData, onDeliteEvents }) {
                   <DeleteButton
                     type="button"
                     onClick={() => {
-                      onDeliteEvents(id);
+                      onDelite(id);
                       navigate('/', { replace: true });
                     }}
                   >
@@ -82,6 +82,6 @@ Info.propTypes = {
     category: PropTypes.string.isRequired,
     priority: PropTypes.string.isRequired,
   }).isRequired,
-  onDeliteEvents: PropTypes.func.isRequired,
+  onDelite: PropTypes.func.isRequired,
 };
 export default Info;

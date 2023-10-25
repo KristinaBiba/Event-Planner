@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { ReactComponent as ArrowUpSmall } from '../../images/svg/arrow-up-small.svg';
+
 import { Button, Icon, Span } from 'pages/Main/Main_css';
 
 import {
@@ -10,15 +12,20 @@ import {
   MenuWrap,
 } from './DropDownMenu_css';
 
-export const DropDownMenu = ({ title, dropDownList, filtredFunc, icon }) => {
+export const DropDownMenu = ({
+  title,
+  dropDownList,
+  onCategoryFilter,
+  icon,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(title);
+  const [value, setValue] = useState({ name: title, up: undefined });
 
   useEffect(() => {
-    if (filtredFunc) {
-      filtredFunc(value);
+    if (onCategoryFilter) {
+      onCategoryFilter(value.name);
     }
-  }, [value, filtredFunc]);
+  }, [value, onCategoryFilter]);
 
   return (
     <MenuWrap className={isOpen && 'isOpen'}>
@@ -38,23 +45,31 @@ export const DropDownMenu = ({ title, dropDownList, filtredFunc, icon }) => {
         <Span
           style={{
             color:
-              isOpen || value !== title
+              isOpen || value.name !== title
                 ? 'var(--primary-text-color)'
                 : 'var(--secondary-text-color)',
             display: isOpen && 'block',
           }}
         >
-          {title === 'Sort by' && value !== title ? 'Sort '+ value : value}
+          {title === 'Sort by' && value.name !== title
+            ? 'Sort ' + value.name
+            : value.name}
         </Span>
+
         <Icon
           style={{
             stroke:
-              isOpen || value !== title
+              isOpen || value.name !== title
                 ? 'var(--primary-text-color)'
                 : 'var(--secondary-text-color)',
+            rotate: title === 'Sort by' && !value.up && '180deg',
           }}
         >
-          {icon}
+          {title === 'Sort by' && value.name !== title ? (
+            <ArrowUpSmall />
+          ) : (
+            icon
+          )}
         </Icon>
       </Button>
 
@@ -65,7 +80,7 @@ export const DropDownMenu = ({ title, dropDownList, filtredFunc, icon }) => {
               <MenuListItem
                 key="All"
                 onClick={() => {
-                  setValue(title);
+                  setValue({ name: title });
                   setIsOpen(false);
                 }}
               >
@@ -74,13 +89,23 @@ export const DropDownMenu = ({ title, dropDownList, filtredFunc, icon }) => {
             )}
             {dropDownList.map(item => (
               <MenuListItem
-                key={item}
+                key={item.id}
                 onClick={() => {
-                  setValue(item);
+                  setValue({ name: item.name, up: item?.up });
                   setIsOpen(false);
                 }}
               >
-                {item}
+                <span>{item.name}</span>
+                {title === 'Sort by' && (
+                  <Icon
+                    style={{
+                      stroke: 'var(--border-color)',
+                      rotate: !item.up && '180deg',
+                    }}
+                  >
+                    <ArrowUpSmall />
+                  </Icon>
+                )}
               </MenuListItem>
             ))}
           </MenuListDiv>
@@ -92,7 +117,13 @@ export const DropDownMenu = ({ title, dropDownList, filtredFunc, icon }) => {
 
 DropDownMenu.propTypes = {
   title: PropTypes.string.isRequired,
-  dropDownList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  filtredFunc: PropTypes.func,
-  icon: PropTypes.element,
+  dropDownList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      up: PropTypes.bool,
+    })
+  ).isRequired,
+  onCategoryFilter: PropTypes.func,
+  icon: PropTypes.element.isRequired,
 };

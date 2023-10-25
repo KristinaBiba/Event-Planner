@@ -70,8 +70,8 @@ export const SelectInput = ({
         <SelectList>
           <SelectListDiv>
           {array.map(item => (
-          <SelectItem key={item} onClick={() => {setValue(item); setIsOpen(false)}}>
-            {item}
+          <SelectItem key={item.id} onClick={() => {setValue(item.name); setIsOpen(false)}}>
+            {item.name}
           </SelectItem>
           ))}
           </SelectListDiv>
@@ -87,7 +87,11 @@ export const SelectInput = ({
 
 SelectInput.propTypes = {
   label: PropTypes.string.isRequired,
-  array: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  array: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    up: PropTypes.bool,
+  }),).isRequired,
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,

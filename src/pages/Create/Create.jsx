@@ -16,7 +16,7 @@ export function Create({ onSubmit }) {
         <Container>
           <Navigate to="/" title="Back" />
           <H2>Create new event</H2>
-          <EventForm onSubmitNewEvent={onSubmit} />
+          <EventForm onSubmit={onSubmit} />
         </Container>
       </Section>
     </main>
