@@ -22,18 +22,18 @@ export const DropDownMenu = ({
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState({ name: title, up: undefined });
 
-  useEffect(() => {
-    if (onCategoryFilter) {
-      onCategoryFilter(value.name);
-    }
-  }, [value.name, onCategoryFilter]);
+  // const categoryFilter = filter => onCategoryFilter(filter);
 
-  useEffect(() => {
-    if (onSort) {
-       onSort(value);
-       console.log('onSort',value );
-    }
-  }, [value, value.name, value.up, onSort]);
+  // useEffect(() => {
+  //   categoryFilter(value.name);
+  // }, [value.name, categoryFilter]);
+
+
+  // useEffect(() => {
+  //   if (onSort) {
+  //      onSort(value);
+  //   }
+  // }, [value, value.name, value.up, onSort]);
 
   return (
     <MenuWrap className={isOpen && 'isOpen'}>
@@ -89,6 +89,9 @@ export const DropDownMenu = ({
                 key="All"
                 onClick={() => {
                   setValue({ name: title });
+                  if (onCategoryFilter) {
+                    onCategoryFilter(title)
+                  }
                   setIsOpen(false);
                 }}
               >
@@ -100,6 +103,9 @@ export const DropDownMenu = ({
                 key={item.id}
                 onClick={() => {
                   setValue({ name: item.name, up: item?.up });
+                  if (onCategoryFilter) {
+                    onCategoryFilter(item.name)
+                  }
                   setIsOpen(false);
                 }}
               >

@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 
 import { Container } from 'components/UI/Container/Container';
 import { Section } from 'components/UI/Section/Section';
-import { Paginate } from 'components/Paginate/Paginate';
 import { DropDownMenu } from 'components/DropDownMenu/DropDownMenu';
+import { CardWrap } from 'components/CardWrap/CardWrap';
+import { Paginate } from 'components/Paginate/Paginate';
 import { category, sortList } from 'helpers/variables';
 
 import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
@@ -16,8 +17,10 @@ import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 import { ButtonWrap, CreateButton, H2, Span, TitleWrap } from './Main_css';
 
 function Main({ data, onMoreInfoClick }) {
+  const [itemOffset, setItemOffset] = useState(0);
+  // const [currentItems, setCurrentItems] = useState([]);
   const [categoryFiltredData, setCategoryFiltredData] = useState(data);
-  const [sortedData, setSortedData] = useState(categoryFiltredData);
+  // const [sortedData, setSortedData] = useState(categoryFiltredData);
 
   const navigate = useNavigate();
 
@@ -28,68 +31,77 @@ function Main({ data, onMoreInfoClick }) {
     navigate('/create', { replace: true });
   };
 
-  const handleCategoryFilter = useCallback(
+  const itemsPerPage=screenWidth > 768 ? 8 : 6;
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = data.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+  
+  const handlePageClick = selected => {
+    const newOffset = (selected * itemsPerPage) % data.length;
+    setItemOffset(newOffset);
+  };
+
+  const handleCategoryFilter = 
     category => {
       if (category === 'Category') {
-        setCategoryFiltredData(data);
+        setCategoryFiltredData(currentItems);
         return;
       }
       setCategoryFiltredData(
-        data.filter(item => item.category.includes(category))
+        currentItems.filter(item => item.category.includes(category))
       );
       return;
-    },
-    [data]
-  );
+    };
+    
 
-  const handleSort = useCallback(
-    ({ name, up }) => {
-      console.log(name + up);
-      switch (name + up) {
-        case 'by nametrue':
-          console.log('by nametrue');
-          setSortedData(
-            categoryFiltredData.sort((a, b) => a.title.localeCompare(b.title))
-          );
-          break;
-        case 'by namefalse':
-          console.log('by namefalse');
+  // const handleSort = useCallback( 
+  //   (value) => {
+  //     const {name, up} = value;
+  //     switch (name + up) {
+  //       case 'by nametrue':
+  //         setSortedData(
+  //           categoryFiltredData.sort((a, b) => a.title.localeCompare(b.title))
+  //         );
+  //         break;
+  //       case 'by namefalse':
+  //         setSortedData(
+  //           categoryFiltredData.sort((a, b) => b.title.localeCompare(a.title))
+  //         );
+  //         break;
+  //       case 'by datatrue':
+  //         setSortedData(categoryFiltredData.sort((a, b) => Number(a.date.split('.').reverse().join(''))-Number(b.date.split('.').reverse().join(''))));
+  //         break;
+  //       case 'by datafalse':
+  //         setSortedData(categoryFiltredData.sort((a, b) => Number(b.date.split('.').reverse().join(''))-Number(a.date.split('.').reverse().join(''))));
+  //         break;
+  //       case 'by prioritytrue':
+  //         setSortedData([...categoryFiltredData.filter(
+  //           item => item.priority === 'Low'
+  //         ), ...categoryFiltredData.filter(
+  //           item => item.priority === 'Medium'
+  //         ), ...categoryFiltredData.filter(
+  //           item => item.priority === 'High'
+  //         )]);
+  //         break;
+  //       case 'by priorityfalse':
+  //         setSortedData([...categoryFiltredData.filter(
+  //           item => item.priority === 'High'
+  //         ), ...categoryFiltredData.filter(
+  //           item => item.priority === 'Medium'
+  //         ), ...categoryFiltredData.filter(
+  //           item => item.priority === 'Low'
+  //         )]);;
+  //         break;
+  //       default:
+  //         setSortedData(categoryFiltredData);
+  //         return;
+  //     }
+  //   },
+  //   [categoryFiltredData]
+  // );
 
-          setSortedData(
-            categoryFiltredData.sort((a, b) => b.title.localeCompare(a.title))
-          );
-          break;
-        case 'by datatrue':
-          setSortedData(categoryFiltredData.sort((a, b) => a.data - b.data));
-          break;
-        case 'by datafalse':
-          setSortedData(categoryFiltredData.sort((a, b) => b.data - a.data));
-          break;
-        case 'by prioritytrue':
-          setSortedData([...categoryFiltredData.filter(
-            item => item.priority === 'Low'
-          ), ...categoryFiltredData.filter(
-            item => item.priority === 'Medium'
-          ), ...categoryFiltredData.filter(
-            item => item.priority === 'High'
-          )]);
-          break;
-        case 'by priorityfalse':
-          setSortedData([...categoryFiltredData.filter(
-            item => item.priority === 'High'
-          ), ...categoryFiltredData.filter(
-            item => item.priority === 'Medium'
-          ), ...categoryFiltredData.filter(
-            item => item.priority === 'Low'
-          )]);;
-          break;
-        default:
-          setSortedData(categoryFiltredData);
-          return;
-      }
-    },
-    [categoryFiltredData]
-  );
+
+ 
 
   return (
     <main>
@@ -106,13 +118,13 @@ function Main({ data, onMoreInfoClick }) {
                 aria-label="Filter events by category"
               />
 
-              <DropDownMenu
+              {/* <DropDownMenu
                 title="Sort by"
                 dropDownList={sortList}
                 onSort={handleSort}
                 icon=<Filters2 />
                 aria-label="Choose the type of sorting"
-              />
+              /> */}
 
               <CreateButton type="button" onClick={handleAdd}>
                 <Plus aria-label="Add new event" />
@@ -120,10 +132,11 @@ function Main({ data, onMoreInfoClick }) {
               </CreateButton>
             </ButtonWrap>
           </TitleWrap>
+          <CardWrap data={categoryFiltredData} onMoreInfoClick={onMoreInfoClick} />
           <Paginate
             itemsPerPage={screenWidth > 768 ? 8 : 6}
-            data={sortedData}
-            onMoreInfoClick={onMoreInfoClick}
+            onPageClick={handlePageClick}
+            pageCount={pageCount}
           />
         </Container>
       </Section>
