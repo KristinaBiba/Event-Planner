@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -8,9 +8,9 @@ import { Section } from 'components/UI/Section/Section';
 import { DropDownMenu } from 'components/DropDownMenu/DropDownMenu';
 import { CardWrap } from 'components/CardWrap/CardWrap';
 import { Paginate } from 'components/Paginate/Paginate';
-import { category, sortList } from 'helpers/variables';
+import { category } from 'helpers/variables';
 
-import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
+// import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
 import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 

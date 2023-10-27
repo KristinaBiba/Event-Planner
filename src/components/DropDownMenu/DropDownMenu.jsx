@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { ReactComponent as ArrowUpSmall } from '../../images/svg/arrow-up-small.svg';
