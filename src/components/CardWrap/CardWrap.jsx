@@ -45,7 +45,7 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
           
           return (
             <Card key={id}>
-              <Image src={require('../../images/event-images/'+ category + '.jpg')} alt={"A picture of the " + category} loading="lazy" />
+              <Image src={require('images/event-images/'+ category + '.jpg')} alt={"A picture of the " + category} loading="lazy" />
               <CategoryWrap>
                 <TypeEvent>{category}</TypeEvent>
                 <TypeEvent>
