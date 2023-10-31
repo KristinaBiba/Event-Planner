@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
+import parseISO from 'date-fns/parseISO';
 
 import { TextInput } from './TextInput/TextInput';
 import { SelectInput } from './SelectInput/SelectInput';
@@ -21,7 +22,7 @@ import {
   DatePickerWrapper,
 } from './Form_css';
 
-export function EventForm({ onSubmit }) {
+export function EventForm({ onSubmit, eventData, onMoreInfoClick }) {
   const navigate = useNavigate();
 
   return (
@@ -31,14 +32,14 @@ export function EventForm({ onSubmit }) {
         validateOnBlur={false}
         validateOnChange={true}
         initialValues={{
-          title: '',
-          description: '',
-          selectDate: '',
-          selectTime: '',
-          location: '',
-          category: '',
-          addPicture: '',
-          priority: '',
+          title: eventData?.title || '',
+          description: eventData?.description || '',
+          selectDate: eventData ? parseISO(eventData?.date.split('.').reverse().join('-')+'T00:00:00') : '',
+          selectTime: eventData ? parseISO('2023-01-01T'+ eventData?.time+':00') : '',
+          location: eventData?.location || '',
+          category: eventData?.category || '',
+          addPicture: eventData?.addPicture || '',
+          priority: eventData?.priority || '',
         }}
         onChange={values => {
           console.log(values);
@@ -52,10 +53,14 @@ export function EventForm({ onSubmit }) {
             location: values.location,
             category: values.category,
             priority: values.priority,
-            id: nanoid(),
+            id: eventData?.id || nanoid(),
           });
 
-          navigate('/', { replace: true });
+          eventData && await onMoreInfoClick(eventData.id);
+
+          eventData
+            ? navigate('/info', { replace: true })
+            : navigate('/', { replace: true });
 
           actions.resetForm({
             values: {
@@ -144,8 +149,11 @@ export function EventForm({ onSubmit }) {
             </Div>
 
             <ButtonDiv>
-              <Button type="submit" aria-label="Add event">
-                Add event
+              <Button
+                type="submit"
+                aria-label={eventData ? 'Save button' : 'Add event button'}
+              >
+                {eventData ? 'Save' : 'Add event'}
               </Button>
             </ButtonDiv>
           </Form>
@@ -157,4 +165,5 @@ export function EventForm({ onSubmit }) {
 
 EventForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  // eventData:
 };

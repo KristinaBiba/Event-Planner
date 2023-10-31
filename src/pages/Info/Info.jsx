@@ -49,7 +49,10 @@ export function Info({ eventData, onDelite }) {
                 </TimePlaceWrap>
 
                 <ButtonWrap>
-                  <Button type="button" disabled>Edit</Button>
+                  <Button type="button" onClick={() => {
+                      
+                      navigate('/edit', { replace: true });
+                    }}>Edit</Button>
                   <DeleteButton
                     type="button"
                     onClick={() => {

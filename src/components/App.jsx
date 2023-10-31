@@ -9,6 +9,7 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 const Main = lazy(() => import('../pages/Main/Main'));
 const Create = lazy(() => import('pages/Create/Create'));
 const Info = lazy(() => import('pages/Info/Info'));
+const Edit = lazy(() => import('pages/Edit/Edit'));
 
 export function App() {
   const [events, setEvents] = useState([]);
@@ -84,6 +85,52 @@ export function App() {
     }
   };
 
+  const handleFormSubmitToEditEvent = editEvent => {
+    const prevEdit = events.filter(event => event.id === editEvent.id);
+
+    let dateFormat = '';
+
+    if (prevEdit.data !== editEvent.date) {
+      const date = editEvent.date
+        .toISOString()
+        .split('T')[0]
+        .split('-')
+        .reverse();
+      date[0] = Number(date[0]) + 1;
+      dateFormat = date.join('.');
+    } else {
+      dateFormat = editEvent.date;
+    }
+
+    let timeFormat = '';
+
+    if (prevEdit.time !== editEvent.time) {
+      const time = editEvent.time
+        .toISOString()
+        .split('T')[1]
+        .split(':')
+        .splice(0, 2);
+      if (Number(time[0]) > 20) {
+        time[0] = Number(time[0]) - 21;
+      } else {
+        time[0] = Number(time[0]) + 3;
+      }
+      timeFormat = time.join(':');
+    } else {
+      timeFormat = editEvent.time;
+    }
+
+    const event = { ...editEvent, date: dateFormat, time: timeFormat };
+
+    try {
+      setEvents(prevState => [...prevState.filter(event => event.id !== editEvent.id), event]);
+
+      toast.success('The event has been successfully edit');
+    } catch (error) {
+      toast.error('Sorry, try edit the event again');
+    }
+  };
+
   const handleDelite = id => {
     try {
       setEvents(prevState => prevState.filter(event => event.id !== id));
@@ -123,6 +170,16 @@ export function App() {
         <Route
           path="info"
           element={<Info eventData={infoCard} onDelite={handleDelite} />}
+        ></Route>
+        <Route
+          path="edit"
+          element={
+            <Edit
+              eventData={infoCard}
+              onSubmit={handleFormSubmitToEditEvent}
+              onMoreInfoClick={handleMoreInfoClick}
+            />
+          }
         ></Route>
       </Route>
       <Route path="*" element={<>NotFound</>} />
