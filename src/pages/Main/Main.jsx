@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -8,19 +8,19 @@ import { Section } from 'components/UI/Section/Section';
 import { DropDownMenu } from 'components/DropDownMenu/DropDownMenu';
 import { CardWrap } from 'components/CardWrap/CardWrap';
 import { Paginate } from 'components/Paginate/Paginate';
-import { category } from 'helpers/variables';
+import { category, sortList } from 'helpers/variables';
 
-// import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
+import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
 import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 
 import { ButtonWrap, CreateButton, H2, Span, TitleWrap } from './Main_css';
 
-function Main({ data, onMoreInfoClick }) {
+const Main = ({ data, onMoreInfoClick }) => {
   const [itemOffset, setItemOffset] = useState(0);
-  // const [currentItems, setCurrentItems] = useState([]);
-  const [categoryFiltredData, setCategoryFiltredData] = useState(data);
-  // const [sortedData, setSortedData] = useState(categoryFiltredData);
+  const [selectedCategory, setSelectedCategory] = useState('Category');
+  const [sortedType, setSortedType] = useState('default');
+  const [sortedData, setSortedData] = useState([]);
 
   const navigate = useNavigate();
 
@@ -31,77 +31,83 @@ function Main({ data, onMoreInfoClick }) {
     navigate('/create', { replace: true });
   };
 
-  const itemsPerPage=screenWidth > 768 ? 8 : 6;
+  const itemsPerPage = screenWidth > 768 ? 8 : 6;
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = data.slice(itemOffset, endOffset);
+  const currentItems = useMemo(
+    () => data.slice(itemOffset, endOffset),
+    [data, endOffset, itemOffset]
+  );
   const pageCount = Math.ceil(data.length / itemsPerPage);
-  
+
+  const filtredData = useMemo(
+    () =>
+      selectedCategory === 'Category'
+        ? currentItems
+        : currentItems.filter(item => item.category.includes(selectedCategory)),
+    [selectedCategory, currentItems]
+  );
+
+  useMemo(() => {
+    switch (sortedType) {
+      case 'default':
+        setSortedData(filtredData);
+        break;
+      case 'by nametrue':
+        setSortedData(
+          filtredData.sort((a, b) => a.title.localeCompare(b.title))
+        );
+        break;
+      case 'by namefalse':
+        setSortedData(
+          filtredData.sort((a, b) => b.title.localeCompare(a.title))
+        );
+        break;
+      case 'by datatrue':
+        setSortedData(
+          filtredData.sort(
+            (a, b) =>
+              Number(a.date.split('.').reverse().join('')) -
+              Number(b.date.split('.').reverse().join(''))
+          )
+        );
+        break;
+      case 'by datafalse':
+        setSortedData(
+          filtredData.sort(
+            (a, b) =>
+              Number(b.date.split('.').reverse().join('')) -
+              Number(a.date.split('.').reverse().join(''))
+          )
+        );
+        break;
+      case 'by prioritytrue':
+        setSortedData([
+          ...filtredData.filter(item => item.priority === 'Low'),
+          ...filtredData.filter(item => item.priority === 'Medium'),
+          ...filtredData.filter(item => item.priority === 'High'),
+        ]);
+        break;
+      case 'by priorityfalse':
+        setSortedData([
+          ...filtredData.filter(item => item.priority === 'High'),
+          ...filtredData.filter(item => item.priority === 'Medium'),
+          ...filtredData.filter(item => item.priority === 'Low'),
+        ]);
+        break;
+      default:
+        setSortedData(filtredData);
+        return;
+    }
+  }, [sortedType, filtredData]);
+
   const handlePageClick = selected => {
     const newOffset = (selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
   };
 
-  const handleCategoryFilter = 
-    category => {
-      if (category === 'Category') {
-        setCategoryFiltredData(currentItems);
-        return;
-      }
-      setCategoryFiltredData(
-        currentItems.filter(item => item.category.includes(category))
-      );
-      return;
-    };
-    
+  const handleCategoryFilter = category => setSelectedCategory(category);
 
-  // const handleSort = useCallback( 
-  //   (value) => {
-  //     const {name, up} = value;
-  //     switch (name + up) {
-  //       case 'by nametrue':
-  //         setSortedData(
-  //           categoryFiltredData.sort((a, b) => a.title.localeCompare(b.title))
-  //         );
-  //         break;
-  //       case 'by namefalse':
-  //         setSortedData(
-  //           categoryFiltredData.sort((a, b) => b.title.localeCompare(a.title))
-  //         );
-  //         break;
-  //       case 'by datatrue':
-  //         setSortedData(categoryFiltredData.sort((a, b) => Number(a.date.split('.').reverse().join(''))-Number(b.date.split('.').reverse().join(''))));
-  //         break;
-  //       case 'by datafalse':
-  //         setSortedData(categoryFiltredData.sort((a, b) => Number(b.date.split('.').reverse().join(''))-Number(a.date.split('.').reverse().join(''))));
-  //         break;
-  //       case 'by prioritytrue':
-  //         setSortedData([...categoryFiltredData.filter(
-  //           item => item.priority === 'Low'
-  //         ), ...categoryFiltredData.filter(
-  //           item => item.priority === 'Medium'
-  //         ), ...categoryFiltredData.filter(
-  //           item => item.priority === 'High'
-  //         )]);
-  //         break;
-  //       case 'by priorityfalse':
-  //         setSortedData([...categoryFiltredData.filter(
-  //           item => item.priority === 'High'
-  //         ), ...categoryFiltredData.filter(
-  //           item => item.priority === 'Medium'
-  //         ), ...categoryFiltredData.filter(
-  //           item => item.priority === 'Low'
-  //         )]);;
-  //         break;
-  //       default:
-  //         setSortedData(categoryFiltredData);
-  //         return;
-  //     }
-  //   },
-  //   [categoryFiltredData]
-  // );
-
-
- 
+  const handleSort = value => setSortedType(value);
 
   return (
     <main>
@@ -114,17 +120,17 @@ function Main({ data, onMoreInfoClick }) {
                 title="Category"
                 dropDownList={category}
                 onCategoryFilter={handleCategoryFilter}
-                icon=<Filters3 />
+                icon=<Filters3/>
                 aria-label="Filter events by category"
               />
 
-              {/* <DropDownMenu
+              <DropDownMenu
                 title="Sort by"
                 dropDownList={sortList}
                 onSort={handleSort}
-                icon=<Filters2 />
+                icon=<Filters2/>
                 aria-label="Choose the type of sorting"
-              /> */}
+              />
 
               <CreateButton type="button" onClick={handleAdd}>
                 <Plus aria-label="Add new event" />
@@ -132,7 +138,7 @@ function Main({ data, onMoreInfoClick }) {
               </CreateButton>
             </ButtonWrap>
           </TitleWrap>
-          <CardWrap data={categoryFiltredData} onMoreInfoClick={onMoreInfoClick} />
+          <CardWrap data={sortedData} onMoreInfoClick={onMoreInfoClick} />
           <Paginate
             itemsPerPage={screenWidth > 768 ? 8 : 6}
             onPageClick={handlePageClick}
@@ -142,7 +148,7 @@ function Main({ data, onMoreInfoClick }) {
       </Section>
     </main>
   );
-}
+};
 
 Main.propTypes = {
   data: PropTypes.arrayOf(

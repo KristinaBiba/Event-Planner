@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { ReactComponent as ArrowUpSmall } from '../../images/svg/arrow-up-small.svg';
@@ -12,7 +12,7 @@ import {
   MenuWrap,
 } from './DropDownMenu_css';
 
-export const DropDownMenu = ({
+export const DropDownMenu = memo (({
   title,
   dropDownList,
   onCategoryFilter,
@@ -22,18 +22,11 @@ export const DropDownMenu = ({
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState({ name: title, up: undefined });
 
-  // const categoryFilter = filter => onCategoryFilter(filter);
-
-  // useEffect(() => {
-  //   categoryFilter(value.name);
-  // }, [value.name, categoryFilter]);
-
-
-  // useEffect(() => {
-  //   if (onSort) {
-  //      onSort(value);
-  //   }
-  // }, [value, value.name, value.up, onSort]);
+  useEffect(() => {
+    if (value.name !== title && onCategoryFilter) {
+      onCategoryFilter(value.name);
+    }
+  }, [value.name, title, onCategoryFilter]);
 
   return (
     <MenuWrap className={isOpen && 'isOpen'}>
@@ -106,6 +99,9 @@ export const DropDownMenu = ({
                   if (onCategoryFilter) {
                     onCategoryFilter(item.name)
                   }
+                  if (onSort) {
+                    onSort(item.name + item.up)
+                  }
                   setIsOpen(false);
                 }}
               >
@@ -127,7 +123,7 @@ export const DropDownMenu = ({
       )}
     </MenuWrap>
   );
-};
+});
 
 DropDownMenu.propTypes = {
   title: PropTypes.string.isRequired,

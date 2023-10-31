@@ -12,8 +12,6 @@ const Info = lazy(() => import('pages/Info/Info'));
 
 export function App() {
   const [events, setEvents] = useState([]);
-  const [filter, setFilter] = useState('');
-  const [infoCard, setInfoCard] = useState({});
 
   const isFirstRender = useRef(true);
 
@@ -33,10 +31,28 @@ export function App() {
     localStorage.setItem('UserEvents', JSON.stringify(events));
   }, [events]);
 
+  const [filter, setFilter] = useState('');
+
   const handleFilter = e => {
-    const { value } = e.target;
-    setFilter(value);
+    setFilter(e.target.value);
   };
+  const handleInputClean = () => {
+    setFilter('');
+  };
+
+  const handleFiltredEvents = () => {
+    const normalizeFilter = filter.toLowerCase();
+
+    return events.filter(
+      event =>
+        event.title.toLowerCase().includes(normalizeFilter) ||
+        event.description.toLowerCase().includes(normalizeFilter)
+    );
+  };
+
+  const filtredEvents = handleFiltredEvents();
+
+  const [infoCard, setInfoCard] = useState({});
 
   const handleFormSubmit = newEvent => {
     const date = newEvent.date.toISOString().split('T')[0].split('-').reverse();
@@ -68,16 +84,6 @@ export function App() {
     }
   };
 
-  const handleFiltredEvents = () => {
-    const normalizeFilter = filter.toLowerCase();
-
-    return events.filter(
-      event =>
-        event.title.toLowerCase().includes(normalizeFilter) ||
-        event.description.toLowerCase().includes(normalizeFilter)
-    );
-  };
-
   const handleDelite = id => {
     try {
       setEvents(prevState => prevState.filter(event => event.id !== id));
@@ -91,12 +97,6 @@ export function App() {
   const handleMoreInfoClick = id => {
     setInfoCard(events.filter(event => event.id === id)[0]);
   };
-
-  const handleInputClean = () => {
-    setFilter('');
-  };
-
-  const filtredEvents = handleFiltredEvents();
 
   return (
     <Routes>
@@ -112,7 +112,9 @@ export function App() {
       >
         <Route
           index
-          element={<Main data={filtredEvents} onMoreInfoClick={handleMoreInfoClick} />}
+          element={
+            <Main data={filtredEvents} onMoreInfoClick={handleMoreInfoClick} />
+          }
         />
         <Route
           path="create"

@@ -68,8 +68,8 @@ export const DatePicker = ({
                   setStartEvent('');
                   handleCalendarClose();
                   setValue('');
-                  window.scroll(0, 1);
                   window.scroll(0, -1);
+                  window.scroll(0, 1);
                 }}
               >
                 Cancel
