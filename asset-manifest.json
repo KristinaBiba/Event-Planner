@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/Event-Planner/static/css/main.56fbf49e.css",
-    "main.js": "/Event-Planner/static/js/main.ccb78b7b.js",
-    "static/js/498.e46cf51b.chunk.js": "/Event-Planner/static/js/498.e46cf51b.chunk.js",
+    "main.js": "/Event-Planner/static/js/main.28f5900f.js",
+    "static/js/498.4f1504de.chunk.js": "/Event-Planner/static/js/498.4f1504de.chunk.js",
     "static/js/691.e4bc7c8d.chunk.js": "/Event-Planner/static/js/691.e4bc7c8d.chunk.js",
-    "static/js/422.4c2a4f31.chunk.js": "/Event-Planner/static/js/422.4c2a4f31.chunk.js",
+    "static/js/422.bcd8d670.chunk.js": "/Event-Planner/static/js/422.bcd8d670.chunk.js",
     "static/css/850.0d5b0672.chunk.css": "/Event-Planner/static/css/850.0d5b0672.chunk.css",
     "static/js/850.e0aad1c3.chunk.js": "/Event-Planner/static/js/850.e0aad1c3.chunk.js",
     "static/js/48.07204847.chunk.js": "/Event-Planner/static/js/48.07204847.chunk.js",
@@ -12,7 +12,7 @@
     "static/media/Music.jpg": "/Event-Planner/static/media/Music.87dd5673e487fb1935af.jpg",
     "static/media/Party.jpg": "/Event-Planner/static/media/Party.4ade381a7653b61c32af.jpg",
     "static/media/Sport.jpg": "/Event-Planner/static/media/Sport.3527c35c995f1d1657f7.jpg",
-    "static/media/Conferense.jpg": "/Event-Planner/static/media/Conferense.2e1be67d81738a8b19bd.jpg",
+    "static/media/Conference.jpg": "/Event-Planner/static/media/Conference.2e1be67d81738a8b19bd.jpg",
     "static/media/Business.jpg": "/Event-Planner/static/media/Business.4e9dd10857c4e9d29926.jpg",
     "static/media/Art.jpg": "/Event-Planner/static/media/Art.0f856bbdbb62e1d232b5.jpg",
     "static/media/Workshop.jpg": "/Event-Planner/static/media/Workshop.38410a7510cd5d7d3dc4.jpg",
@@ -28,16 +28,16 @@
     "static/media/cross-small.svg": "/Event-Planner/static/media/cross-small.6541f904d43bcaf5cf77548a3074e6dd.svg",
     "static/media/chevron-down-small.svg": "/Event-Planner/static/media/chevron-down-small.4ba2bcfcffaa3d8a7e43a15d938c7288.svg",
     "main.56fbf49e.css.map": "/Event-Planner/static/css/main.56fbf49e.css.map",
-    "main.ccb78b7b.js.map": "/Event-Planner/static/js/main.ccb78b7b.js.map",
-    "498.e46cf51b.chunk.js.map": "/Event-Planner/static/js/498.e46cf51b.chunk.js.map",
+    "main.28f5900f.js.map": "/Event-Planner/static/js/main.28f5900f.js.map",
+    "498.4f1504de.chunk.js.map": "/Event-Planner/static/js/498.4f1504de.chunk.js.map",
     "691.e4bc7c8d.chunk.js.map": "/Event-Planner/static/js/691.e4bc7c8d.chunk.js.map",
-    "422.4c2a4f31.chunk.js.map": "/Event-Planner/static/js/422.4c2a4f31.chunk.js.map",
+    "422.bcd8d670.chunk.js.map": "/Event-Planner/static/js/422.bcd8d670.chunk.js.map",
     "850.0d5b0672.chunk.css.map": "/Event-Planner/static/css/850.0d5b0672.chunk.css.map",
     "850.e0aad1c3.chunk.js.map": "/Event-Planner/static/js/850.e0aad1c3.chunk.js.map",
     "48.07204847.chunk.js.map": "/Event-Planner/static/js/48.07204847.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.56fbf49e.css",
-    "static/js/main.ccb78b7b.js"
+    "static/js/main.28f5900f.js"
   ]
 }
