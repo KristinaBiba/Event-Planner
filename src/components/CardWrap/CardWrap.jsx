@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import { Priority } from 'components/UI/Priority/Priority';
 
-import img from '../../images/event-images/Rectangle 347.jpg';
-
 import {
   Button,
   Card,
@@ -44,9 +42,10 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
           priority,
         }) => {
           const dateOfEvent = date.split('').slice(0, 5).join('');
+          
           return (
             <Card key={id}>
-              <Image src={img} alt="A picture of the meeting" loading="lazy" />
+              <Image src={require('../../images/event-images/'+ category + '.jpg')} alt={"A picture of the " + category} loading="lazy" />
               <CategoryWrap>
                 <TypeEvent>{category}</TypeEvent>
                 <TypeEvent>

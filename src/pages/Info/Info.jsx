@@ -8,8 +8,6 @@ import { Navigate } from 'components/UI/Navigate/Navigate';
 import { Priority } from 'components/UI/Priority/Priority';
 import { Section } from 'components/UI/Section/Section';
 
-import img from '../../images/event-images/Rectangle 347.jpg';
-
 import {
   Button,
   Card,
@@ -36,7 +34,7 @@ export function Info({ eventData, onDelite }) {
           <SectionWrap>
             <H2>{title}</H2>
             <Card>
-              <Image src={img} alt="A picture of the meeting" loading="lazy" />
+              <Image src={require('../../images/event-images/'+ category + '.jpg')} alt="A picture of the event" loading="lazy" />
               <Wrap>
                 <P>{description}</P>
                 <TimePlaceWrap>
