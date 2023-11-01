@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const TitleWrap = styled.div`
@@ -82,12 +83,34 @@ export const Button = styled.button`
   }
 `;
 
-export const CreateButton = styled(Button)`
+export const CreateButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  box-shadow: var(--primary-shadow);
+  text-decoration: none;
+  bottom: -28px;
+  left: 47px;
+  justify-content: space-between;
   background-color: var(--primary-text-color);
   color: var(--btn-accent-color);
+
   &:hover {
     background-color: var(--btn-hover-background);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+  @media screen and (max-width: 767px) {
+    gap: 0;
+    width: 56px;
+  }
+  @media screen and (min-width: 768px) {
+    left: 0;
+  }  
 `;
 
 export const Span = styled.span`

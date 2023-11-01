@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const SectionWrap = styled.div`
@@ -99,14 +100,14 @@ export const ButtonWrap = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  cursor: pointer;
+export const PageLink = styled(Link)`
+
   height: 32px;
   padding: 8px 16px;
   border-radius: 4px;
   background-color: var(--primary-background-color);
   border: 1px solid var(--primary-text-color);
-  outline: none;
+  text-decoration: none;
   color: var(--primary-text-color);
   font-size: 12px;
   font-style: normal;
@@ -124,7 +125,28 @@ export const Button = styled.button`
   }
 `;
 
-export const DeleteButton = styled(Button)`
+export const DeleteButton = styled.button`
   background: var(--primary-text-color);
   color: var(--btn-accent-color);
+  cursor: pointer;
+  outline: none;
+  height: 32px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--primary-text-color);
+  text-decoration: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  &:hover {
+    background-color: var(--btn-hover-background);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &:disabled {
+    background-color: var(--btn-disabled-background);
+  }
+  @media screen and (max-width: 767px) {
+    width: 108px;
+  }
 `;

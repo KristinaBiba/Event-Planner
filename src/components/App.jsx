@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
-const Main = lazy(() => import('../pages/Main/Main'));
+const Events = lazy(() => import('../pages/Events/Events'));
 const Create = lazy(() => import('pages/Create/Create'));
-const Info = lazy(() => import('pages/Info/Info'));
+const EventInfo = lazy(() => import('pages/EventInfo/EventInfo'));
 const Edit = lazy(() => import('pages/Edit/Edit'));
 
 export function App() {
@@ -53,11 +53,12 @@ export function App() {
 
   const filtredEvents = handleFiltredEvents();
 
-  const [infoCard, setInfoCard] = useState({});
-
   const handleFormSubmit = newEvent => {
     const date = newEvent.date.toISOString().split('T')[0].split('-').reverse();
     date[0] = Number(date[0]) + 1;
+    if (date[0]<10) {
+      date[0] = '0' + date[0];
+    }
     const dateFormat = date.join('.');
     const time = newEvent.time
       .toISOString()
@@ -123,7 +124,10 @@ export function App() {
     const event = { ...editEvent, date: dateFormat, time: timeFormat };
 
     try {
-      setEvents(prevState => [...prevState.filter(event => event.id !== editEvent.id), event]);
+      setEvents(prevState => [
+        ...prevState.filter(event => event.id !== editEvent.id),
+        event,
+      ]);
 
       toast.success('The event has been successfully edit');
     } catch (error) {
@@ -141,10 +145,6 @@ export function App() {
     }
   };
 
-  const handleMoreInfoClick = id => {
-    setInfoCard(events.filter(event => event.id === id)[0]);
-  };
-
   return (
     <Routes>
       <Route
@@ -157,31 +157,22 @@ export function App() {
           />
         }
       >
+        <Route index element={<Navigate to="/events" />} />
+
+        <Route path="events" element={<Events data={filtredEvents} />} />
         <Route
-          index
-          element={
-            <Main data={filtredEvents} onMoreInfoClick={handleMoreInfoClick} />
-          }
+          path="events/:eventId"
+          element={<EventInfo events={events} onDelite={handleDelite} />}
         />
         <Route
-          path="create"
-          element={<Create onSubmit={handleFormSubmit} />}
-        ></Route>
-        <Route
-          path="info"
-          element={<Info eventData={infoCard} onDelite={handleDelite} />}
-        ></Route>
-        <Route
-          path="edit"
+          path="events/:eventId/edit"
           element={
-            <Edit
-              eventData={infoCard}
-              onSubmit={handleFormSubmitToEditEvent}
-              onMoreInfoClick={handleMoreInfoClick}
-            />
+            <Edit events={events} onSubmit={handleFormSubmitToEditEvent} />
           }
-        ></Route>
+        />
+        <Route path="create" element={<Create onSubmit={handleFormSubmit} />} />
       </Route>
+
       <Route path="*" element={<>NotFound</>} />
     </Routes>
   );

@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -14,22 +13,15 @@ import { ReactComponent as Filters2 } from '../../images/svg/filters-2.svg';
 import { ReactComponent as Filters3 } from '../../images/svg/filters-3.svg';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 
-import { ButtonWrap, CreateButton, H2, Span, TitleWrap } from './Main_css';
+import { ButtonWrap, CreateButton, H2, Span, TitleWrap } from './Events_css';
 
-const Main = ({ data, onMoreInfoClick }) => {
+const Main = ({ data }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('Category');
   const [sortedType, setSortedType] = useState('default');
   const [sortedData, setSortedData] = useState([]);
 
-  const navigate = useNavigate();
-
   const screenWidth = window.screen.width;
-
-  const handleAdd = e => {
-    e.preventDefault();
-    navigate('/create', { replace: true });
-  };
 
   const itemsPerPage = screenWidth > 768 ? 8 : 6;
   const endOffset = itemOffset + itemsPerPage;
@@ -132,13 +124,13 @@ const Main = ({ data, onMoreInfoClick }) => {
                 aria-label="Choose the type of sorting"
               />
 
-              <CreateButton type="button" onClick={handleAdd}>
+              <CreateButton to='/create'>
                 <Plus aria-label="Add new event" />
                 <Span>Add new event</Span>
               </CreateButton>
             </ButtonWrap>
           </TitleWrap>
-          <CardWrap data={sortedData} onMoreInfoClick={onMoreInfoClick} />
+          <CardWrap data={sortedData}/>
           <Paginate
             itemsPerPage={screenWidth > 768 ? 8 : 6}
             onPageClick={handlePageClick}
@@ -164,7 +156,6 @@ Main.propTypes = {
       priority: PropTypes.string.isRequired,
     })
   ).isRequired,
-  onMoreInfoClick: PropTypes.func.isRequired,
 };
 
 export default Main;

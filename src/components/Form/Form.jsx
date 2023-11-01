@@ -22,7 +22,7 @@ import {
   DatePickerWrapper,
 } from './Form_css';
 
-export function EventForm({ onSubmit, eventData, onMoreInfoClick }) {
+export function EventForm({ onSubmit, eventData }) {
   const navigate = useNavigate();
 
   return (
@@ -56,10 +56,10 @@ export function EventForm({ onSubmit, eventData, onMoreInfoClick }) {
             id: eventData?.id || nanoid(),
           });
 
-          eventData && await onMoreInfoClick(eventData.id);
+          // eventData && await onMoreInfoClick(eventData.id);
 
           eventData
-            ? navigate('/info', { replace: true })
+            ? navigate(`/events/${eventData.id}`, { replace: true })
             : navigate('/', { replace: true });
 
           actions.resetForm({

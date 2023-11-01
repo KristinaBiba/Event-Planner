@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ReactComponent as ArrowUpSmall } from '../../images/svg/arrow-up-small.svg';
 
-import { Button, Icon, Span } from 'pages/Main/Main_css';
+import { Button, Icon, Span } from 'pages/Events/Events_css';
 
 import {
   MenuList,

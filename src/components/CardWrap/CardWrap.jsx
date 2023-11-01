@@ -1,10 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Priority } from 'components/UI/Priority/Priority';
 
 import {
-  Button,
   Card,
   CategoryWrap,
   Div,
@@ -12,6 +10,7 @@ import {
   H3,
   Image,
   P,
+  PageLink,
   TimeEvent,
   TimePlaceWrap,
   TypeEvent,
@@ -19,12 +18,6 @@ import {
 } from './CardWrap_css';
 
 export function CardWrap({ data, onMoreInfoClick, children }) {
-  const navigate = useNavigate();
-
-  const handleCardInfo = id => {
-    onMoreInfoClick(id);
-    navigate('/info', { replace: true });
-  };
 
   return (
     <Wrap>
@@ -62,13 +55,12 @@ export function CardWrap({ data, onMoreInfoClick, children }) {
                 <H3>{title}</H3>
                 <P>{description}</P>
                 <Div>
-                  <Button
-                    type="button"
-                    aria-label="Get more information about the event"
-                    onClick={() => handleCardInfo(id)}
+                  <PageLink
+                    to={`/events/${id}`}
+                    aria-label="Get more information about the event"              
                   >
                     More info
-                  </Button>
+                  </PageLink>
                 </Div>
               </EventWrap>
             </Card>
@@ -93,6 +85,6 @@ CardWrap.propTypes = {
       priority: PropTypes.string.isRequired,
     })
   ).isRequired,
-  onMoreInfoClick: PropTypes.func.isRequired,
+  // onMoreInfoClick: PropTypes.func.isRequired,
   children: PropTypes.element,
 };

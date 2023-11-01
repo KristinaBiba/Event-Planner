@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrap = styled.ul`
@@ -146,8 +147,8 @@ export const Div = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  cursor: pointer;
+export const PageLink = styled(Link)`
+  text-decoration: none;
   height: 40px;
   padding: 10px 24px;
   border-radius: 8px;
@@ -161,7 +162,6 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  font-family: inherit;
 
   &:hover,
   &:focus {
