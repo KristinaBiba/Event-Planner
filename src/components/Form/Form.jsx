@@ -56,8 +56,6 @@ export function EventForm({ onSubmit, eventData }) {
             id: eventData?.id || nanoid(),
           });
 
-          // eventData && await onMoreInfoClick(eventData.id);
-
           eventData
             ? navigate(`/events/${eventData.id}`, { replace: true })
             : navigate('/', { replace: true });

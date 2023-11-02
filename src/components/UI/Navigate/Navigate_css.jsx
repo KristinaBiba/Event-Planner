@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const LinkComponent = styled(NavLink)`
+export const LinkComponent = styled(Link)`
 display: inline-flex;
 align-items: center;
 gap: 8px;

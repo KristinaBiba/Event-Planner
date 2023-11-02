@@ -23,9 +23,8 @@ export const MenuList = styled.ul`
   font-weight: 500;
   z-index: 100;
   list-style: none;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     left: 0;
-
   }
 `;
 
@@ -42,9 +41,9 @@ export const MenuListDiv = styled.div`
 `;
 
 export const MenuListItem = styled.li`
-display: flex;
-align-items: center;
-justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 30px;
   padding: 8px 24px;
   color: var(--border-color);
@@ -52,12 +51,16 @@ justify-content: space-between;
   font-size: 14px;
   font-weight: 400;
   line-height: 14px;
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--primary-text-color);
     border-bottom: 1.2px solid var(--primary-text-color);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  &:hover svg{
+  &:hover svg,
+  &:focus svg {
     stroke: var(--primary-text-color);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
@@ -78,7 +81,8 @@ export const Button = styled.button`
   bottom: -28px;
   left: 47px;
   justify-content: space-between;
-  &:hover {
+  &:hover,
+  &:focus {
     border: 1px solid var(--primary-text-color);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -92,6 +96,13 @@ export const Button = styled.button`
   @media screen and (min-width: 768px) {
     left: 0;
   }
+  &.isOpen {
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    width: 158px;
+    position: absolute;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 `;
 export const Span = styled.span`
   font-size: 16px;
@@ -101,15 +112,15 @@ export const Span = styled.span`
   @media screen and (max-width: 767px) {
     display: none;
   }
+  
 `;
 
 export const Icon = styled.svg`
   width: 24px;
   height: 24px;
   stroke: var(--secondary-text-color);
-  ${Button}:hover {
+  ${Button}:hover, ${Button}:focus {
     stroke: var(--primary-text-color);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
 `;

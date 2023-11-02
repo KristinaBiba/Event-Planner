@@ -47,7 +47,7 @@ export const P = styled.p`
   margin-bottom: 24px;
 `;
 
-export const TimePlaceWrap = styled.div`
+export const PropertyWrap = styled.div`
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -55,7 +55,7 @@ export const TimePlaceWrap = styled.div`
   margin-bottom: 40px;
 `;
 
-export const TimeEvent = styled.div`
+export const Property = styled.div`
   color: var(--primary-text-color);
   padding: 8px 12px;
   font-size: 14px;
@@ -84,13 +84,13 @@ export const ButtonWrap = styled.div`
 `;
 
 export const PageLink = styled(Link)`
-
   height: 32px;
   padding: 8px 16px;
   border-radius: 4px;
   background-color: var(--primary-background-color);
   border: 1px solid var(--primary-text-color);
   text-decoration: none;
+  text-align: center;
   color: var(--primary-text-color);
   font-size: 12px;
   font-style: normal;
@@ -114,10 +114,11 @@ export const DeleteButton = styled.button`
   cursor: pointer;
   outline: none;
   height: 32px;
-  padding: 8px 16px;
+  padding: 8px 8px;
   border-radius: 4px;
   border: 1px solid var(--primary-text-color);
   text-decoration: none;
+  font-family: inherit;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -128,6 +129,9 @@ export const DeleteButton = styled.button`
   }
   &:disabled {
     background-color: var(--btn-disabled-background);
+  }
+  @media screen and (min-width: 768px) {
+    padding: 8px 16px;
   }
   @media screen and (max-width: 767px) {
     width: 108px;

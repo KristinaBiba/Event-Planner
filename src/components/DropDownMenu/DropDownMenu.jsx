@@ -31,14 +31,7 @@ export const DropDownMenu = memo(
           onClick={() => {
             setIsOpen(true);
           }}
-          style={{
-            transition:
-              isOpen && 'transform 250ms cubic-bezier(0.4, 0, 0.2, 1)',
-            width: isOpen && '158px',
-            position: isOpen && 'absolute',
-            borderBottomRightRadius: isOpen && 0,
-            borderBottomLeftRadius: isOpen && 0,
-          }}
+          className={isOpen && 'isOpen'}
         >
           <Span
             style={{
@@ -133,6 +126,6 @@ DropDownMenu.propTypes = {
     })
   ).isRequired,
   onCategoryFilter: PropTypes.func,
-  icon: PropTypes.element.isRequired,
   onSort: PropTypes.func,
+  icon: PropTypes.element.isRequired,
 };

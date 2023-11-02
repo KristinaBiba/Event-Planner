@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -7,6 +7,7 @@ import { Container } from 'components/UI/Container/Container';
 import { Navigate } from 'components/UI/Navigate/Navigate';
 import { Priority } from 'components/UI/Priority/Priority';
 import { Section } from 'components/UI/Section/Section';
+import { Loader } from 'components/Loader/Loader';
 import { H2 } from '../../components/UI/H2/H2';
 
 import {
@@ -14,15 +15,13 @@ import {
   Card,
   Image,
   P,
-  TimeEvent,
-  TimePlaceWrap,
+  Property,
+  PropertyWrap,
   ButtonWrap,
   Wrap,
   DeleteButton,
   SectionWrap,
 } from './EventInfoPage_css';
-import { LoaderWrap } from 'components/SharedLayout/SharedLayout_css';
-import { Watch } from 'react-loader-spinner';
 
 export function EventInfoPage({ onDelite, events }) {
   const { eventId } = useParams();
@@ -42,19 +41,10 @@ export function EventInfoPage({ onDelite, events }) {
         <Container>
           <Navigate to="/" title="Back" />
           {isLoading ? (
-            <LoaderWrap>
-              <Watch
-                height="80"
-                width="80"
-                radius="48"
-                color="var(--primary-text-color)"
-                ariaLabel="Loading"
-                visible={true}
-              />
-            </LoaderWrap>
+            <Loader />
           ) : (
             <SectionWrap>
-              <H2 title={infoCard.title} eventInfo/>
+              <H2 title={infoCard.title} eventInfo />
               <Card>
                 <Image
                   src={require('../../images/event-images/' +
@@ -65,28 +55,21 @@ export function EventInfoPage({ onDelite, events }) {
                 />
                 <Wrap>
                   <P>{infoCard.description}</P>
-                  <TimePlaceWrap>
-                    <TimeEvent>{infoCard.category}</TimeEvent>
-                    <TimeEvent>
+                  <PropertyWrap>
+                    <Property>{infoCard.category}</Property>
+                    <Property>
                       <Priority value={infoCard.priority}>
                         {infoCard.priority}
                       </Priority>
-                    </TimeEvent>
-                    <TimeEvent>{infoCard.location}</TimeEvent>
-                    <TimeEvent>
+                    </Property>
+                    <Property>{infoCard.location}</Property>
+                    <Property>
                       {infoCard.date} at {infoCard.time}
-                    </TimeEvent>
-                  </TimePlaceWrap>
+                    </Property>
+                  </PropertyWrap>
 
                   <ButtonWrap>
-                    <PageLink
-                      to={`/events/${infoCard.id}/edit`}
-                      onClick={() => {
-                        navigate('/edit', { replace: true });
-                      }}
-                    >
-                      Edit
-                    </PageLink>
+                    <PageLink to={`/events/${infoCard.id}/edit`}>Edit</PageLink>
                     <DeleteButton
                       type="button"
                       onClick={() => {
