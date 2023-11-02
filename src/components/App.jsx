@@ -6,6 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
+import { dateFormatting } from 'helpers/dateFormatting';
+import { timeFormatting } from 'helpers/timeFormatting';
+
 const Events = lazy(() => import('../pages/Events/Events'));
 const Create = lazy(() => import('pages/Create/Create'));
 const EventInfo = lazy(() => import('pages/EventInfo/EventInfo'));
@@ -53,24 +56,11 @@ export function App() {
 
   const filtredEvents = handleFiltredEvents();
 
-  const handleFormSubmit = newEvent => {
-    const date = newEvent.date.toISOString().split('T')[0].split('-').reverse();
-    date[0] = Number(date[0]) + 1;
-    if (date[0]<10) {
-      date[0] = '0' + date[0];
-    }
-    const dateFormat = date.join('.');
-    const time = newEvent.time
-      .toISOString()
-      .split('T')[1]
-      .split(':')
-      .splice(0, 2);
-    if (Number(time[0]) > 20) {
-      time[0] = Number(time[0]) - 21;
-    } else {
-      time[0] = Number(time[0]) + 3;
-    }
-    const timeFormat = time.join(':');
+  const handleFormSubmitToCreateEvent = newEvent => {
+    const dateFormat = dateFormatting(newEvent.date);
+
+    const timeFormat = timeFormatting(newEvent.time);
+
     const event = { ...newEvent, date: dateFormat, time: timeFormat };
 
     try {
@@ -92,13 +82,7 @@ export function App() {
     let dateFormat = '';
 
     if (prevEdit.data !== editEvent.date) {
-      const date = editEvent.date
-        .toISOString()
-        .split('T')[0]
-        .split('-')
-        .reverse();
-      date[0] = Number(date[0]) + 1;
-      dateFormat = date.join('.');
+      dateFormat = dateFormatting(editEvent.date);
     } else {
       dateFormat = editEvent.date;
     }
@@ -106,17 +90,7 @@ export function App() {
     let timeFormat = '';
 
     if (prevEdit.time !== editEvent.time) {
-      const time = editEvent.time
-        .toISOString()
-        .split('T')[1]
-        .split(':')
-        .splice(0, 2);
-      if (Number(time[0]) > 20) {
-        time[0] = Number(time[0]) - 21;
-      } else {
-        time[0] = Number(time[0]) + 3;
-      }
-      timeFormat = time.join(':');
+      timeFormat = timeFormatting(editEvent.time);
     } else {
       timeFormat = editEvent.time;
     }
@@ -170,7 +144,7 @@ export function App() {
             <Edit events={events} onSubmit={handleFormSubmitToEditEvent} />
           }
         />
-        <Route path="create" element={<Create onSubmit={handleFormSubmit} />} />
+        <Route path="create" element={<Create onSubmit={handleFormSubmitToCreateEvent} />} />
       </Route>
 
       <Route path="*" element={<>NotFound</>} />
