@@ -33,36 +33,13 @@ export const ButtonWrap = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  height: 56px;
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  background-color: var(--primary-background-color);
-  box-shadow: var(--primary-shadow);
-  outline: none;
-  color: var(--secondary-text-color);
-  font-family: inherit;
-  bottom: -28px;
-  left: 47px;
-  justify-content: space-between;
-  &:hover {
-    border: 1px solid var(--primary-text-color);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  &:disabled {
-    background-color: var(--btn-disabled-background);
-  }
+export const Span = styled.span`
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   @media screen and (max-width: 767px) {
-    gap: 0;
-    width: 56px;
-  }
-  @media screen and (min-width: 768px) {
-    left: 0;
+    display: none;
   }
 `;
 
@@ -94,25 +71,4 @@ export const CreateLink = styled(Link)`
   @media screen and (min-width: 768px) {
     left: 0;
   }  
-`;
-
-export const Span = styled.span`
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-`;
-
-export const Icon = styled.svg`
-  width: 24px;
-  height: 24px;
-  stroke: var(--secondary-text-color);
-  ${Button}:hover {
-    stroke: var(--primary-text-color);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
 `;

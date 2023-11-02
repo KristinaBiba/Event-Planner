@@ -4,17 +4,17 @@ import { Priority } from 'components/UI/Priority/Priority';
 
 import {
   Card,
-  CategoryWrap,
+  PropertyWrap,
   Div,
   EventWrap,
   H3,
   Image,
   P,
   PageLink,
-  TimeEvent,
-  TimePlaceWrap,
-  TypeEvent,
-} from './EventsList_css';
+  InfoWrap,
+  Info,
+  Property,
+} from './EventItem_css';
 
 export function EventItem({ event }) {
   const {
@@ -35,18 +35,18 @@ export function EventItem({ event }) {
         alt="A picture of the meeting"
         loading="lazy"
       />
-      <CategoryWrap>
-        <TypeEvent>{category}</TypeEvent>
-        <TypeEvent>
+      <PropertyWrap>
+        <Property>{category}</Property>
+        <Property>
           <Priority value={priority}>{priority}</Priority>
-        </TypeEvent>
-      </CategoryWrap>
-      <TimePlaceWrap>
-        <TimeEvent>
+        </Property>
+      </PropertyWrap>
+      <InfoWrap>
+        <Info>
           {dateOfEvent} at {time}
-        </TimeEvent>
-        <TimeEvent>{location}</TimeEvent>
-      </TimePlaceWrap>
+        </Info>
+        <Info>{location}</Info>
+      </InfoWrap>
       <EventWrap>
         <H3>{title}</H3>
         <P>{description}</P>

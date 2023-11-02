@@ -9,9 +9,7 @@ import { ReactComponent as Filters2 } from '../../../images/svg/filters-2.svg';
 import { ReactComponent as Filters3 } from '../../../images/svg/filters-3.svg';
 import { ReactComponent as Plus } from '../../../images/svg/plus.svg';
 
-import { ButtonWrap, CreateLink, Span, TitleWrap } from "pages/EventsPage/EventsPage_css"
-
-
+import { ButtonWrap, CreateLink, Span, TitleWrap } from "components/Events/components/EventsHeaderBlock_css"
 
 export const EventsHeaderBlock = ({onSort, onCategoryFilter}) => {
 
