@@ -9,10 +9,10 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import { dateFormatting } from 'helpers/dateFormatting';
 import { timeFormatting } from 'helpers/timeFormatting';
 
-const Events = lazy(() => import('../pages/Events/Events'));
-const Create = lazy(() => import('pages/Create/Create'));
-const EventInfo = lazy(() => import('pages/EventInfo/EventInfo'));
-const Edit = lazy(() => import('pages/Edit/Edit'));
+const EventsPage = lazy(() => import('../pages/EventsPage/EventsPage'));
+const CreatePage = lazy(() => import('pages/CreatePage/CreatePage'));
+const EventInfoPage = lazy(() => import('pages/EventInfoPage/EventInfoPage'));
+const EditPage = lazy(() => import('pages/EditPage/EditPage'));
 
 export function App() {
   const [events, setEvents] = useState([]);
@@ -133,18 +133,18 @@ export function App() {
       >
         <Route index element={<Navigate to="/events" />} />
 
-        <Route path="events" element={<Events data={filtredEvents} />} />
+        <Route path="events" element={<EventsPage data={filtredEvents} />} />
         <Route
           path="events/:eventId"
-          element={<EventInfo events={events} onDelite={handleDelite} />}
+          element={<EventInfoPage events={events} onDelite={handleDelite} />}
         />
         <Route
           path="events/:eventId/edit"
           element={
-            <Edit events={events} onSubmit={handleFormSubmitToEditEvent} />
+            <EditPage events={events} onSubmit={handleFormSubmitToEditEvent} />
           }
         />
-        <Route path="create" element={<Create onSubmit={handleFormSubmitToCreateEvent} />} />
+        <Route path="create" element={<CreatePage onSubmit={handleFormSubmitToCreateEvent} />} />
       </Route>
 
       <Route path="*" element={<>NotFound</>} />

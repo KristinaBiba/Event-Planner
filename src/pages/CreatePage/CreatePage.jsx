@@ -6,16 +6,16 @@ import { EventForm } from 'components/Form/Form';
 import { Container } from 'components/UI/Container/Container';
 import { Navigate } from 'components/UI/Navigate/Navigate';
 import { Section } from 'components/UI/Section/Section';
+import { H2 } from '../../components/UI/H2/H2';
 
-import { H2 } from './Create_css';
 
-export function Create({ onSubmit }) {
+export function CreatePage({ onSubmit }) {
   return (
     <main>
       <Section>
         <Container>
           <Navigate to="/" title="Back" />
-          <H2>Create new event</H2>
+          <H2 title='Create new event'/>
           <EventForm onSubmit={onSubmit} />
         </Container>
       </Section>
@@ -23,8 +23,8 @@ export function Create({ onSubmit }) {
   );
 }
 
-Create.propTypes = {
+CreatePage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
 
-export default Create;
+export default CreatePage;

@@ -7,11 +7,11 @@ import { Container } from 'components/UI/Container/Container';
 import { Navigate } from 'components/UI/Navigate/Navigate';
 import { Priority } from 'components/UI/Priority/Priority';
 import { Section } from 'components/UI/Section/Section';
+import { H2 } from '../../components/UI/H2/H2';
 
 import {
   PageLink,
   Card,
-  H2,
   Image,
   P,
   TimeEvent,
@@ -20,11 +20,11 @@ import {
   Wrap,
   DeleteButton,
   SectionWrap,
-} from './EventInfo_css';
+} from './EventInfoPage_css';
 import { LoaderWrap } from 'components/SharedLayout/SharedLayout_css';
 import { Watch } from 'react-loader-spinner';
 
-export function EventInfo({ onDelite, events }) {
+export function EventInfoPage({ onDelite, events }) {
   const { eventId } = useParams();
 
   const [infoCard, setInfoCard] = useState({});
@@ -54,7 +54,7 @@ export function EventInfo({ onDelite, events }) {
             </LoaderWrap>
           ) : (
             <SectionWrap>
-              <H2>{infoCard.title}</H2>
+              <H2 title={infoCard.title} eventInfo/>
               <Card>
                 <Image
                   src={require('../../images/event-images/' +
@@ -107,7 +107,7 @@ export function EventInfo({ onDelite, events }) {
   );
 }
 
-EventInfo.propTypes = {
+EventInfoPage.propTypes = {
   events: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -122,4 +122,4 @@ EventInfo.propTypes = {
   ).isRequired,
   onDelite: PropTypes.func.isRequired,
 };
-export default EventInfo;
+export default EventInfoPage;

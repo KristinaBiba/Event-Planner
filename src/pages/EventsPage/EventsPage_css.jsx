@@ -12,23 +12,6 @@ export const TitleWrap = styled.div`
   }
 `;
 
-export const H2 = styled.h2`
-  color: var(--secondary-text-color);
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin-top: 94px;
-  margin-bottom: 24px;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-`;
-
 export const ButtonWrap = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -83,7 +66,7 @@ export const Button = styled.button`
   }
 `;
 
-export const CreateButton = styled(Link)`
+export const CreateLink = styled(Link)`
   display: flex;
   align-items: center;
   gap: 16px;

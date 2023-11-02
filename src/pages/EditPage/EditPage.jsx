@@ -8,11 +8,11 @@ import { EventForm } from 'components/Form/Form';
 import { Container } from 'components/UI/Container/Container';
 import { Navigate } from 'components/UI/Navigate/Navigate';
 import { Section } from 'components/UI/Section/Section';
+import { H2 } from '../../components/UI/H2/H2';
 
-import { H2 } from '../Create/Create_css';
 import { LoaderWrap } from 'components/SharedLayout/SharedLayout_css';
 
-export function Edit({ events, onSubmit }) {
+export function EditPage({ events, onSubmit }) {
 
   const { eventId } = useParams();
 
@@ -29,7 +29,7 @@ export function Edit({ events, onSubmit }) {
       <Section>
         <Container>
           <Navigate to="/" title="Back" />
-          <H2>Edit event</H2>
+          <H2 title='Edit event'/>
           {isLoading ? (
             <LoaderWrap>
               <Watch
@@ -49,7 +49,7 @@ export function Edit({ events, onSubmit }) {
   );
 }
 
-Edit.propTypes = {
+EditPage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   events: PropTypes.arrayOf(
     PropTypes.shape({
@@ -66,4 +66,4 @@ Edit.propTypes = {
   ).isRequired,
 }
 
-export default Edit;
+export default EditPage;
