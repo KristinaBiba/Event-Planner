@@ -7,6 +7,12 @@ export const MenuWrap = styled.div`
     border-radius: 8px;
     background-color: var(--primary-background-color);
     box-shadow: var(--primary-shadow);
+
+    @media screen and (max-width: 767px) {
+      position: absolute;
+      right: 126px;
+      z-index: 1000;
+    }
   }
 `;
 export const MenuList = styled.ul`
@@ -112,7 +118,6 @@ export const Span = styled.span`
   @media screen and (max-width: 767px) {
     display: none;
   }
-  
 `;
 
 export const Icon = styled.svg`

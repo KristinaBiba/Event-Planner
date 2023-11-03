@@ -13,6 +13,7 @@ export const TitleWrap = styled.div`
 `;
 
 export const ButtonWrap = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -62,7 +63,7 @@ export const CreateLink = styled(Link)`
   &:hover {
     background-color: var(--btn-hover-background);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  }
 
   @media screen and (max-width: 767px) {
     gap: 0;
@@ -70,5 +71,5 @@ export const CreateLink = styled(Link)`
   }
   @media screen and (min-width: 768px) {
     left: 0;
-  }  
+  }
 `;

@@ -39,8 +39,7 @@ export const SvgDivArrow = styled.div`
   top: 46px;
   right: 12px;
   background-color: inherit;
-  z-index: 1;
-  @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
     top: 40px;
   }
   &:hover,

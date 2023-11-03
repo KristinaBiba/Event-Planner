@@ -122,13 +122,16 @@ export const DatePickerWrapper = styled.div`
     font-family: 'Poppins';
     width: 240px;
     height: 348px;
-    z-index: 100;
+    z-index: 1000;
     @media screen and (min-width: 768px) {
       width: 308px;
     }
     @media screen and (min-width: 1440px) {
       width: 372px;
     }
+  }
+  & .react-datepicker__children-container {
+    z-index: 1000;
   }
 
   & .react-datepicker .react-datepicker__header {
@@ -182,6 +185,7 @@ export const DatePickerWrapper = styled.div`
     padding: 6px;
     margin: 0;
     margin-top: 2px;
+    z-index: 1000;
     @media screen and (min-width: 768px) {
       margin: 6px;
     }
