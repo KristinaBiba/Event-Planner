@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ErrorMessage, useField } from 'formik';
 import PropTypes from 'prop-types';
 
 import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
 
-import {
-  ButtonPick,
-  ButtonPickChoose,
-  DatePick,
-  DivWrap,
-  ErrorDiv,
-  Label,
-  SvgDivArrow,
-} from '../Form_css';
+import { DivWrap, ErrorDiv, SvgDivArrow, Label } from '../EventForm_css';
+import { ButtonPick, ButtonPickChoose, DatePick } from './DatePicker_css';
 
 export const DatePicker = ({
   label,

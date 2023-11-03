@@ -4,23 +4,15 @@ import PropTypes from 'prop-types';
 
 import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
 
+import { ErrorDiv, SvgDivArrow, Label } from '../EventForm_css';
 import {
-  ErrorDiv,
-  Label,
   SelectDiv,
   SelectItem,
   SelectList,
   SelectListDiv,
-  SvgDivArrow,
-} from '../Form_css';
+} from './SelectInput_css';
 
-export const SelectInput = ({
-  label,
-  name,
-  array,
-  placeholder,
-  ...props
-}) => {
+export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [field, meta, helpers] = useField(name);
 
@@ -40,12 +32,16 @@ export const SelectInput = ({
         {...props}
         type="text"
         style={{
-          border:
-          isOpen ? '1px solid var(--primary-text-color)' : 
-            meta.touched &&
-            meta.error &&
-            '1px solid var(--error-validation-color)',
-            color: isOpen ?'var(--primary-text-color)' : (value ? 'var(--secondary-text-color)':'var(--border-color)'),
+          border: isOpen
+            ? '1px solid var(--primary-text-color)'
+            : meta.touched &&
+              meta.error &&
+              '1px solid var(--error-validation-color)',
+          color: isOpen
+            ? 'var(--primary-text-color)'
+            : value
+            ? 'var(--secondary-text-color)'
+            : 'var(--border-color)',
         }}
         onClick={() => {
           setIsOpen(true);
@@ -69,11 +65,17 @@ export const SelectInput = ({
       {isOpen && (
         <SelectList>
           <SelectListDiv>
-          {array.map(item => (
-          <SelectItem key={item.id} onClick={() => {setValue(item.name); setIsOpen(false)}}>
-            {item.name}
-          </SelectItem>
-          ))}
+            {array.map(item => (
+              <SelectItem
+                key={item.id}
+                onClick={() => {
+                  setValue(item.name);
+                  setIsOpen(false);
+                }}
+              >
+                {item.name}
+              </SelectItem>
+            ))}
           </SelectListDiv>
         </SelectList>
       )}
@@ -87,11 +89,13 @@ export const SelectInput = ({
 
 SelectInput.propTypes = {
   label: PropTypes.string.isRequired,
-  array: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    up: PropTypes.bool,
-  }),).isRequired,
+  array: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      up: PropTypes.bool,
+    })
+  ).isRequired,
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,

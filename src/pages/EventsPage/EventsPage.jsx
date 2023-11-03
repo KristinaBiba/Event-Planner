@@ -13,9 +13,11 @@ const EventsPage = ({ data }) => {
   const [sortedType, setSortedType] = useState('default');
   const [sortedData, setSortedData] = useState([]);
 
-  const screenWidth = window.screen.width;
+  const screenWidth = window.innerWidth;
 
-  const itemsPerPage = screenWidth > 768 ? 8 : 6;
+  const itemsPerPage = (screenWidth > 768) ? 8 : 6;
+  console.log(screenWidth);
+  console.log(itemsPerPage);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = useMemo(
     () => data.slice(itemOffset, endOffset),

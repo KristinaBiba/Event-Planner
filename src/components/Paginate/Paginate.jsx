@@ -11,7 +11,7 @@ export function Paginate({ onPageClick, pageCount }) {
     return onPageClick(event.selected);
   };
 
-  const screenWidth = window.screen.width;
+  const screenWidth = window.innerWidth;
 
   return (
     <>

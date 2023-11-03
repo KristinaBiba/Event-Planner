@@ -1,19 +1,5 @@
 import styled from 'styled-components';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
-export const FormWrap = styled.div`
-  background-color: var(--primary-background-color);
-  padding: 40px 16px;
-  border-radius: 8px;
-  box-shadow: var(--primary-shadow);
-  @media screen and (min-width: 768px) {
-    padding: 40px 24px;
-  }
-  @media screen and (min-width: 1440px) {
-    padding: 40px 40px 54px 40px;
-  }
-`;
 
 export const Div = styled.div`
   @media screen and (min-width: 768px) {
@@ -61,91 +47,6 @@ export const TextField = styled.input`
   }
 `;
 
-export const DatePickButton = styled.div`
-  position: 'absolute';
-  stroke: '#7B61FF';
-  top: '40px';
-  right: '16px';
-  z-index: '100';
-`;
-
-export const SelectDiv = styled.div`
-  box-sizing: border-box;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  padding: 16px 12px;
-  margin-top: 8px;
-  margin-bottom: 20px;
-  width: 240px;
-  appearance: none;
-  cursor: pointer;
-  &::-ms-expand {
-    display: block;
-  }
-  @media screen and (min-width: 768px) {
-    display: block;
-    width: 308px;
-    margin-bottom: 0;
-    height: 57.45px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 372px;
-  }
-`;
-
-export const SelectList = styled.ul`
-  position: absolute;
-  top: 72px;
-  left: 0;
-  margin-top: 26px;
-  padding: 0 16px;
-  border-radius: 8px;
-  background-color: var(--primary-background-color);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: var(--primary-shadow);
-  border: none;
-  font-family: 'Poppins';
-  width: 240px;
-  color: var(--secondary-text-color);
-  text-align: start;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  z-index: 100;
-  list-style: none;
-
-  @media screen and (min-width: 768px) {
-    width: 308px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 372px;
-  }
-`;
-
-export const SelectListDiv = styled.div`
-  background: repeating-linear-gradient(
-    0deg,
-    var(--primary-background-color),
-    var(--primary-background-color) 56px,
-    var(--border-color) 56px,
-    var(--border-color) 57px
-  );
-`;
-
-export const SelectItem = styled.li`
-  height: 56px;
-  padding: 16px 0;
-
-  &:hover {
-    color: var(--primary-text-color)
-  }
-`;
-
 export const DescriptionTextField = styled.textarea`
   resize: none;
   box-sizing: border-box;
@@ -172,41 +73,6 @@ export const DescriptionTextField = styled.textarea`
   &:focus-visible {
     border: 1px solid var(--primary-text-color);
     outline: none;
-  }
-`;
-
-export const Label = styled.label`
-  position: relative;
-  color: var(--primary-text-color);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: 0.4px;
-  @media screen and (min-width: 768px) {
-    display: block;
-  }
-  ${TextField}:disabled & {
-    color: var(--border-color);
-  }
-`;
-
-export const DivWrap = styled.div`
-  position: relative;
-`;
-
-export const ErrorDiv = styled.div`
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-  color: var(--error-validation-color);
-
-  @media screen and (min-width: 768px) {
-    bottom: -20px;
   }
 `;
 
@@ -243,36 +109,6 @@ export const Button = styled.button`
   }
   @media screen and (max-width: 767px) {
     width: 240px;
-  }
-`;
-export const DatePick = styled(DatePicker)`
-  border-radius: 8px;
-  border: ${props =>
-    props.$error
-      ? '1px solid var(--error-validation-color)'
-      : '1px solid var(--border-color)'};
-  color: ${props =>
-    props.$open ? 'var(--primary-text-color)' : 'var(--secondary-text-color)'};
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  padding: 16px 12px;
-  margin-top: 8px;
-  margin-bottom: 20px;
-  width: 240px;
-  cursor: pointer;
-  @media screen and (min-width: 768px) {
-    display: block;
-    width: 308px;
-    margin-bottom: 0;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 372px;
-  }
-  &:focus-visible {
-    border: 1px solid var(--primary-text-color);
-    outline: none;
   }
 `;
 
@@ -428,43 +264,6 @@ export const DatePickerWrapper = styled.div`
   }
 `;
 
-export const ButtonPick = styled.button`
-  padding: 8px 16px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--primary-text-color);
-  border-radius: 4px;
-  background-color: var(--primary-background-color);
-  outline: none;
-  margin-top: 6px;
-  /* margin-bottom: 20px; */
-  color: var(--primary-text-color);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  &:hover,
-  &:focus {
-    background-color: var(--btn-hover-background);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  &:disabled {
-    background-color: var(--border-color);
-  }
-  @media screen and (min-width: 768px) {
-    margin-left: 70px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-left: 120px;
-  }
-`;
-
-export const ButtonPickChoose = styled(ButtonPick)`
-  background-color: var(--primary-text-color);
-  color: var(--btn-accent-color);
-  margin-left: 16px;
-`;
-
 export const TimePickerWrapper = styled.div`
   & .react-datepicker__time-box {
     border-radius: 8px;
@@ -561,44 +360,5 @@ export const TimePickerWrapper = styled.div`
   .react-datepicker-popper[data-placement^='bottom']
     .react-datepicker__triangle::before {
     display: none;
-  }
-`;
-
-export const SvgButtonCrossSmall = styled.button`
-  position: absolute;
-  height: 26px;
-  width: 26px;
-  top: 24px;
-  padding: 0;
-  right: 12px;
-  background-color: inherit;
-  border: 1px solid transparent;
-  cursor: pointer;
-  @media screen and (min-width: 768px) {
-    top: 16px;
-  }
-  &:hover,
-  &:focus {
-    outline: none;
-    border: 1px solid var(--primary-text-color);
-    border-radius: 8px;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-`;
-
-export const SvgDivArrow = styled.div`
-  cursor: pointer;
-  position: absolute;
-  top: 46px;
-  right: 12px;
-  background-color: inherit;
-  z-index: 1;
-  @media screen and (min-width: 768px) {
-    top: 40px;
-  }
-  &:hover,
-  &:focus {
-    stroke: var(--primary-text-color);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;

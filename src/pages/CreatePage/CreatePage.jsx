@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { EventForm } from 'components/Form/Form';
+import { EventForm } from 'components/EventForm/EventForm';
 import { Container } from 'components/UI/Container/Container';
 import { Navigate } from 'components/UI/Navigate/Navigate';
 import { Section } from 'components/UI/Section/Section';
