@@ -1,4 +1,4 @@
-import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -10,11 +10,14 @@ import { H2 } from '../../components/UI/H2/H2';
 
 
 export function CreatePage({ onSubmit }) {
+
+  const location = useLocation();
+
   return (
     <main>
       <Section>
         <Container>
-          <Navigate to="/" title="Back" />
+          <Navigate to={location.state?.from ?? "/"} title="Back" />
           <H2 title='Create new event'/>
           <EventForm onSubmit={onSubmit} />
         </Container>

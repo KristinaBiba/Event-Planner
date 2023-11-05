@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { DropDownMenu } from "components/DropDownMenu/DropDownMenu"
@@ -12,6 +13,8 @@ import { ReactComponent as Plus } from '../../../images/svg/plus.svg';
 import { ButtonWrap, CreateLink, Span, TitleWrap } from "components/Events/components/EventsHeaderBlock_css"
 
 export const EventsHeaderBlock = ({onSort, onCategoryFilter}) => {
+
+  const location = useLocation();
 
     return (
         <TitleWrap>
@@ -35,7 +38,7 @@ export const EventsHeaderBlock = ({onSort, onCategoryFilter}) => {
             aria-label="Choose the type of sorting"
           />
 
-          <CreateLink to="/create">
+          <CreateLink to="/create" state={{from: location}} >
             <Plus aria-label="Add new event" />
             <Span>Add new event</Span>
           </CreateLink>

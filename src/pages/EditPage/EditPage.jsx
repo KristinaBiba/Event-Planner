@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -16,6 +16,9 @@ export function EditPage({ events, onSubmit }) {
   const [eventData, setEventData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const location = useLocation();
+  console.log('location in EditPage', location);
+
   useEffect(() => {
     setEventData(events.filter(event => event.id === eventId)[0]);
     setIsLoading(false);
@@ -25,7 +28,7 @@ export function EditPage({ events, onSubmit }) {
     <main>
       <Section>
         <Container>
-          <Navigate to={`/events/${eventId}`} title="Back" />
+          <Navigate to={`/events/${eventId}`} state={{from: location.state?.from}} title="Back" />
           <H2 title="Edit event" />
           {isLoading ? (
             <Loader />

@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Priority } from 'components/UI/Priority/Priority';
@@ -27,6 +28,7 @@ export function EventItem({ event }) {
     category,
     priority,
   } = event;
+  const locationOnSite = useLocation();
   const dateOfEvent = date.split('').slice(0, 5).join('');
   return (
     <Card>
@@ -54,6 +56,7 @@ export function EventItem({ event }) {
           <PageLink
             to={`/events/${id}`}
             aria-label="Get more information about the event"
+            state={{from: locationOnSite}}
           >
             More info
           </PageLink>

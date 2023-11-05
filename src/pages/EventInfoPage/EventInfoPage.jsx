@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -35,11 +35,12 @@ export function EventInfoPage({ onDelite, events }) {
   }, [eventId, events]);
 
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <main>
       <Section>
         <Container>
-          <Navigate to="/" title="Back" />
+          <Navigate to={location.state?.from ?? "/"} title="Back" />
           {isLoading ? (
             <Loader />
           ) : (
@@ -69,7 +70,7 @@ export function EventInfoPage({ onDelite, events }) {
                   </PropertyWrap>
 
                   <ButtonWrap>
-                    <PageLink to={`/events/${infoCard.id}/edit`}>Edit</PageLink>
+                    <PageLink to={`/events/${infoCard.id}/edit`} state={{from: location.state?.from}}>Edit</PageLink>
                     <DeleteButton
                       type="button"
                       onClick={() => {
