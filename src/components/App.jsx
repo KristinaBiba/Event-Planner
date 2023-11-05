@@ -13,6 +13,7 @@ const EventsPage = lazy(() => import('../pages/EventsPage/EventsPage'));
 const CreatePage = lazy(() => import('pages/CreatePage/CreatePage'));
 const EventInfoPage = lazy(() => import('pages/EventInfoPage/EventInfoPage'));
 const EditPage = lazy(() => import('pages/EditPage/EditPage'));
+const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 
 export function App() {
   const [events, setEvents] = useState([]);
@@ -147,7 +148,7 @@ export function App() {
         <Route path="create" element={<CreatePage onSubmit={handleFormSubmitToCreateEvent} />} />
       </Route>
 
-      <Route path="*" element={<>NotFound</>} />
+      <Route path="*" element={<NotFound/>} />
     </Routes>
   );
 }
