@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
+import NotFound from 'pages/NotFound/NotFound';
 import { Container } from 'components/UI/Container/Container';
 import { Navigate } from 'components/UI/Navigate/Navigate';
 import { Priority } from 'components/UI/Priority/Priority';
@@ -25,6 +26,7 @@ import {
 
 export function EventInfoPage({ onDelite, events }) {
   const { eventId } = useParams();
+  const navigate = useNavigate();
 
   const [infoCard, setInfoCard] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -34,10 +36,11 @@ export function EventInfoPage({ onDelite, events }) {
     setIsLoading(false);
   }, [eventId, events]);
 
-  const navigate = useNavigate();
   const location = useLocation();
   return (
-    <main>
+    <>
+    {infoCard ? 
+      (<main>
       <Section>
         <Container>
           <Navigate to={location.state?.from ?? "/"} title="Back" />
@@ -87,7 +90,9 @@ export function EventInfoPage({ onDelite, events }) {
           )}
         </Container>
       </Section>
-    </main>
+    </main>) : <NotFound/>}
+    </>
+    
   );
 }
 

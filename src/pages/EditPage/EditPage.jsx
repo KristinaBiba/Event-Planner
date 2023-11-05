@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
+import NotFound from 'pages/NotFound/NotFound';
 import { EventForm } from 'components/EventForm/EventForm';
 import { Container } from 'components/UI/Container/Container';
 import { Navigate } from 'components/UI/Navigate/Navigate';
@@ -17,7 +18,6 @@ export function EditPage({ events, onSubmit }) {
   const [isLoading, setIsLoading] = useState(true);
 
   const location = useLocation();
-  console.log('location in EditPage', location);
 
   useEffect(() => {
     setEventData(events.filter(event => event.id === eventId)[0]);
@@ -25,6 +25,8 @@ export function EditPage({ events, onSubmit }) {
   }, [eventId, events]);
 
   return (
+    <>
+    {eventData ? (
     <main>
       <Section>
         <Container>
@@ -37,7 +39,8 @@ export function EditPage({ events, onSubmit }) {
           )}
         </Container>
       </Section>
-    </main>
+    </main>) : <NotFound/>}
+    </>
   );
 }
 
