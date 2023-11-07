@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as Search } from '../../../images/svg/search.svg';
 import { ReactComponent as CrossSmall } from '../../../images/svg/cross-small.svg';
@@ -11,17 +12,20 @@ import {
 } from './InputSearch_css';
 
 export const InputSearch = ({ value, onChange, onInputClean }) => {
+  
+  const { t } = useTranslation();
+
   return (
     <InputDiv>
       <SvgDivSearch>
-        <Search aria-label="Enter characters to search for" />
+        <Search aria-label={t('eventsPage.ariaLabel1')} />
       </SvgDivSearch>
 
       <FilterInput
         name="filter"
         value={value}
         onChange={onChange}
-        placeholder="Search by keywords"
+        placeholder={t('eventsPage.placeholder')}
       />
 
       {value && (
@@ -30,7 +34,7 @@ export const InputSearch = ({ value, onChange, onInputClean }) => {
           onClick={onInputClean}
           style={{ stroke: 'var(--primary-text-color)' }}
         >
-          <CrossSmall aria-label="Clear recent searches" />
+          <CrossSmall aria-label={t('eventsPage.ariaLabel2')} />
         </SvgButtonCrossSmall>
       )}
     </InputDiv>

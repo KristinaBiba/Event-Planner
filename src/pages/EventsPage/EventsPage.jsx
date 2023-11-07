@@ -21,6 +21,7 @@ const EventsPage = ({ data }) => {
     () => data.slice(itemOffset, endOffset),
     [data, endOffset, itemOffset]
   );
+  
   const pageCount = Math.ceil(data.length / itemsPerPage);
 
   const filtredData = useMemo(

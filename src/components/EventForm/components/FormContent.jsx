@@ -1,5 +1,6 @@
 import { Form } from 'formik';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { TextInput } from './TextInput';
 import { SelectInput } from './SelectInput';
@@ -17,28 +18,29 @@ import {
 } from './FormContent_css';
 
 export const FormContent = ({ eventData }) => {
+  const { t } = useTranslation();
   return (
     <Form>
       <Div>
         <TextInput
           name="title"
-          label="Title"
+          label={t('formText.input1')}
           as={TextField}
-          placeholder="Enter title"
+          placeholder={t('formText.placeholder1')}
         />
 
         <TextInput
           name="description"
-          label="Description"
+          label={t('formText.input2')}
           as={DescriptionTextField}
-          placeholder="Enter description"
+          placeholder={t('formText.placeholder2')}
         />
 
         <DatePickerWrapper>
           <DatePicker
             name="selectDate"
-            placeholder="Select date"
-            label="Select date"
+            placeholder={t('formText.input3')}
+            label={t('formText.placeholder3')}
             ariaLabel="Make choice date of event"
             dateFormat="dd.MM.yyyy"
             shouldCloseOnSelect={false}
@@ -48,8 +50,8 @@ export const FormContent = ({ eventData }) => {
         <TimePickerWrapper>
           <DatePicker
             name="selectTime"
-            placeholder="Select time"
-            label="Select time"
+            placeholder={t('formText.input4')}
+            label={t('formText.placeholder4')}
             ariaLabel="Make choice time of event"
             showTimeSelect
             showTimeSelectOnly
@@ -61,30 +63,30 @@ export const FormContent = ({ eventData }) => {
 
         <TextInput
           name="location"
-          label="Location"
+          label={t('formText.input5')}
           as={TextField}
-          placeholder="Choose location"
+          placeholder={t('formText.placeholder5')}
         />
 
         <SelectInput
           name="category"
-          label="Category"
-          placeholder="Choose category"
+          label={t('formText.input6')}
+          placeholder={t('formText.placeholder6')}
           array={category}
         />
 
         <TextInput
           name="addPicture"
-          label="Add picture"
+          label={t('formText.input7')}
           as={TextField}
-          placeholder="Choose picture"
+          placeholder={t('formText.placeholder7')}
           disabled
         />
 
         <SelectInput
           name="priority"
-          label="Priority"
-          placeholder="Choose priority"
+          label={t('formText.input8')}
+          placeholder={t('formText.placeholder8')}
           array={priority}
         />
       </Div>
@@ -92,9 +94,9 @@ export const FormContent = ({ eventData }) => {
       <ButtonDiv>
         <Button
           type="submit"
-          aria-label={eventData ? 'Save button' : 'Add event button'}
+          aria-label={eventData ? `${t('formButton.placeholder2')}` : `${t('formButton.placeholder1')}`}
         >
-          {eventData ? 'Save' : 'Add event'}
+          {eventData ? `${t('formButton.Save')}` : `${t('formButton.AddEvent')}`}
         </Button>
       </ButtonDiv>
     </Form>

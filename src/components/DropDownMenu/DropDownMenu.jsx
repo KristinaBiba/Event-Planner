@@ -1,5 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as ArrowUpSmall } from '../../images/svg/arrow-up-small.svg';
 
@@ -14,9 +15,11 @@ import {
 } from './DropDownMenu_css';
 
 export const DropDownMenu = memo(
-  ({ title, dropDownList, onCategoryFilter, onSort, icon }) => {
+  ({ title, dropDownList, onCategoryFilter, onSort, icon, typeMenu }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState({ name: title, up: undefined });
+
+    const { t } = useTranslation();
 
     useEffect(() => {
       if (value.name !== title && onCategoryFilter) {
@@ -42,7 +45,7 @@ export const DropDownMenu = memo(
               display: isOpen && 'block',
             }}
           >
-            {title === 'Sort by' && value.name !== title
+            {typeMenu === 'Sort by' && value.name !== title
               ? 'Sort ' + value.name
               : value.name}
           </Span>
@@ -53,10 +56,10 @@ export const DropDownMenu = memo(
                 isOpen || value.name !== title
                   ? 'var(--primary-text-color)'
                   : 'var(--secondary-text-color)',
-              rotate: title === 'Sort by' && !value.up && '180deg',
+              rotate: typeMenu === 'Sort by' && !value.up && '180deg',
             }}
           >
-            {title === 'Sort by' && value.name !== title ? (
+            {typeMenu === 'Sort by' && value.name !== title ? (
               <ArrowUpSmall />
             ) : (
               icon
@@ -67,7 +70,7 @@ export const DropDownMenu = memo(
         {isOpen && (
           <MenuList>
             <MenuListDiv>
-              {title === 'Category' && (
+              {typeMenu === 'Category' && (
                 <MenuListItem
                   key="All"
                   onClick={() => {
@@ -78,7 +81,7 @@ export const DropDownMenu = memo(
                     setIsOpen(false);
                   }}
                 >
-                  All
+                  {t('category.All')}
                 </MenuListItem>
               )}
               {dropDownList.map(item => (
@@ -96,7 +99,7 @@ export const DropDownMenu = memo(
                   }}
                 >
                   <span>{item.name}</span>
-                  {title === 'Sort by' && (
+                  {typeMenu === 'Sort by' && (
                     <Icon
                       style={{
                         stroke: 'var(--border-color)',
@@ -128,4 +131,5 @@ DropDownMenu.propTypes = {
   onCategoryFilter: PropTypes.func,
   onSort: PropTypes.func,
   icon: PropTypes.element.isRequired,
+  typeMenu:  PropTypes.string.isRequired,
 };

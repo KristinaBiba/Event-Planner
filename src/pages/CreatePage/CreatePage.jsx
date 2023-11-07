@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { EventForm } from 'components/EventForm/EventForm';
 import { Container } from 'components/UI/Container/Container';
@@ -13,12 +14,14 @@ export function CreatePage({ onSubmit }) {
 
   const location = useLocation();
 
+  const {t} = useTranslation();
+
   return (
     <main>
       <Section>
         <Container>
-          <Navigate to={location.state?.from ?? "/"} title="Back" />
-          <H2 title='Create new event'/>
+          <Navigate to={location.state?.from ?? "/"} title={t('BackLink')} />
+          <H2 title={t('title.create')}/>
           <EventForm onSubmit={onSubmit} />
         </Container>
       </Section>

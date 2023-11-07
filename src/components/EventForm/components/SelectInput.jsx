@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ErrorMessage, useField } from 'formik';
 import PropTypes from 'prop-types';
 
+import { useTranslation } from 'react-i18next';
+
 import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
 
 import { ErrorDiv, SvgDivArrow, Label } from '../EventForm_css';
@@ -18,6 +20,8 @@ export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
 
   const { value } = meta;
   const { setValue } = helpers;
+
+  const { t } = useTranslation();
 
   return (
     <Label
@@ -59,7 +63,7 @@ export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
           rotate: isOpen && '180deg',
         }}
       >
-        <ChevronDownSmall aria-label="Make choice" />
+        <ChevronDownSmall aria-label={t('formButton.placeholder3')} />
       </SvgDivArrow>
 
       {isOpen && (

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ErrorMessage, useField } from 'formik';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as ChevronDownSmall } from '../../../images/svg/chevron-down-small.svg';
 
@@ -19,6 +20,8 @@ export const DatePicker = ({
   const [field, meta, helpers] = useField(props);
   const [startEvent, setStartEvent] = useState(field.value);
   const { setValue } = helpers;
+
+  const { t } = useTranslation();
 
   const handleCalendarClose = () => {
     setValue(startEvent);
@@ -65,7 +68,7 @@ export const DatePicker = ({
                   window.scroll(0, 1);
                 }}
               >
-                Cancel
+                {t('Cancel')}
               </ButtonPick>
               <ButtonPickChoose
                 type="button"
@@ -76,7 +79,7 @@ export const DatePicker = ({
                   window.scroll(0, -1);
                 }}
               >
-                Choose date
+                {t('ChooseDate')}
               </ButtonPickChoose>
             </>
           )}

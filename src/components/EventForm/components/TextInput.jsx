@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ErrorMessage, Field, useField } from 'formik';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as CrossSmall } from '../../../images/svg/cross-small.svg';
 
@@ -11,6 +12,8 @@ import { SvgButtonCrossSmall } from './TextInput_css';
 export const TextInput = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const { setValue } = helpers;
+
+  const { t } = useTranslation();
   return (
     <Label
       style={{
@@ -42,7 +45,7 @@ export const TextInput = ({ label, ...props }) => {
               'var(--border-color)',
           }}
         >
-          <CrossSmall aria-label="Clear the line" />
+          <CrossSmall aria-label={t('formButton.placeholder4')} />
         </SvgButtonCrossSmall>
         <ErrorMessage component={ErrorDiv} name={field.name} />
       </DivWrap>

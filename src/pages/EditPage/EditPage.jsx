@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import NotFound from 'pages/NotFound/NotFound';
 import { EventForm } from 'components/EventForm/EventForm';
@@ -19,6 +20,8 @@ export function EditPage({ events, onSubmit }) {
 
   const location = useLocation();
 
+  const {t} = useTranslation();
+
   useEffect(() => {
     setEventData(events.filter(event => event.id === eventId)[0]);
     setIsLoading(false);
@@ -30,8 +33,8 @@ export function EditPage({ events, onSubmit }) {
     <main>
       <Section>
         <Container>
-          <Navigate to={`/events/${eventId}`} state={{from: location.state?.from}} title="Back" />
-          <H2 title="Edit event" />
+          <Navigate to={`/events/${eventId}`} state={{from: location.state?.from}} title={t('BackLink')} />
+          <H2 title={t('title.edit')} />
           {isLoading ? (
             <Loader />
           ) : (

@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { Priority } from 'components/UI/Priority/Priority';
 
@@ -18,6 +19,8 @@ import {
 } from './EventItem_css';
 
 export function EventItem({ event }) {
+  const { t } = useTranslation();
+
   const {
     id,
     title,
@@ -45,7 +48,7 @@ export function EventItem({ event }) {
       </PropertyWrap>
       <InfoWrap>
         <Info>
-          {dateOfEvent} at {time}
+          {dateOfEvent} {t('at')} {time}
         </Info>
         <Info>{location}</Info>
       </InfoWrap>
@@ -55,10 +58,10 @@ export function EventItem({ event }) {
         <Div>
           <PageLink
             to={`/events/${id}`}
-            aria-label="Get more information about the event"
+            aria-label={t('eventsPage.ariaLabel')}
             state={{from: locationOnSite}}
           >
-            More info
+           {t('eventsPage.cardButton')}
           </PageLink>
         </Div>
       </EventWrap>
