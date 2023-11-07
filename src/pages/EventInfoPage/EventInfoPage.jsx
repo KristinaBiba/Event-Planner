@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import NotFound from 'pages/NotFound/NotFound';
 import { Container } from 'components/UI/Container/Container';
@@ -31,6 +32,8 @@ export function EventInfoPage({ onDelite, events }) {
   const [infoCard, setInfoCard] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     setInfoCard(events.filter(event => event.id === eventId)[0]);
     setIsLoading(false);
@@ -39,60 +42,68 @@ export function EventInfoPage({ onDelite, events }) {
   const location = useLocation();
   return (
     <>
-    {infoCard ? 
-      (<main>
-      <Section>
-        <Container>
-          <Navigate to={location.state?.from ?? "/"} title="Back" />
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <SectionWrap>
-              <H2 title={infoCard.title} eventInfo />
-              <Card>
-                <Image
-                  src={require('../../images/event-images/' +
-                    infoCard.category +
-                    '.jpg')}
-                  alt="A picture of the event"
-                  loading="lazy"
-                />
-                <Wrap>
-                  <P>{infoCard.description}</P>
-                  <PropertyWrap>
-                    <Property>{infoCard.category}</Property>
-                    <Property>
-                      <Priority value={infoCard.priority}>
-                        {infoCard.priority}
-                      </Priority>
-                    </Property>
-                    <Property>{infoCard.location}</Property>
-                    <Property>
-                      {infoCard.date} at {infoCard.time}
-                    </Property>
-                  </PropertyWrap>
+      {infoCard ? (
+        <main>
+          <Section>
+            <Container>
+              <Navigate
+                to={location.state?.from ?? '/'}
+                title={t('BackLink')}
+              />
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <SectionWrap>
+                  <H2 title={infoCard.title} eventInfo />
+                  <Card>
+                    <Image
+                      src={require('../../images/event-images/' +
+                        infoCard.category +
+                        '.jpg')}
+                      alt="A picture of the event"
+                      loading="lazy"
+                    />
+                    <Wrap>
+                      <P>{infoCard.description}</P>
+                      <PropertyWrap>
+                        <Property>{t(`category.${infoCard.category}`)}</Property>
+                        <Property>
+                          <Priority value={infoCard.priority} />
+                        </Property>
+                        <Property>{infoCard.location}</Property>
+                        <Property>
+                          {infoCard.date} {t('at')} {infoCard.time}
+                        </Property>
+                      </PropertyWrap>
 
-                  <ButtonWrap>
-                    <PageLink to={`/events/${infoCard.id}/edit`} state={{from: location.state?.from}}>Edit</PageLink>
-                    <DeleteButton
-                      type="button"
-                      onClick={() => {
-                        onDelite(infoCard.id);
-                        navigate('/', { replace: true });
-                      }}
-                    >
-                      Delete event
-                    </DeleteButton>
-                  </ButtonWrap>
-                </Wrap>
-              </Card>
-            </SectionWrap>
-          )}
-        </Container>
-      </Section>
-    </main>) : <NotFound/>}
+                      <ButtonWrap>
+                        <PageLink
+                          to={`/events/${infoCard.id}/edit`}
+                          state={{ from: location.state?.from }}
+                        >
+                          {t('EventInfoButton.Edit')}
+                        </PageLink>
+                        <DeleteButton
+                          type="button"
+                          onClick={() => {
+                            onDelite(infoCard.id);
+                            navigate('/', { replace: true });
+                          }}
+                        >
+                          {t('EventInfoButton.DeleteEvent')}
+                        </DeleteButton>
+                      </ButtonWrap>
+                    </Wrap>
+                  </Card>
+                </SectionWrap>
+              )}
+            </Container>
+          </Section>
+        </main>
+      ) : (
+        <NotFound />
+      )}
     </>
-    
   );
 }
 

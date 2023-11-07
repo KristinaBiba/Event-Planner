@@ -17,15 +17,15 @@ import {
 export const DropDownMenu = memo(
   ({ title, dropDownList, onCategoryFilter, onSort, icon, typeMenu }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [value, setValue] = useState({ name: title, up: undefined });
+    const [value, setValue] = useState({ name: title, up: undefined, id: null });
 
     const { t } = useTranslation();
 
     useEffect(() => {
       if (value.name !== title && onCategoryFilter) {
-        onCategoryFilter(value.name);
+        onCategoryFilter(value.id);
       }
-    }, [value.name, title, onCategoryFilter]);
+    }, [value.name, value.id, title, onCategoryFilter]);
 
     return (
       <MenuWrap className={isOpen && 'isOpen'}>
@@ -46,7 +46,7 @@ export const DropDownMenu = memo(
             }}
           >
             {typeMenu === 'Sort by' && value.name !== title
-              ? 'Sort ' + value.name
+              ? `${t('sortBy.Sort')}` + value.name
               : value.name}
           </Span>
 
@@ -74,9 +74,9 @@ export const DropDownMenu = memo(
                 <MenuListItem
                   key="All"
                   onClick={() => {
-                    setValue({ name: title });
+                    setValue({ name: title, up: undefined, id: null });
                     if (onCategoryFilter) {
-                      onCategoryFilter(title);
+                      onCategoryFilter('Category');
                     }
                     setIsOpen(false);
                   }}
@@ -88,12 +88,12 @@ export const DropDownMenu = memo(
                 <MenuListItem
                   key={item.id}
                   onClick={() => {
-                    setValue({ name: item.name, up: item?.up });
+                    setValue({ id: item.id, name: item.name, up: item?.up });
                     if (onCategoryFilter) {
-                      onCategoryFilter(item.name);
+                      onCategoryFilter(item.id);
                     }
                     if (onSort) {
-                      onSort(item.name + item.up);
+                      onSort(item.id);
                     }
                     setIsOpen(false);
                   }}
@@ -123,7 +123,7 @@ DropDownMenu.propTypes = {
   title: PropTypes.string.isRequired,
   dropDownList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       up: PropTypes.bool,
     })

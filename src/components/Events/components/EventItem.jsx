@@ -41,9 +41,9 @@ export function EventItem({ event }) {
         loading="lazy"
       />
       <PropertyWrap>
-        <Property>{category}</Property>
+        <Property>{t(`category.${category}`)}</Property>
         <Property>
-          <Priority value={priority}>{priority}</Priority>
+          <Priority value={priority}/>
         </Property>
       </PropertyWrap>
       <InfoWrap>

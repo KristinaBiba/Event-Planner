@@ -62,8 +62,8 @@ export function App() {
 
     const timeFormat = timeFormatting(newEvent.time);
 
-    const event = { ...newEvent, date: dateFormat, time: timeFormat };
-
+    const event = { ...newEvent, date: dateFormat, time: timeFormat, priority: newEvent.priority.id, category: newEvent.category.id };
+    
     try {
       setEvents(prevState => {
         return [...prevState, event];
@@ -96,7 +96,7 @@ export function App() {
       timeFormat = editEvent.time;
     }
 
-    const event = { ...editEvent, date: dateFormat, time: timeFormat };
+    const event = { ...editEvent, date: dateFormat, time: timeFormat, priority: editEvent.priority.id, category: editEvent.category.id };
 
     try {
       setEvents(prevState => [

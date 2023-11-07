@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import parseISO from 'date-fns/parseISO';
 
 import { SignupSchema } from 'helpers/signupSchema';
@@ -11,6 +12,7 @@ import { FormWrap } from './EventForm_css';
 
 export function EventForm({ onSubmit, eventData }) {
   const navigate = useNavigate();
+  const {t} = useTranslation();
 
   return (
     <FormWrap>
@@ -30,9 +32,9 @@ export function EventForm({ onSubmit, eventData }) {
             ? parseISO('2023-01-01T' + eventData?.time + ':00')
             : '',
           location: eventData?.location || '',
-          category: eventData?.category || '',
+          category: eventData ? t(`category.${eventData.category}`) : '',
           addPicture: eventData?.addPicture || '',
-          priority: eventData?.priority || '',
+          priority: eventData ? t(`Priority.${eventData.priority}`) : '',
         }}
         onSubmit={async (values, actions) => {
           await onSubmit({

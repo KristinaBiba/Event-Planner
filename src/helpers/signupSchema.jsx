@@ -19,7 +19,7 @@ export const SignupSchema = Yup.object().shape({
       .max(30)
       .trim()
       .matches(/^(?=.*[a-z])(?=.*[A-Z])/),
-    category: Yup.string().required('Required'),
+    category: Yup.object().required('Required'),
     // addPicture: Yup.string().url(),
-    priority: Yup.string().required('Required'),
+    priority: Yup.object().required('Required'),
   });

@@ -43,7 +43,7 @@ export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
               '1px solid var(--error-validation-color)',
           color: isOpen
             ? 'var(--primary-text-color)'
-            : value
+            : value.id
             ? 'var(--secondary-text-color)'
             : 'var(--border-color)',
         }}
@@ -51,7 +51,7 @@ export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
           setIsOpen(true);
         }}
       >
-        {isOpen ? placeholder : value || placeholder}
+        {isOpen ? placeholder : value.name || placeholder}
       </SelectDiv>
 
       <SvgDivArrow
@@ -73,7 +73,7 @@ export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
               <SelectItem
                 key={item.id}
                 onClick={() => {
-                  setValue(item.name);
+                  setValue(item);
                   setIsOpen(false);
                 }}
               >
@@ -96,13 +96,13 @@ SelectInput.propTypes = {
   array: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       up: PropTypes.bool,
     })
   ).isRequired,
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.shape.isRequired,
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
   }),

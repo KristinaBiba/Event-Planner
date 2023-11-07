@@ -1,27 +1,28 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 export function Priority({ value }) {
- 
-    let color = '';
+  const { t } = useTranslation();
+  let color = '';
 
-    switch (value) {
-      case 'High':
-        color = 'var(--priority-high-text-color)';
-        break;
-      case 'Medium':
-        color = 'var(--priority-medium-text-color)';
-        break;
-      case 'Low':
-        color = 'var(--priority-low-text-color)';
-        break;
-      default:
-        color = 'var(--input-placeholder-color)';
-        break;
-    }
+  switch (value) {
+    case 'High':
+      color = 'var(--priority-high-text-color)';
+      break;
+    case 'Medium':
+      color = 'var(--priority-medium-text-color)';
+      break;
+    case 'Low':
+      color = 'var(--priority-low-text-color)';
+      break;
+    default:
+      color = 'var(--input-placeholder-color)';
+      break;
+  }
 
-  return (<span style={{color: color}}>{value}</span>);
+  return <span style={{ color: color }}>{t(`Priority.${value}`)}</span>;
 }
 
 Priority.propTypes = {
   value: PropTypes.string.isRequired,
-}
+};

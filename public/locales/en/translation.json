@@ -21,8 +21,9 @@
         "sortBy": "Sort by",
         "ariaLabel": "Choose the type of sorting",
         "byName": "by name",
-        "byData": "by data",
-        "byPriority": "by priority"
+        "byData": "by date",
+        "byPriority": "by priority",
+        "Sort": "Sort "
     },
     "category": {
         "Category": "Category",
@@ -73,6 +74,10 @@
     },
     "EventInfoButton": {
         "Edit": "Edit",
-        "Delete event": "Delete event"
+        "DeleteEvent": "Delete event"
+    },
+    "NotFound": {
+        "title":"Sorry, this page is not found",
+        "link": "Return to the main page"
     }
   }

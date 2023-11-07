@@ -33,21 +33,22 @@ const EventsPage = ({ data }) => {
   );
 
   useMemo(() => {
+ 
     switch (sortedType) {
       case 'default':
         setSortedData(filtredData);
         break;
-      case 'by nametrue':
+      case 'sortByNameUp':
         setSortedData(
           filtredData.sort((a, b) => a.title.localeCompare(b.title))
         );
         break;
-      case 'by namefalse':
+      case 'sortByNameDown':
         setSortedData(
           filtredData.sort((a, b) => b.title.localeCompare(a.title))
         );
         break;
-      case 'by datatrue':
+      case 'sortByDateUp':
         setSortedData(
           filtredData.sort(
             (a, b) =>
@@ -56,7 +57,7 @@ const EventsPage = ({ data }) => {
           )
         );
         break;
-      case 'by datafalse':
+      case 'sortByDateDown':
         setSortedData(
           filtredData.sort(
             (a, b) =>
@@ -65,14 +66,14 @@ const EventsPage = ({ data }) => {
           )
         );
         break;
-      case 'by prioritytrue':
+      case 'sortByPriorityUp':
         setSortedData([
           ...filtredData.filter(item => item.priority === 'Low'),
           ...filtredData.filter(item => item.priority === 'Medium'),
           ...filtredData.filter(item => item.priority === 'High'),
         ]);
         break;
-      case 'by priorityfalse':
+      case 'sortByPriorityDown':
         setSortedData([
           ...filtredData.filter(item => item.priority === 'High'),
           ...filtredData.filter(item => item.priority === 'Medium'),
