@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
@@ -57,23 +58,29 @@ export function App() {
 
   const filtredEvents = handleFiltredEvents();
 
+  const { t } = useTranslation();
+
   const handleFormSubmitToCreateEvent = newEvent => {
     const dateFormat = dateFormatting(newEvent.date);
 
     const timeFormat = timeFormatting(newEvent.time);
 
-    const event = { ...newEvent, date: dateFormat, time: timeFormat, priority: newEvent.priority.id, category: newEvent.category.id };
-    
+    const event = {
+      ...newEvent,
+      date: dateFormat,
+      time: timeFormat,
+      priority: newEvent.priority.id,
+      category: newEvent.category.id,
+    };
+
     try {
       setEvents(prevState => {
         return [...prevState, event];
       });
 
-      toast.success(
-        'The new event has been successfully added to the calendar'
-      );
+      toast.success(t('toast.createSuccess'));
     } catch (error) {
-      toast.error('Sorry, try adding the event again');
+      toast.error(t('toast.createError'));
     }
   };
 
@@ -96,7 +103,13 @@ export function App() {
       timeFormat = editEvent.time;
     }
 
-    const event = { ...editEvent, date: dateFormat, time: timeFormat, priority: editEvent.priority.id, category: editEvent.category.id };
+    const event = {
+      ...editEvent,
+      date: dateFormat,
+      time: timeFormat,
+      priority: editEvent.priority.id,
+      category: editEvent.category.id,
+    };
 
     try {
       setEvents(prevState => [
@@ -104,9 +117,9 @@ export function App() {
         event,
       ]);
 
-      toast.success('The event has been successfully edit');
+      toast.success(t('toast.editSuccess'));
     } catch (error) {
-      toast.error('Sorry, try edit the event again');
+      toast.error(t('toast.editError'));
     }
   };
 
@@ -114,9 +127,9 @@ export function App() {
     try {
       setEvents(prevState => prevState.filter(event => event.id !== id));
 
-      toast.success('Event has been successfully delite from the calendar');
+      toast.success(t('toast.deliteSuccess'));
     } catch (error) {
-      toast.error('Sorry, try deliting the event again');
+      toast.error(t('toast.deliteError'));
     }
   };
 
@@ -145,10 +158,13 @@ export function App() {
             <EditPage events={events} onSubmit={handleFormSubmitToEditEvent} />
           }
         />
-        <Route path="create" element={<CreatePage onSubmit={handleFormSubmitToCreateEvent} />} />
+        <Route
+          path="create"
+          element={<CreatePage onSubmit={handleFormSubmitToCreateEvent} />}
+        />
       </Route>
 
-      <Route path="*" element={<NotFound/>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

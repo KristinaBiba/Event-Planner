@@ -26,7 +26,7 @@ export const TextField = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  padding: 16px 12px;
+  padding: 16px 36px 16px 12px;
   margin-top: 8px;
   margin-bottom: 20px;
   width: 240px;
@@ -57,7 +57,7 @@ export const DescriptionTextField = styled.textarea`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  padding: 16px 12px;
+  padding: 16px 36px 16px 12px;
   margin-top: 8px;
   margin-bottom: 20px;
   width: 240px;
