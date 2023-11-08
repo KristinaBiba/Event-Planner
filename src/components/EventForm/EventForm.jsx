@@ -12,7 +12,7 @@ import { FormWrap } from './EventForm_css';
 
 export function EventForm({ onSubmit, eventData }) {
   const navigate = useNavigate();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <FormWrap>
@@ -32,9 +32,9 @@ export function EventForm({ onSubmit, eventData }) {
             ? parseISO('2023-01-01T' + eventData?.time + ':00')
             : '',
           location: eventData?.location || '',
-          category: eventData ? t(`category.${eventData.category}`) : '',
+          category: eventData ? {id: eventData.category, name: t(`category.${eventData.category}`)} : '',
           addPicture: eventData?.addPicture || '',
-          priority: eventData ? t(`Priority.${eventData.priority}`) : '',
+          priority: eventData ? {id: eventData.priority, name: t(`Priority.${eventData.priority}`)}  : '',
         }}
         onSubmit={async (values, actions) => {
           await onSubmit({
@@ -49,7 +49,7 @@ export function EventForm({ onSubmit, eventData }) {
           });
 
           eventData
-            ? navigate(`/events/${eventData.id}`, { replace: true })
+            ? navigate(`/events/${eventData.id}`)
             : navigate('/', { replace: true });
 
           actions.resetForm({
