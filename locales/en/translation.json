@@ -1,83 +1,97 @@
 {
-    "title": {
-        "events": "My events",
-        "create": "Create new event",
-        "edit": "Edit event"
-    },    
-    "BackLink": "Back",
-    "eventsPage": {
-        "placeholder": "Search by keywords",
-        "ariaLabel1": "Enter characters to search for",
-        "ariaLabel2": "Clear recent searches",
-        "ariaLabel3": "Сhoose a language of the site",
-        "mainMenuButton": "Add new event",
-        "cardButton": "More info",
-        "ariaLabel": "Get more information about the event"
-    },
-    "at": "at",
-    "Cancel": "Cancel",
-    "ChooseDate": "Choose date",
-    "sortBy": {
-        "sortBy": "Sort by",
-        "ariaLabel": "Choose the type of sorting",
-        "byName": "by name",
-        "byData": "by date",
-        "byPriority": "by priority",
-        "Sort": "Sort "
-    },
-    "category": {
-        "Category": "Category",
-        "ariaLabel": "Filter events by category",
-        "All": "All",
-        "Art": "Art",
-        "Music": "Music",
-        "Business": "Business",
-        "Conference": "Conference",
-        "Workshop": "Workshop",
-        "Party": "Party",
-        "Sport": "Sport"
-    },
-    "Priority": {
-        "High": "High",
-        "Medium": "Medium",
-        "Low": "Low"
-    },
-    "formText": {
-        "input1": "Title",
-        "placeholder1": "Enter title",
-        "input2": "Description",
-        "placeholder2": "Enter description",
-        "input3": "Select date",
-        "placeholder3": "Select date",
-        "input4": "Select time",
-        "placeholder4": "Select time",
-        "input5": "Location",
-        "placeholder5": "Choose location",
-        "input6": "Category",
-        "placeholder6": "Choose category",
-        "input7": "Add picture",
-        "placeholder7": "Choose picture",
-        "input8": "Priority",
-        "placeholder8": "Choose priority"
-    },
-    "ErrorFormValidation": {
-        "Invalid input": "Invalid input"
-    },
-    "formButton": {
-        "AddEvent": "Add event",
-        "placeholder1": "Add event button",
-        "Save": "Save",
-        "placeholder2": "Save event button",
-        "placeholder3": "Make choice",
-        "placeholder4": "Clear the line"
-        
-    },
-    "EventInfoButton": {
-        "Edit": "Edit",
-        "DeleteEvent": "Delete event"
-    },
-    "NotFound": {
-        "title":"Sorry, this page is not found",
-        "link": "Return to the main page"
-    }
+  "title": {
+    "events": "My events",
+    "create": "Create new event",
+    "edit": "Edit event"
+  },
+  "BackLink": "Back",
+  "eventsPage": {
+    "placeholder": "Search by keywords",
+    "ariaLabel1": "Enter characters to search for",
+    "ariaLabel2": "Clear recent searches",
+    "ariaLabel3": "Сhoose a language of the site",
+    "mainMenuButton": "Add new event",
+    "cardButton": "More info",
+    "ariaLabel": "Get more information about the event"
+  },
+  "at": "at",
+  "Cancel": "Cancel",
+  "ChooseDate": "Choose date",
+  "sortBy": {
+    "sortBy": "Sort by",
+    "ariaLabel": "Choose the type of sorting",
+    "byName": "by name",
+    "byData": "by date",
+    "byPriority": "by priority",
+    "Sort": "Sort "
+  },
+  "category": {
+    "Category": "Category",
+    "ariaLabel": "Filter events by category",
+    "All": "All",
+    "Art": "Art",
+    "Music": "Music",
+    "Business": "Business",
+    "Conference": "Conference",
+    "Workshop": "Workshop",
+    "Party": "Party",
+    "Sport": "Sport"
+  },
+  "Priority": {
+    "High": "High",
+    "Medium": "Medium",
+    "Low": "Low"
+  },
+  "formText": {
+    "input1": "Title",
+    "placeholder1": "Enter title",
+    "input2": "Description",
+    "placeholder2": "Enter description",
+    "input3": "Select date",
+    "placeholder3": "Select date",
+    "input4": "Select time",
+    "placeholder4": "Select time",
+    "input5": "Location",
+    "placeholder5": "Choose location",
+    "input6": "Category",
+    "placeholder6": "Choose category",
+    "input7": "Add picture",
+    "placeholder7": "Choose picture",
+    "input8": "Priority",
+    "placeholder8": "Choose priority"
+  },
+  "ErrorFormValidation": {
+    "Invalid input": "Invalid input"
+  },
+  "formButton": {
+    "AddEvent": "Add event",
+    "placeholder1": "Add event button",
+    "Save": "Save",
+    "placeholder2": "Save event button",
+    "placeholder3": "Make choice",
+    "placeholder4": "Clear the line"
+  },
+  "EventInfoButton": {
+    "Edit": "Edit",
+    "DeleteEvent": "Delete event"
+  },
+  "NotFound": {
+    "title": "Sorry, this page is not found",
+    "link": "Return to the main page"
+  },
+  "toast": {
+    "createSuccess": "The new event has been successfully added to the calendar",
+    "createError": "Sorry, try adding the event again",
+    "editSuccess": "The event has been successfully edit",
+    "editError": "Sorry, try edit the event again",
+    "deliteSuccess": "Event has been successfully delite from the calendar",
+    "deliteError": "Sorry, try deliting the event again"
+  },
+  "SignupSchema": {
+    "Required": "Required",
+    "TitleMin": "Title must be 3 characters or more",
+    "TitleMax": "Title must be 30 characters or less",
+    "DescMin": "Must be 3 characters or more",
+    "DescMax": "Must be 300 characters or less"
   }
+}
