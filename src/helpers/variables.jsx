@@ -24,3 +24,9 @@ export const sortList = [
   { id: 'sortByPriorityUp', name: i18next.t('sortBy.byPriority'), up: true },
   { id: 'sortByPriorityDown', name: i18next.t('sortBy.byPriority'), up: false },
 ];
+
+export const languages = [
+  { id: 'EN', name: "EN"},
+  { id: 'UA', name: "UA"},
+];
+
