@@ -23,8 +23,8 @@
     "byName": "by name",
     "byDate": "by date",
     "byPriority": "by priority",
-    "Sort": "Sort "
-  ,
+    "Sort": "Sort ",
+  
   "category": {
     "Category": "Category",
     "ariaLabel": "Filter events by category",

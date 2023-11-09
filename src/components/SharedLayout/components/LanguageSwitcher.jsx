@@ -22,8 +22,8 @@ export const LanguageSwitcher = () => {
   });
 
   useEffect(() => {
-    if (value.id !== i18n.language) {
-      i18n.changeLanguage(value.id);
+    if (value.id.toLowerCase() !== i18n.language) {
+      i18n.changeLanguage(value.id.toLowerCase());
       window.location.reload();
     }
   }, [value.id, i18n]);

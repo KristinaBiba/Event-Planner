@@ -17,12 +17,12 @@ export const category = [
 ];
 
 export const sortList = [
-  { id: 'sortByNameUp', name: i18next.t('sortBy.byName'), up: true },
-  { id: 'sortByNameDown', name: i18next.t('sortBy.byName'), up: false },
-  { id: 'sortByDateUp', name: i18next.t('sortBy.byDate'), up: true },
-  { id: 'sortByDateDown', name: i18next.t('sortBy.byDate'), up: false },
-  { id: 'sortByPriorityUp', name: i18next.t('sortBy.byPriority'), up: true },
-  { id: 'sortByPriorityDown', name: i18next.t('sortBy.byPriority'), up: false },
+  { id: 'sortByNameUp', name: i18next.t('byName'), up: true },
+  { id: 'sortByNameDown', name: i18next.t('byName'), up: false },
+  { id: 'sortByDateUp', name: i18next.t('byDate'), up: true },
+  { id: 'sortByDateDown', name: i18next.t('byDate'), up: false },
+  { id: 'sortByPriorityUp', name: i18next.t('byPriority'), up: true },
+  { id: 'sortByPriorityDown', name: i18next.t('byPriority'), up: false },
 ];
 
 export const languages = [

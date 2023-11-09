@@ -38,12 +38,12 @@ export const EventsHeaderBlock = ({ onSort, onCategoryFilter }) => {
         />
 
         <DropDownMenu
-          title={t('sortBy.sortBy')}
+          title={t('sortBy')}
           typeMenu="Sort by"
           dropDownList={sortList}
           onSort={onSort}
           icon=<Filters2/>
-          aria-label={t('sortBy.ariaLabel')}
+          aria-label={t('ariaLabel')}
         />
 
         <CreateLink to="/create" state={{ from: location }}>

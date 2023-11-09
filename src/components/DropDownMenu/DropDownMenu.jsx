@@ -46,7 +46,7 @@ export const DropDownMenu = memo(
             }}
           >
             {typeMenu === 'Sort by' && value.name !== title
-              ? `${t('sortBy.Sort')}` + value.name
+              ? `${t('Sort')}` + value.name
               : value.name}
           </Span>
 
@@ -98,7 +98,7 @@ export const DropDownMenu = memo(
                     setIsOpen(false);
                   }}
                 >
-                  <span>{item.name}</span>
+                  {item.name}
                   {typeMenu === 'Sort by' && (
                     <Icon
                       style={{
