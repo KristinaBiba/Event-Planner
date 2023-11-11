@@ -16,7 +16,7 @@ i18n
     whitelist: ['ua', 'en'],
     // debug: true,
     backend: {
-      loadPath: 'src/locales/{{lng}}/{{ns}}.json',
+      loadPath: './locales/{{lng}}/{{ns}}.json',
     },
   });
 
