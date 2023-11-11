@@ -1,12 +1,12 @@
 import { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import '../../i18n';
 import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as ArrowUpSmall } from '../../images/svg/arrow-up-small.svg';
 
 import {
   MenuList,
-  MenuListDiv,
   MenuListItem,
   MenuWrap,
   Button,
@@ -17,7 +17,11 @@ import {
 export const DropDownMenu = memo(
   ({ title, dropDownList, onCategoryFilter, onSort, icon, typeMenu }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [value, setValue] = useState({ name: title, up: undefined, id: null });
+    const [value, setValue] = useState({
+      name: title,
+      up: undefined,
+      id: null,
+    });
 
     const { t } = useTranslation();
 
@@ -32,7 +36,7 @@ export const DropDownMenu = memo(
         <Button
           type="button"
           onClick={() => {
-            setIsOpen(true);
+            setIsOpen(!isOpen);
           }}
           className={isOpen && 'isOpen'}
         >
@@ -69,49 +73,47 @@ export const DropDownMenu = memo(
 
         {isOpen && (
           <MenuList>
-            <MenuListDiv>
-              {typeMenu === 'Category' && (
-                <MenuListItem
-                  key="All"
-                  onClick={() => {
-                    setValue({ name: title, up: undefined, id: null });
-                    if (onCategoryFilter) {
-                      onCategoryFilter('Category');
-                    }
-                    setIsOpen(false);
-                  }}
-                >
-                  {t('category.All')}
-                </MenuListItem>
-              )}
-              {dropDownList.map(item => (
-                <MenuListItem
-                  key={item.id}
-                  onClick={() => {
-                    setValue({ id: item.id, name: item.name, up: item?.up });
-                    if (onCategoryFilter) {
-                      onCategoryFilter(item.id);
-                    }
-                    if (onSort) {
-                      onSort(item.id);
-                    }
-                    setIsOpen(false);
-                  }}
-                >
-                  {item.name}
-                  {typeMenu === 'Sort by' && (
-                    <Icon
-                      style={{
-                        stroke: 'var(--border-color)',
-                        rotate: !item.up && '180deg',
-                      }}
-                    >
-                      <ArrowUpSmall />
-                    </Icon>
-                  )}
-                </MenuListItem>
-              ))}
-            </MenuListDiv>
+            {typeMenu === 'Category' && (
+              <MenuListItem
+                key="All"
+                onClick={() => {
+                  setValue({ name: title, up: undefined, id: null });
+                  if (onCategoryFilter) {
+                    onCategoryFilter('Category');
+                  }
+                  setIsOpen(false);
+                }}
+              >
+                {t('category.All')}
+              </MenuListItem>
+            )}
+            {dropDownList.map(item => (
+              <MenuListItem
+                key={item.id}
+                onClick={() => {
+                  setValue({ id: item.id, name: item.name, up: item?.up });
+                  if (onCategoryFilter) {
+                    onCategoryFilter(item.id);
+                  }
+                  if (onSort) {
+                    onSort(item.id);
+                  }
+                  setIsOpen(false);
+                }}
+              >
+                {item.name}
+                {typeMenu === 'Sort by' && (
+                  <Icon
+                    style={{
+                      stroke: 'var(--border-color)',
+                      rotate: !item.up && '180deg',
+                    }}
+                  >
+                    <ArrowUpSmall />
+                  </Icon>
+                )}
+              </MenuListItem>
+            ))}
           </MenuList>
         )}
       </MenuWrap>
@@ -131,5 +133,5 @@ DropDownMenu.propTypes = {
   onCategoryFilter: PropTypes.func,
   onSort: PropTypes.func,
   icon: PropTypes.element.isRequired,
-  typeMenu:  PropTypes.string.isRequired,
+  typeMenu: PropTypes.string.isRequired,
 };

@@ -20,7 +20,7 @@ export const MenuList = styled.ul`
   top: 28px;
   left: 47px;
   box-shadow: var(--primary-shadow);
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Nunito Sans', sans-serif;
   width: 158px;
   color: var(--secondary-text-color);
   text-align: start;
@@ -29,6 +29,9 @@ export const MenuList = styled.ul`
   font-weight: 500;
   z-index: 100;
   list-style: none;
+  background-color: var(--primary-background-color);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
   @media screen and (min-width: 768px) {
     left: 0;
   }
@@ -53,14 +56,21 @@ export const MenuListItem = styled.li`
   height: 30px;
   padding: 8px 24px;
   color: var(--border-color);
-  font-family: Poppins;
+  font-family: 'Poppins', 'Nunito Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 14px;
+  border-bottom: 1px solid var(--border-color);
+  &:last-child {
+    border-bottom: none;
+  }
   &:hover,
   &:focus {
     color: var(--primary-text-color);
-    border-bottom: 1.2px solid var(--primary-text-color);
+    border-bottom: 1px solid var(--primary-text-color);
+    &:last-child {
+    border-bottom: none;
+  }
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   &:hover svg,
@@ -87,14 +97,7 @@ export const Button = styled.button`
   bottom: -28px;
   left: 47px;
   justify-content: space-between;
-  &:hover,
-  &:focus {
-    border: 1px solid var(--primary-text-color);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  &:disabled {
-    background-color: var(--btn-disabled-background);
-  }
+ 
   @media screen and (max-width: 767px) {
     gap: 0;
     width: 56px;
@@ -106,8 +109,17 @@ export const Button = styled.button`
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     width: 158px;
     position: absolute;
+    border-bottom: 1px solid var(--border-color);
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+  }
+  &:hover,
+  &:focus {
+    border: 1px solid var(--primary-text-color);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &:disabled {
+    background-color: var(--btn-disabled-background);
   }
 `;
 export const Span = styled.span`

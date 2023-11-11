@@ -40,7 +40,7 @@ export const SelectList = styled.ul`
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--primary-shadow);
   border: none;
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Nunito Sans', sans-serif;
   width: 240px;
   color: var(--secondary-text-color);
   text-align: start;
@@ -58,19 +58,18 @@ export const SelectList = styled.ul`
   }
 `;
 
-export const SelectListDiv = styled.div`
-  background: repeating-linear-gradient(
-    0deg,
-    var(--primary-background-color),
-    var(--primary-background-color) 56px,
-    var(--border-color) 56px,
-    var(--border-color) 57px
-  );
-`;
-
 export const SelectItem = styled.li`
   height: 56px;
   padding: 16px 0;
+  line-height: normal;
+  font-weight: 400;
+
+
+  border-bottom: 1px solid var(--border-color);
+
+  &:last-child 
+  {border-bottom: none;}
+
   &:hover,
   &:focus {
     color: var(--primary-text-color);

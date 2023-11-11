@@ -11,7 +11,6 @@ import {
   SelectDiv,
   SelectItem,
   SelectList,
-  SelectListDiv,
 } from './SelectInput_css';
 
 export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
@@ -68,19 +67,17 @@ export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
 
       {isOpen && (
         <SelectList>
-          <SelectListDiv>
-            {array.map(item => (
-              <SelectItem
-                key={item.id}
-                onClick={() => {
-                  setValue(item);
-                  setIsOpen(false);
-                }}
-              >
-                {item.name}
-              </SelectItem>
-            ))}
-          </SelectListDiv>
+          {array.map(item => (
+            <SelectItem
+              key={item.id}
+              onClick={() => {
+                setValue(item);
+                setIsOpen(false);
+              }}
+            >
+              {item.name}
+            </SelectItem>
+          ))}
         </SelectList>
       )}
 

@@ -119,7 +119,7 @@ export const DatePickerWrapper = styled.div`
     box-shadow: var(--calendar-shadow);
     border: none;
     padding: 20px;
-    font-family: 'Poppins';
+    font-family: 'Poppins', 'Nunito Sans', sans-serif;
     width: 240px;
     height: 348px;
     z-index: 1000;
@@ -276,7 +276,7 @@ export const TimePickerWrapper = styled.div`
     border: none;
     padding: 0 16px;
     padding-right: 15px;
-    font-family: 'Poppins';
+    font-family: 'Poppins', 'Nunito Sans', sans-serif;
     width: 240px;
     height: 160px;
     color: var(--border-color);
