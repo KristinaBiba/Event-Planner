@@ -1,18 +1,8 @@
+![last commit](https://img.shields.io/github/last-commit/KristinaBiba/Event-Planner?style=plastic) ![](https://img.shields.io/badge/contributors-KristinaBiba-yellow.svg?style=plastic) ![](https://img.shields.io/github/commit-activity/t/KristinaBiba/Event-Planner?style=plastic)
 
 # Event Planner
 
 This is an application for creating, editing, deleting various user events. For ease of use, events are ranked by priority and category. It is possible to filter events by category, or search by keywords in the name or description of the event. Added convenient sorting of events by the most common criteria: by name, by date, by priority. The application supports 2 languages: English and Ukrainian.
-
-## Badges
-
-Add badges from somewhere like: [shields.io](https://shields.io/)
-
-[![last commit](https://img.shields.io/badge/License-:gistId-green.svg)](https://img.shields.io/github/gist/last-commit/:gistId)
-[![GPLv3 License](https://img.shields.io/badge/Contributors-KristinaBiba-yellow.svg)](https://img.shields.io/github/all-contributors/KristinaBiba/https%3A%2F%2Fgithub.com%2FKristinaBiba%2FEvent-Planner/gh-pages)
-[![pull reqest](https://img.shields.io/github/issues-pr-closed/KristinaBiba/Event-Planner?logoColor=red
-)](https://img.shields.io/github/issues-pr-closed/KristinaBiba/Event-Planner?logoColor=red)
-
-
 
 ## Demo version to try using
 
