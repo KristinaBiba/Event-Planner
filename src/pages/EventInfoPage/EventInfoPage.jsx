@@ -39,8 +39,6 @@ export function EventInfoPage({ onDelite, events }) {
     setIsLoading(false);
   }, [eventId, events]);
 
-  console.log(infoCard);
-
   const location = useLocation();
   return (
     <>

@@ -14,7 +14,7 @@ i18n
       caches: ['localStorage', 'cookie'],
     },
     whitelist: ['ua', 'en'],
-    debug: true,
+    // debug: true,
     backend: {
       loadPath: './locales/{{lng}}/{{ns}}.json',
     },
