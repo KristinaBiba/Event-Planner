@@ -50,8 +50,8 @@ export const DropDownMenu = memo(
             }}
           >
             {typeMenu === 'Sort by' && value.name !== title
-              ? `${t('Sort')}` + value.name
-              : value.name}
+              ? `${t('Sort')}` + t(value.name)
+              : t(value.name)}
           </Span>
 
           <Icon
@@ -84,7 +84,7 @@ export const DropDownMenu = memo(
                   setIsOpen(false);
                 }}
               >
-                {t('category.All')}
+                {t('All')}
               </MenuListItem>
             )}
             {dropDownList.map(item => (
@@ -101,7 +101,7 @@ export const DropDownMenu = memo(
                   setIsOpen(false);
                 }}
               >
-                {item.name}
+                 {t(item.name)}
                 {typeMenu === 'Sort by' && (
                   <Icon
                     style={{

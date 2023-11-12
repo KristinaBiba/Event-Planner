@@ -39,6 +39,8 @@ export function EventInfoPage({ onDelite, events }) {
     setIsLoading(false);
   }, [eventId, events]);
 
+  console.log(infoCard);
+
   const location = useLocation();
   return (
     <>
@@ -66,7 +68,7 @@ export function EventInfoPage({ onDelite, events }) {
                     <Wrap>
                       <P>{infoCard.description}</P>
                       <PropertyWrap>
-                        <Property>{t(`category.${infoCard.category}`)}</Property>
+                        <Property>{t(`${infoCard.category}`)}</Property>
                         <Property>
                           <Priority value={infoCard.priority} />
                         </Property>

@@ -29,12 +29,12 @@ export const EventsHeaderBlock = ({ onSort, onCategoryFilter }) => {
 
       <ButtonWrap>
         <DropDownMenu
-          title={t('category.Category')}
+          title={t('Category')}
           typeMenu="Category"
           dropDownList={category}
           onCategoryFilter={onCategoryFilter}
           icon=<Filters3/>
-          aria-label={t('category.ariaLabel')}
+          aria-label={t('ariaLabelCategory')}
         />
 
         <DropDownMenu

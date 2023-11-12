@@ -50,7 +50,7 @@ export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
           setIsOpen(true);
         }}
       >
-        {isOpen ? placeholder : value.name || placeholder}
+        {isOpen ? placeholder : t(value.name) || placeholder}
       </SelectDiv>
 
       <SvgDivArrow
@@ -75,7 +75,7 @@ export const SelectInput = ({ label, name, array, placeholder, ...props }) => {
                 setIsOpen(false);
               }}
             >
-              {item.name}
+              {t(item.name)}
             </SelectItem>
           ))}
         </SelectList>

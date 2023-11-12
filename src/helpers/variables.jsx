@@ -1,28 +1,26 @@
-import i18next from '../i18n';
-
 export const priority = [
-  { id: 'High', name: i18next.t('Priority.High')},
-  { id: 'Medium', name: i18next.t('Priority.Medium')},
-  { id: 'Low', name: i18next.t('Priority.Low')},
+  { id: 'High', name: 'High'},
+  { id: 'Medium', name: 'Medium'},
+  { id: 'Low', name: 'Low'},
 ];
 
 export const category = [
-  { id: 'Art', name: i18next.t('category.Art') },
-  { id: 'Music', name: i18next.t('category.Music')},
-  { id: 'Business', name: i18next.t('category.Business')},
-  { id: 'Conference', name: i18next.t('category.Conference')},
-  { id: 'Workshop', name: i18next.t('category.Workshop')},
-  { id: 'Party', name: i18next.t('category.Party')},
-  { id: 'Sport', name: i18next.t('category.Sport')},
+  { id: 'Art', name:'Art' },
+  { id: 'Music', name:'Music'},
+  { id: 'Business', name:'Business'},
+  { id: 'Conference', name:'Conference'},
+  { id: 'Workshop', name:'Workshop'},
+  { id: 'Party', name:'Party'},
+  { id: 'Sport', name:'Sport'},
 ];
 
 export const sortList = [
-  { id: 'sortByNameUp', name: i18next.t('byName'), up: true },
-  { id: 'sortByNameDown', name: i18next.t('byName'), up: false },
-  { id: 'sortByDateUp', name: i18next.t('byDate'), up: true },
-  { id: 'sortByDateDown', name: i18next.t('byDate'), up: false },
-  { id: 'sortByPriorityUp', name: i18next.t('byPriority'), up: true },
-  { id: 'sortByPriorityDown', name: i18next.t('byPriority'), up: false },
+  { id: 'sortByNameUp', name: 'byName', up: true },
+  { id: 'sortByNameDown', name: 'byName', up: false },
+  { id: 'sortByDateUp', name: 'byDate', up: true },
+  { id: 'sortByDateDown', name: 'byDate', up: false },
+  { id: 'sortByPriorityUp', name: 'byPriority', up: true },
+  { id: 'sortByPriorityDown', name: 'byPriority', up: false },
 ];
 
 export const languages = [

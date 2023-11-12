@@ -20,7 +20,7 @@ export function Priority({ value }) {
       break;
   }
 
-  return <span style={{ color: color }}>{t(`Priority.${value}`)}</span>;
+  return <span style={{ color: color }}>{t(value)}</span>;
 }
 
 Priority.propTypes = {

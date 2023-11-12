@@ -17,31 +17,29 @@
   "at": "at",
   "Cancel": "Cancel",
   "ChooseDate": "Choose date",
-  
-    "sortBy": "Sort by",
-    "ariaLabel": "Choose the type of sorting",
-    "byName": "by name",
-    "byDate": "by date",
-    "byPriority": "by priority",
-    "Sort": "Sort ",
-  
-  "category": {
-    "Category": "Category",
-    "ariaLabel": "Filter events by category",
-    "All": "All",
-    "Art": "Art",
-    "Music": "Music",
-    "Business": "Business",
-    "Conference": "Conference",
-    "Workshop": "Workshop",
-    "Party": "Party",
-    "Sport": "Sport"
-  },
-  "Priority": {
-    "High": "High",
-    "Medium": "Medium",
-    "Low": "Low"
-  },
+
+  "sortBy": "Sort by",
+  "ariaLabel": "Choose the type of sorting",
+  "byName": "by name",
+  "byDate": "by date",
+  "byPriority": "by priority",
+  "Sort": "Sort ",
+  "Category": "Category",
+
+  "ariaLabelCategory": "Filter events by category",
+  "All": "All",
+  "Art": "Art",
+  "Music": "Music",
+  "Business": "Business",
+  "Conference": "Conference",
+  "Workshop": "Workshop",
+  "Party": "Party",
+  "Sport": "Sport",
+
+  "High": "High",
+  "Medium": "Medium",
+  "Low": "Low",
+
   "formText": {
     "input1": "Title",
     "placeholder1": "Enter title",
